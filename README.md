@@ -6,7 +6,7 @@
   <a target="_blank"href="https://www.linkedin.com/in/nicholas-lopilato/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
-
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BryanMurphy02)![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ## Overview
 
 Mindful Moments is an iOS journaling app that offers a structured and guided experience for users. Unlike traditional free-form journaling, it provides prompts and questionnaires to help users explore their thoughts and emotions. With integrated AI, the app analyzes user entries to extract mood data and visualize emotional patterns over time. Additionally, Mindful Moments includes incentives to promote daily journaling, making it easier for users to establish a consistent journaling habit.
