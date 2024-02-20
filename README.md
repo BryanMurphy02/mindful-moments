@@ -10,3 +10,25 @@ Mindful Moments is a journaling app designed to provide users with a structured 
 - AI analysis of journal entries to visualize emotional patterns
 - Incentive system to promote daily journaling
 - Compatibility with iOS and iPadOS devices
+
+## Software
+
+### Development Tools
+- **Xcode:** IDE created by Apple for iOS app development. [Link](https://developer.apple.com/xcode/)
+- **Swift:** High-level compiled programming language created by Apple for iOS applications. [Link](http://tinyurl.com/2v4uynzb)
+- **Interface Builder:** A toolset that is part of Xcode used for Graphical User Interfaces.
+- **Adobe Illustrator:** A vector graphics interface used for developing images. [Link](https://www.adobe.com/products/illustrator.html)
+- **Visual Studio Code:** A code editor with extensions allowing it to be used for a wide variety of development. This will be used for small corrections and any work not directly pertaining to Swift. [Link](https://code.visualstudio.com/)
+- **Notion:** A productivity and note-taking application. We will use it for task and project management. [Link](https://www.notion.so/)
+
+### APIs and Services
+- **OpenAI’s GPT-3.5:** Using GPT-3 API to look over journal entries for keywords to describe how a person is feeling. To use the API tokens need to be dispensed. You’re allotted a certain amount of free tokens and once they’re gone more can be purchased.
+  - Input tokens cost $0.0015 per thousand.
+  - Output tokens cost $0.0020 per thousand.
+
+### Frameworks and Libraries
+- **CoreData:** Used for local storage. [Link](https://developer.apple.com/documentation/coredata/)
+
+### Testing
+- **Testflight:** Testing service for iOS applications. [Link](https://developer.apple.com/testflight/)
+
