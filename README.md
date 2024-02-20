@@ -14,7 +14,7 @@ Mindful Moments is an iOS journaling app that offers a structured and guided exp
 - [Licensing](#licensing)
 
 
-## Features ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
+## Features 
 
 - Structured journaling experience with prompts and questionnaires
 - AI analysis of journal entries to visualize emotional patterns
@@ -29,6 +29,12 @@ Mindful Moments is an iOS journaling app that offers a structured and guided exp
 Mindful Moments can be downloaded from the Apple App Store
 
 ## Software
+![Xcode](https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&logo=Xcode&logoColor=white)
+![Swift](https://img.shields.io/badge/swift-F54A2A?style=for-the-badge&logo=swift&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
+![Adobe Illustrator](https://img.shields.io/badge/adobe%20illustrator-%23FF9A00.svg?style=for-the-badge&logo=adobe%20illustrator&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
 
 #### Development Tools
 - **Xcode:** IDE created by Apple for iOS app development. [Link](https://developer.apple.com/xcode/)
