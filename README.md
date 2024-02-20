@@ -26,7 +26,7 @@ Mindful Moments is an iOS journaling app that offers a structured and guided exp
 
 ## Installation
 
-You can download Mindful Moments from the Apple App Store.
+Mindful Moments can be downloaded from the Apple App Store
 
 ## Software
 
