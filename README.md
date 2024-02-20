@@ -14,7 +14,7 @@ Mindful Moments is an iOS journaling app that offers a structured and guided exp
 - [Licensing](#licensing)
 
 
-## Features
+## Features ![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
 
 - Structured journaling experience with prompts and questionnaires
 - AI analysis of journal entries to visualize emotional patterns
@@ -56,5 +56,5 @@ Currently, Mindful Moments is under active development. Stay tuned for updates o
 Mindful Moments is licensed under the collaborative efforts of Bryan Murphy and Nicholas LoPilato. All rights reserved.
 
 
-![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
+
 
