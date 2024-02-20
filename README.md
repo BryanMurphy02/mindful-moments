@@ -34,4 +34,11 @@ Mindful Moments is an IOS journaling app designed to provide users with a struct
 
 You can download Mindful Moments from the Apple App Store.
 
+## Project Status
+
+Currently, Mindful Moments is under active development. Stay tuned for updates on our progress!
+
+## Licensing
+
+Mindful Moments is licensed under the collaborative efforts of Bryan Murphy and Nicholas LoPilato. All rights reserved.
 
