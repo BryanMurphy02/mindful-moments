@@ -30,3 +30,8 @@ Mindful Moments is an IOS journaling app designed to provide users with a struct
 ### Testing
 - **Testflight:** Testing service for iOS applications. [Link](https://developer.apple.com/testflight/)
 
+## Installation
+
+You can download Mindful Moments from the Apple App Store.
+
+
