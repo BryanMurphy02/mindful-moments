@@ -55,3 +55,10 @@ Currently, Mindful Moments is under active development. Stay tuned for updates o
 
 Mindful Moments is licensed under the collaborative efforts of Bryan Murphy and Nicholas LoPilato. All rights reserved.
 
+
+
+![Build Status](https://img.shields.io/travis/user/repo)
+![Version](https://img.shields.io/github/v/release/user/repo)
+![License](https://img.shields.io/github/license/user/repo)
+
+
