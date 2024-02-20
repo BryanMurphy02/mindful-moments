@@ -7,6 +7,7 @@ Mindful Moments is an iOS journaling app that offers a structured and guided exp
 ## Table of Contents
 
 - [Features](#features)
+- [Sample Questions](#sample-questions)
 - [Installation](#installation)
 - [Software](#software)
 - [Project Status](#project-status)
@@ -19,6 +20,9 @@ Mindful Moments is an iOS journaling app that offers a structured and guided exp
 - AI analysis of journal entries to visualize emotional patterns
 - Incentive system to promote daily journaling
 - Compatibility with iOS and iPadOS devices
+
+## Sample Questions
+- REPLACE THIS WITH EXAMPLE QUESTIONS/PROMPTS FROM THE APP
 
 ## Installation
 
