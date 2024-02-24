@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		89BC069A2B8A70F300F11463 /* mindful_momentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06992B8A70F300F11463 /* mindful_momentsApp.swift */; };
+		89BC069C2B8A70F300F11463 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC069B2B8A70F300F11463 /* ContentView.swift */; };
+		89BC069E2B8A70F600F11463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89BC069D2B8A70F600F11463 /* Assets.xcassets */; };
+		89BC06A12B8A70F600F11463 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89BC06A02B8A70F600F11463 /* Preview Assets.xcassets */; };
+		89BC06AB2B8A70F700F11463 /* mindful_momentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06AA2B8A70F700F11463 /* mindful_momentsTests.swift */; };
+		89BC06B52B8A70F700F11463 /* mindful_momentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06B42B8A70F700F11463 /* mindful_momentsUITests.swift */; };
+		89BC06B72B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06B62B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		89BC06A72B8A70F700F11463 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89BC068E2B8A70F300F11463 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89BC06952B8A70F300F11463;
+			remoteInfo = "mindful-moments";
+		};
+		89BC06B12B8A70F700F11463 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89BC068E2B8A70F300F11463 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 89BC06952B8A70F300F11463;
+			remoteInfo = "mindful-moments";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		89BC06962B8A70F300F11463 /* mindful-moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mindful-moments.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BC06992B8A70F300F11463 /* mindful_momentsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindful_momentsApp.swift; sourceTree = "<group>"; };
+		89BC069B2B8A70F300F11463 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		89BC069D2B8A70F600F11463 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		89BC06A02B8A70F600F11463 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		89BC06A62B8A70F700F11463 /* mindful-momentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mindful-momentsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BC06AA2B8A70F700F11463 /* mindful_momentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindful_momentsTests.swift; sourceTree = "<group>"; };
+		89BC06B02B8A70F700F11463 /* mindful-momentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mindful-momentsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BC06B42B8A70F700F11463 /* mindful_momentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindful_momentsUITests.swift; sourceTree = "<group>"; };
+		89BC06B62B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindful_momentsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89BC06932B8A70F300F11463 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BC06A32B8A70F700F11463 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BC06AD2B8A70F700F11463 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		89BC068D2B8A70F300F11463 = {
+			isa = PBXGroup;
+			children = (
+				89BC06982B8A70F300F11463 /* mindful-moments */,
+				89BC06A92B8A70F700F11463 /* mindful-momentsTests */,
+				89BC06B32B8A70F700F11463 /* mindful-momentsUITests */,
+				89BC06972B8A70F300F11463 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		89BC06972B8A70F300F11463 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89BC06962B8A70F300F11463 /* mindful-moments.app */,
+				89BC06A62B8A70F700F11463 /* mindful-momentsTests.xctest */,
+				89BC06B02B8A70F700F11463 /* mindful-momentsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89BC06982B8A70F300F11463 /* mindful-moments */ = {
+			isa = PBXGroup;
+			children = (
+				89BC06992B8A70F300F11463 /* mindful_momentsApp.swift */,
+				89BC069B2B8A70F300F11463 /* ContentView.swift */,
+				89BC069D2B8A70F600F11463 /* Assets.xcassets */,
+				89BC069F2B8A70F600F11463 /* Preview Content */,
+			);
+			path = "mindful-moments";
+			sourceTree = "<group>";
+		};
+		89BC069F2B8A70F600F11463 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				89BC06A02B8A70F600F11463 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		89BC06A92B8A70F700F11463 /* mindful-momentsTests */ = {
+			isa = PBXGroup;
+			children = (
+				89BC06AA2B8A70F700F11463 /* mindful_momentsTests.swift */,
+			);
+			path = "mindful-momentsTests";
+			sourceTree = "<group>";
+		};
+		89BC06B32B8A70F700F11463 /* mindful-momentsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				89BC06B42B8A70F700F11463 /* mindful_momentsUITests.swift */,
+				89BC06B62B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift */,
+			);
+			path = "mindful-momentsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89BC06952B8A70F300F11463 /* mindful-moments */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89BC06BA2B8A70F700F11463 /* Build configuration list for PBXNativeTarget "mindful-moments" */;
+			buildPhases = (
+				89BC06922B8A70F300F11463 /* Sources */,
+				89BC06932B8A70F300F11463 /* Frameworks */,
+				89BC06942B8A70F300F11463 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "mindful-moments";
+			productName = "mindful-moments";
+			productReference = 89BC06962B8A70F300F11463 /* mindful-moments.app */;
+			productType = "com.apple.product-type.application";
+		};
+		89BC06A52B8A70F700F11463 /* mindful-momentsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89BC06BD2B8A70F700F11463 /* Build configuration list for PBXNativeTarget "mindful-momentsTests" */;
+			buildPhases = (
+				89BC06A22B8A70F700F11463 /* Sources */,
+				89BC06A32B8A70F700F11463 /* Frameworks */,
+				89BC06A42B8A70F700F11463 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89BC06A82B8A70F700F11463 /* PBXTargetDependency */,
+			);
+			name = "mindful-momentsTests";
+			productName = "mindful-momentsTests";
+			productReference = 89BC06A62B8A70F700F11463 /* mindful-momentsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		89BC06AF2B8A70F700F11463 /* mindful-momentsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89BC06C02B8A70F700F11463 /* Build configuration list for PBXNativeTarget "mindful-momentsUITests" */;
+			buildPhases = (
+				89BC06AC2B8A70F700F11463 /* Sources */,
+				89BC06AD2B8A70F700F11463 /* Frameworks */,
+				89BC06AE2B8A70F700F11463 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				89BC06B22B8A70F700F11463 /* PBXTargetDependency */,
+			);
+			name = "mindful-momentsUITests";
+			productName = "mindful-momentsUITests";
+			productReference = 89BC06B02B8A70F700F11463 /* mindful-momentsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89BC068E2B8A70F300F11463 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					89BC06952B8A70F300F11463 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					89BC06A52B8A70F700F11463 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 89BC06952B8A70F300F11463;
+					};
+					89BC06AF2B8A70F700F11463 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 89BC06952B8A70F300F11463;
+					};
+				};
+			};
+			buildConfigurationList = 89BC06912B8A70F300F11463 /* Build configuration list for PBXProject "mindful-moments" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 89BC068D2B8A70F300F11463;
+			productRefGroup = 89BC06972B8A70F300F11463 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89BC06952B8A70F300F11463 /* mindful-moments */,
+				89BC06A52B8A70F700F11463 /* mindful-momentsTests */,
+				89BC06AF2B8A70F700F11463 /* mindful-momentsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89BC06942B8A70F300F11463 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BC06A12B8A70F600F11463 /* Preview Assets.xcassets in Resources */,
+				89BC069E2B8A70F600F11463 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BC06A42B8A70F700F11463 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BC06AE2B8A70F700F11463 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89BC06922B8A70F300F11463 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BC069C2B8A70F300F11463 /* ContentView.swift in Sources */,
+				89BC069A2B8A70F300F11463 /* mindful_momentsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BC06A22B8A70F700F11463 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BC06AB2B8A70F700F11463 /* mindful_momentsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		89BC06AC2B8A70F700F11463 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89BC06B72B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift in Sources */,
+				89BC06B52B8A70F700F11463 /* mindful_momentsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		89BC06A82B8A70F700F11463 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89BC06952B8A70F300F11463 /* mindful-moments */;
+			targetProxy = 89BC06A72B8A70F700F11463 /* PBXContainerItemProxy */;
+		};
+		89BC06B22B8A70F700F11463 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 89BC06952B8A70F300F11463 /* mindful-moments */;
+			targetProxy = 89BC06B12B8A70F700F11463 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		89BC06B82B8A70F700F11463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		89BC06B92B8A70F700F11463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		89BC06BB2B8A70F700F11463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mindful-moments/Preview Content\"";
+				DEVELOPMENT_TEAM = CGUBF647PZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mindful-moments";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		89BC06BC2B8A70F700F11463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"mindful-moments/Preview Content\"";
+				DEVELOPMENT_TEAM = CGUBF647PZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mindful-moments";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		89BC06BE2B8A70F700F11463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CGUBF647PZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mindful-momentsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mindful-moments.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mindful-moments";
+			};
+			name = Debug;
+		};
+		89BC06BF2B8A70F700F11463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CGUBF647PZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mindful-momentsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mindful-moments.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mindful-moments";
+			};
+			name = Release;
+		};
+		89BC06C12B8A70F700F11463 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CGUBF647PZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mindful-momentsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mindful-moments";
+			};
+			name = Debug;
+		};
+		89BC06C22B8A70F700F11463 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CGUBF647PZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mindful-momentsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "mindful-moments";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89BC06912B8A70F300F11463 /* Build configuration list for PBXProject "mindful-moments" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89BC06B82B8A70F700F11463 /* Debug */,
+				89BC06B92B8A70F700F11463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89BC06BA2B8A70F700F11463 /* Build configuration list for PBXNativeTarget "mindful-moments" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89BC06BB2B8A70F700F11463 /* Debug */,
+				89BC06BC2B8A70F700F11463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89BC06BD2B8A70F700F11463 /* Build configuration list for PBXNativeTarget "mindful-momentsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89BC06BE2B8A70F700F11463 /* Debug */,
+				89BC06BF2B8A70F700F11463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89BC06C02B8A70F700F11463 /* Build configuration list for PBXNativeTarget "mindful-momentsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89BC06C12B8A70F700F11463 /* Debug */,
+				89BC06C22B8A70F700F11463 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89BC068E2B8A70F300F11463 /* Project object */;
+}
