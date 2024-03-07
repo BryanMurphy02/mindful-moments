@@ -30,9 +30,12 @@ struct SettingsView: View {
             NavigationView{
                 List {
                     Section(header: Text("General")) {
-                        SettingsToggleRow(icon: "lock.fill", title: "Password Lock", isToggled: $passwordLock)
+                        SettingsToggleRow(icon: "lock.fill", title: "Password Lock", caption: "test caption", isToggled: $passwordLock)
                         SettingsDestinationRow(icon: "bell.fill", title: "Notifications", destination: NotificationsView())
-                        SettingsToggleRow(icon: "brain.filled.head.profile", title: "AI Generation", isToggled: $aiGeneration)
+                        SettingsToggleRow(icon: "brain.filled.head.profile", title: "AI Generation", caption: "test caption", isToggled: $aiGeneration)
+                    }
+                    Section(header: Text("Appearances")) {
+                        
                     }
                 }
                 .listStyle(GroupedListStyle())
@@ -64,6 +67,7 @@ struct SettingsDestinationRow<Destination: View>: View {
 struct SettingsToggleRow: View {
     var icon: String
     var title: String
+    var caption: String
     @Binding var isToggled: Bool
     
     var body: some View {
@@ -71,7 +75,12 @@ struct SettingsToggleRow: View {
             Image(systemName: icon)
                 .foregroundColor(.blue)
                 .font(.headline)
-            Text(title)
+            VStack(alignment: .leading) {
+                Text(title)
+                Text(caption) // Show caption below the title
+                    .foregroundColor(.gray)
+                    .font(.caption)
+            }
             Spacer()
             Toggle("", isOn: $isToggled)
                 .labelsHidden()
