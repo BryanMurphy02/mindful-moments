@@ -29,7 +29,12 @@ Mindful Moments is an iOS journaling app that offers a structured and guided exp
 - Compatibility with iOS and iPadOS devices
 
 ## Sample Questions
-> REPLACE THIS WITH EXAMPLE QUESTIONS/PROMPTS FROM THE APP
+> What do you know to be true that you didn’t know a year ago?
+> When do you feel most in tune with yourself?
+> Is there an emotion that you constantly feel and cannot escape? What makes it inescapable?
+> Identify situations or circumstances that follow with an intense negative emotion. What makes this situation trigger this emotion? Do the same for a positive emotion
+> What do you value most out of a relationship?
+> What are some boundaries that have been established in a relationship? How did you communicate your need for a boundary? Was it taken well? If not, what could you have done better if possible?
 
 ## Installation
 Mindful Moments can be downloaded from the Apple App Store
