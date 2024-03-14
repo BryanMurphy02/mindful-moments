@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0181F7512BA35344008CB43D /* JournalDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0181F74F2BA35344008CB43D /* JournalDataModel.xcdatamodeld */; };
 		8944A4542B8D1CB100547EDF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944A4532B8D1CB100547EDF /* CalendarView.swift */; };
 		8944A4562B8D27E500547EDF /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944A4552B8D27E500547EDF /* MoodView.swift */; };
 		8944A45A2B8D329700547EDF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944A4592B8D329700547EDF /* SettingsView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0181F7502BA35344008CB43D /* JournalDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JournalDataModel.xcdatamodel; sourceTree = "<group>"; };
 		8944A4532B8D1CB100547EDF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		8944A4552B8D27E500547EDF /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
 		8944A4592B8D329700547EDF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				89BC06992B8A70F300F11463 /* mindful_momentsApp.swift */,
 				8944A45B2B8D32E300547EDF /* NewEntryView.swift */,
+				0181F74F2BA35344008CB43D /* JournalDataModel.xcdatamodeld */,
 				8944A4592B8D329700547EDF /* SettingsView.swift */,
 				89BC069B2B8A70F300F11463 /* ContentView.swift */,
 				8944A4532B8D1CB100547EDF /* CalendarView.swift */,
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0181F7512BA35344008CB43D /* JournalDataModel.xcdatamodeld in Sources */,
 				8944A45C2B8D32E300547EDF /* NewEntryView.swift in Sources */,
 				89BC069C2B8A70F300F11463 /* ContentView.swift in Sources */,
 				89BC069A2B8A70F300F11463 /* mindful_momentsApp.swift in Sources */,
@@ -438,9 +442,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mindful-moments/Preview Content\"";
-				DEVELOPMENT_TEAM = CGUBF647PZ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mindful Moments";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -467,9 +473,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mindful-moments/Preview Content\"";
-				DEVELOPMENT_TEAM = CGUBF647PZ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mindful Moments";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -604,6 +612,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0181F74F2BA35344008CB43D /* JournalDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0181F7502BA35344008CB43D /* JournalDataModel.xcdatamodel */,
+			);
+			currentVersion = 0181F7502BA35344008CB43D /* JournalDataModel.xcdatamodel */;
+			name = JournalDataModel.xcdatamodeld;
+			path = "/Users/nick/Documents/GitHub/mindful-moments/mindful-moments/mindful-moments/JournalDataModel.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 89BC068E2B8A70F300F11463 /* Project object */;
 }
