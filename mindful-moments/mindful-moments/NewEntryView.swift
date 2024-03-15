@@ -125,7 +125,9 @@ struct TagListView: View {
             ForEach(tags, id: \.self) { tag in
                 TagView(tagName: tag)
             }
-            Button(action: {}) {
+            Button(action: {
+                //TODO: add tag action
+            }) {
                 Image(systemName: "plus.circle").foregroundColor(.blue).font(.system(size: 14))
             }
             Spacer()
