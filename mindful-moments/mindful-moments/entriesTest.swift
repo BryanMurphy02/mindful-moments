@@ -89,6 +89,9 @@ struct DiaryEntryListView: View {
                 }
             }
             .navigationTitle("Diary Entries")
+            .navigationBarItems(trailing: Image(systemName: "ellipsis.circle")
+                .foregroundColor(.blue)
+            )
         }
     }
 }
