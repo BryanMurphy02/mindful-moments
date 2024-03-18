@@ -1,5 +1,5 @@
 //
-//  entriesTest.swift
+//  JournalEntriesView.swift
 //  mindful-moments
 //
 //  Created by Bryan Murphy on 3/15/24.
@@ -43,7 +43,7 @@ extension DateFormatter {
     }()
 }
 
-struct entriesTest: View {
+struct JournalEntriesView: View {
         
     //list of possible layout styles
     enum LayoutType: String, CaseIterable {
@@ -55,21 +55,52 @@ struct entriesTest: View {
     @State private var selectedLayout: LayoutType = .list
     
     var body: some View {
-        VStack {
-            Picker("Select Layout", selection: $selectedLayout) {
-                ForEach(LayoutType.allCases, id: \.self) { layout in
-                    Text(layout.rawValue)
+        NavigationView {
+            VStack {
+                // Show either List or Grid based on selection
+                if selectedLayout == .list {
+                    DiaryEntryListView(entries: entries)
+                } else {
+                    DiaryEntryGridView(entries: entries)
                 }
             }
-            .pickerStyle(SegmentedPickerStyle())
-            
-            // Show either List or Grid based on selection
-            if selectedLayout == .list {
-                DiaryEntryListView(entries: entries)
-            } else {
-                DiaryEntryGridView(entries: entries)
+            .padding(.top, 1)
+            //allows adding buttons and titles
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    HStack {
+                        Text("Journal Entries")
+                            .font(.title)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        Menu {
+                            ForEach(LayoutType.allCases, id: \.self) { layout in
+                                Button(action: {
+                                    self.selectedLayout = layout
+                                }) {
+                                    //adds check marks on the selected view
+                                    HStack {
+                                        Text(layout.rawValue)
+                                        if layout == selectedLayout {
+                                            Spacer()
+                                            Image(systemName: "checkmark")
+                                                .foregroundColor(.blue)
+                                        }
+                                    }
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                                .foregroundColor(.blue)
+                        }
+                        .menuStyle(DefaultMenuStyle())
+                        Spacer()
+                            .frame(width: 110)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
         }
+
     }
 }
 
@@ -88,10 +119,7 @@ struct DiaryEntryListView: View {
                         .foregroundColor(.secondary)
                 }
             }
-            .navigationTitle("Diary Entries")
-            .navigationBarItems(trailing: Image(systemName: "ellipsis.circle")
-                .foregroundColor(.blue)
-            )
+//            .navigationTitle("Diary Entries")
         }
     }
 }
@@ -113,7 +141,7 @@ struct DiaryEntryGridView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Diary Entries") // Set navigation title here
+//            .navigationTitle("Diary Entries")
         }
     }
 }
@@ -137,42 +165,5 @@ struct DiaryEntryGridCell: View {
 }
 
 #Preview {
-    entriesTest()
+    JournalEntriesView()
 }
-
-
-//struct entriesTest: View {
-//    // Sample data for now
-//    let entries: [DiaryEntry] = [
-//        DiaryEntry(id: UUID(), date: Date(), text: "Today's entry"),
-//        DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry")
-//    ]
-//    
-//    var body: some View {
-//        NavigationView {
-//            List(entries) { entry in
-//                VStack(alignment: .leading) {
-//                    Text("\(entry.date, formatter: DateFormatter.date)")
-//                        .font(.headline)
-//                    Text(entry.text)
-//                        .font(.body)
-//                        .foregroundColor(.secondary)
-//                }
-//            }
-//            .navigationTitle("Diary Entries")
-//        }
-//    }
-//}
-//
-//extension DateFormatter {
-//    static let date: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .medium
-//        formatter.timeStyle = .none
-//        return formatter
-//    }()
-//}
-//
-//#Preview {
-//    entriesTest()
-//}

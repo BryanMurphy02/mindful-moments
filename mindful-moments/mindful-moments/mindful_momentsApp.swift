@@ -20,7 +20,7 @@ struct mindful_momentsApp: App {
                 }.tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
-                entriesTest()
+                JournalEntriesView()
                     .tabItem {
                         Label("Journal Entries", systemImage: "book.circle")
                     }
