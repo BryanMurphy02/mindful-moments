@@ -73,6 +73,7 @@ struct JournalEntriesView: View {
                             .font(.title)
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         Menu {
+                            //displays each layout from the layoutType
                             ForEach(LayoutType.allCases, id: \.self) { layout in
                                 Button(action: {
                                     self.selectedLayout = layout
