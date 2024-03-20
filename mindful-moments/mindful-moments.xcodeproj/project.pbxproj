@@ -85,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01781EBD2BAB35F900C72953 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				0181F74F2BA35344008CB43D /* JournalDataModel.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		89BC068D2B8A70F300F11463 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +120,7 @@
 				0181F7522BA37629008CB43D /* HomeView.swift */,
 				8944A4592B8D329700547EDF /* SettingsView.swift */,
 				89234A532B9A41F900382CCD /* NotificationsView.swift */,
+				01781EBD2BAB35F900C72953 /* DataModel */,
 				8944A45B2B8D32E300547EDF /* NewEntryView.swift */,
 				89BC069B2B8A70F300F11463 /* ContentView.swift */,
 				896A43422BA4D88500E3B48E /* JournalEntriesView.swift */,
@@ -620,6 +629,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0181F74F2BA35344008CB43D /* JournalDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0181F7502BA35344008CB43D /* JournalDataModel.xcdatamodel */,
+			);
+			currentVersion = 0181F7502BA35344008CB43D /* JournalDataModel.xcdatamodel */;
+			path = JournalDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 89BC068E2B8A70F300F11463 /* Project object */;
 }
