@@ -129,6 +129,7 @@ struct JournalEntriesView: View {
 }
 
 //struct for diary entry list view
+//allows thumbnails
 struct DiaryEntryListView: View {
     @Binding var thumbnailType: ThumbnailType
     let entries: [DiaryEntry]
