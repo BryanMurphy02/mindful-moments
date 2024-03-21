@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct mindful_momentsApp: App {
+    @StateObject private var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
             
@@ -21,10 +23,12 @@ struct mindful_momentsApp: App {
                     Label("Home", systemImage: "house.fill")
                 }
                 JournalEntriesView()
+                    .environment(\.managedObjectContext, dataController.container.viewContext)
                     .tabItem {
                         Label("Journal Entries", systemImage: "book.circle")
                     }
                 NewEntryView()
+                    .environment(\.managedObjectContext, dataController.container.viewContext)
                     .tabItem {
                         Label("", systemImage: "plus.circle.fill")
                     }

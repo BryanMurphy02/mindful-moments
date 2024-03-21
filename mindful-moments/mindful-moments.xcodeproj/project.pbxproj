@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0106C2F32BAB389300A6AE48 /* JournalDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0106C2F12BAB389300A6AE48 /* JournalDataModel.xcdatamodeld */; };
+		0106C2F52BAB391900A6AE48 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0106C2F42BAB391900A6AE48 /* DataController.swift */; };
+		0106C2FA2BAB40C700A6AE48 /* DateFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0106C2F92BAB40C700A6AE48 /* DateFormatting.swift */; };
+		0106C2FC2BAB458200A6AE48 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0106C2FB2BAB458200A6AE48 /* EntryView.swift */; };
 		0181F7532BA37629008CB43D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0181F7522BA37629008CB43D /* HomeView.swift */; };
 		89234A542B9A41F900382CCD /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89234A532B9A41F900382CCD /* NotificationsView.swift */; };
 		8944A4542B8D1CB100547EDF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944A4532B8D1CB100547EDF /* CalendarView.swift */; };
@@ -41,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0106C2F22BAB389300A6AE48 /* JournalDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JournalDataModel.xcdatamodel; sourceTree = "<group>"; };
+		0106C2F42BAB391900A6AE48 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		0106C2F92BAB40C700A6AE48 /* DateFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatting.swift; sourceTree = "<group>"; };
+		0106C2FB2BAB458200A6AE48 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		0181F7522BA37629008CB43D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		89234A532B9A41F900382CCD /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		8944A4532B8D1CB100547EDF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -85,10 +93,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0106C2F62BAB3CC700A6AE48 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0181F7522BA37629008CB43D /* HomeView.swift */,
+				8944A4592B8D329700547EDF /* SettingsView.swift */,
+				89234A532B9A41F900382CCD /* NotificationsView.swift */,
+				8944A45B2B8D32E300547EDF /* NewEntryView.swift */,
+				89BC069B2B8A70F300F11463 /* ContentView.swift */,
+				896A43422BA4D88500E3B48E /* JournalEntriesView.swift */,
+				8944A4532B8D1CB100547EDF /* CalendarView.swift */,
+				8944A4552B8D27E500547EDF /* MoodView.swift */,
+				0106C2FB2BAB458200A6AE48 /* EntryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0106C2F82BAB40A200A6AE48 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0106C2F92BAB40C700A6AE48 /* DateFormatting.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		01781EBD2BAB35F900C72953 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				0181F74F2BA35344008CB43D /* JournalDataModel.xcdatamodeld */,
+				0106C2F42BAB391900A6AE48 /* DataController.swift */,
+				0106C2F12BAB389300A6AE48 /* JournalDataModel.xcdatamodeld */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -117,15 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				89BC06992B8A70F300F11463 /* mindful_momentsApp.swift */,
-				0181F7522BA37629008CB43D /* HomeView.swift */,
-				8944A4592B8D329700547EDF /* SettingsView.swift */,
-				89234A532B9A41F900382CCD /* NotificationsView.swift */,
+				0106C2F82BAB40A200A6AE48 /* Helpers */,
+				0106C2F62BAB3CC700A6AE48 /* Views */,
 				01781EBD2BAB35F900C72953 /* DataModel */,
-				8944A45B2B8D32E300547EDF /* NewEntryView.swift */,
-				89BC069B2B8A70F300F11463 /* ContentView.swift */,
-				896A43422BA4D88500E3B48E /* JournalEntriesView.swift */,
-				8944A4532B8D1CB100547EDF /* CalendarView.swift */,
-				8944A4552B8D27E500547EDF /* MoodView.swift */,
 				89BC069D2B8A70F600F11463 /* Assets.xcassets */,
 				89BC069F2B8A70F600F11463 /* Preview Content */,
 			);
@@ -288,10 +315,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0181F7532BA37629008CB43D /* HomeView.swift in Sources */,
+				0106C2FC2BAB458200A6AE48 /* EntryView.swift in Sources */,
 				8944A45C2B8D32E300547EDF /* NewEntryView.swift in Sources */,
 				89BC069C2B8A70F300F11463 /* ContentView.swift in Sources */,
 				89BC069A2B8A70F300F11463 /* mindful_momentsApp.swift in Sources */,
+				0106C2FA2BAB40C700A6AE48 /* DateFormatting.swift in Sources */,
 				896A43432BA4D88500E3B48E /* JournalEntriesView.swift in Sources */,
+				0106C2F52BAB391900A6AE48 /* DataController.swift in Sources */,
+				0106C2F32BAB389300A6AE48 /* JournalDataModel.xcdatamodeld in Sources */,
 				8944A4542B8D1CB100547EDF /* CalendarView.swift in Sources */,
 				8944A45A2B8D329700547EDF /* SettingsView.swift in Sources */,
 				8944A4562B8D27E500547EDF /* MoodView.swift in Sources */,
@@ -631,13 +662,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0181F74F2BA35344008CB43D /* JournalDataModel.xcdatamodeld */ = {
+		0106C2F12BAB389300A6AE48 /* JournalDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				0181F7502BA35344008CB43D /* JournalDataModel.xcdatamodel */,
+				0106C2F22BAB389300A6AE48 /* JournalDataModel.xcdatamodel */,
 			);
-			currentVersion = 0181F7502BA35344008CB43D /* JournalDataModel.xcdatamodel */;
-			path = JournalDataModel.xcdatamodeld;
+			currentVersion = 0106C2F22BAB389300A6AE48 /* JournalDataModel.xcdatamodel */;
+			name = JournalDataModel.xcdatamodeld;
+			path = "/Users/nick/Documents/GitHub/mindful-moments/mindful-moments/mindful-moments/DataModel/JournalDataModel.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

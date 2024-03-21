@@ -1,5 +1,5 @@
 /**
- View for new entries
+ View for existing entries
  
  - Authors:
     Nicholas LoPilato, Bryan Murphy
@@ -11,39 +11,42 @@
 import SwiftUI
 import AVKit
 
-struct NewEntryView: View {
+struct EntryView: View {
     // Managed Object Context for CoreData
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.dismiss) var dismiss
     
     // State variables
-    @State private var entryContent: String = ""
-    @State private var tags: [String] = ["Tag 1", "Tag 2", "Tag 3"]
-    @State private var mediaPaths: [String] = []
-    
-    // Current date
-    private let currentDate = Date()
+    @State var name: String
+    @State var entryContent: String
+    @State var tags: [String]
+    @State var mediaPaths: [String]
     
     var body: some View {
         VStack {
             // Top bar
-            EntryTopBarView(currentDate: currentDate)
-            
+            EntryTopBarView(name: name, saveAction: {
+                //TODO: save action
+                DataController().addEntry(name: name, context: viewContext)
+                dismiss()
+            }, backAction: {})
+
             // Divider line
             Divider().background(Color.gray).padding(.bottom)
-            
+
             // Tags
             TagListView(tags: tags)
-            
+
             // Media
             if !mediaPaths.isEmpty {
                 MediaView(mediaPaths: mediaPaths)
             }
-            
+
             // Text entry
             ScrollView {
                 TextField("Enter your text here", text: $entryContent).padding()
             }
-            
+
             Spacer()
         }
         .frame(maxWidth: .infinity)
@@ -77,54 +80,48 @@ struct NewEntryView: View {
                 .foregroundColor(.primary)
             }
         }
-
     }
 }
 
 struct EntryTopBarView: View {
-    var currentDate: Date
-    
+    var name: String
+    var saveAction: () -> Void
+    var backAction: () -> Void
+
     var body: some View {
         HStack {
             // Back button
-            Button(action: {
-                //TODO: back action
-            }) {
+            Button(action: backAction) {
                 Image(systemName: "chevron.left").padding(5)
             }
-            
+
             // Date title
-            Text("\(currentDate, formatter: DateFormatter.mediumDate)").font(.system(size: 20)).padding(1)
-            
+            Text(name)
+
             Spacer()
-            
+
             // Done button
-            Button(action: {
-                //TODO: save action
-            }) {
+            Button(action: saveAction) {
                 Text("Done").padding(5)
             }
         }
     }
 }
 
-// Date formatter extension
-extension DateFormatter {
-    static let mediumDate: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM d, yyyy"
-        return formatter
-    }()
-}
-
 struct TagListView: View {
     var tags: [String]
-    
+
     var body: some View {
         HStack(spacing: 5) {
-            ForEach(tags, id: \.self) { tag in
-                TagView(tagName: tag)
+            if tags.isEmpty {
+                PlaceholderTagView()
+            } else {
+                ForEach(tags, id: \.self) { tag in
+                    TagView(tagName: tag)
+                }
             }
+            
+            //add tag button
             Button(action: {
                 //TODO: add tag action
             }) {
@@ -137,15 +134,36 @@ struct TagListView: View {
 
 struct TagView: View {
     var tagName: String
-    
+
     var body: some View {
-        Text(tagName).font(.system(size: 14)).foregroundColor(.white).padding(.horizontal, 4).padding(.vertical, 2).background(Color.blue).cornerRadius(20)
+        Text(tagName)
+            .font(.system(size: 14))
+            .foregroundColor(.white)
+            .padding(.horizontal, 4)
+            .padding(.vertical, 2)
+            .background(Color.blue)
+            .cornerRadius(20)
+    }
+}
+
+struct PlaceholderTagView: View {
+    var body: some View {
+        Text("Add Tag")
+            .font(.system(size: 14))
+            .foregroundColor(.blue)
+            .padding(.horizontal, 4)
+            .padding(.vertical, 2)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(style: StrokeStyle(lineWidth: 1, dash: [5]))
+                    .foregroundColor(.blue)
+            )
     }
 }
 
 struct MediaView: View {
     var mediaPaths: [String]
-    
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
@@ -160,7 +178,7 @@ struct MediaView: View {
 
 struct MediaItemView: View {
     var mediaPath: String
-    
+
     var body: some View {
         if mediaPath.lowercased().hasSuffix("mp4") {
             VideoPlayer(player: AVPlayer(url: URL(fileURLWithPath: mediaPath))).frame(width: 200, height: 150).cornerRadius(8)
@@ -172,6 +190,10 @@ struct MediaItemView: View {
     }
 }
 
-#Preview {
-    NewEntryView()
+// Preview
+struct EntryView_Previews: PreviewProvider {
+    static var previews: some View {
+        EntryView(name: "New Entry", entryContent: "asdfasdf", tags: ["Tag 1", "Tag 2", "Tag 3"], mediaPaths: [])
+    }
 }
+
