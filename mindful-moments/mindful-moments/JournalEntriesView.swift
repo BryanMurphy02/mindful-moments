@@ -107,23 +107,47 @@ struct JournalEntriesView: View {
 
 //struct for diary entry list view
 struct DiaryEntryListView: View {
+    enum ThumbnailType {
+        case date
+        case title
+        case image
+    }
+    
     let entries: [DiaryEntry]
+    let thumbnailType: ThumbnailType
     
     var body: some View {
         NavigationView {
-            List(entries) { entry in
-                VStack(alignment: .leading) {
-                    Text("\(entry.date, formatter: DateFormatter.date)")
-                        .font(.headline)
-                    Text(entry.text)
-                        .font(.body)
-                        .foregroundColor(.secondary)
+            List {
+                ForEach(entries, id: \.id) { entry in
+                    VStack(alignment: .leading) {
+                        switch thumbnailType {
+                        case .date:
+                            Text("\(entry.date, formatter: DateFormatter.date)")
+                                .font(.headline)
+                        case .title:
+                            Text(entry.title)
+                                .font(.headline)
+                        case .image:
+                            if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                            } else {
+                                Text("No Image")
+                                    .font(.headline)
+                            }
+                        }
+                        Text(entry.text)
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
-//            .navigationTitle("Diary Entries")
         }
     }
 }
+
 
 //Struct for displaying entries in a grid/gallery format
 struct DiaryEntryGridView: View {
