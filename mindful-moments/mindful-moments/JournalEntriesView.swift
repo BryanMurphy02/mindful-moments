@@ -16,6 +16,12 @@ struct DiaryEntry: Identifiable {
     let text: String
 }
 
+enum ThumbnailType {
+    case date
+    case title
+    case image
+}
+
 //sample data for two entries
 let entries: [DiaryEntry] = [
     DiaryEntry(id: UUID(), date: Date(), text: "Today's entry"),
@@ -53,25 +59,26 @@ struct JournalEntriesView: View {
     
     //State variable that tracks the selected layout style
     @State private var selectedLayout: LayoutType = .list
+    //State variable for setting the thumbnail type
+    @State private var thumbnailType: ThumbnailType = .date
     
     var body: some View {
         NavigationView {
             VStack {
                 // Show either List or Grid based on selection
                 if selectedLayout == .list {
-                    DiaryEntryListView(entries: entries)
+                    DiaryEntryListView(thumbnailType: $thumbnailType, entries: entries)
                 } else {
-                    DiaryEntryGridView(entries: entries)
+                    DiaryEntryGridView(/*thumbnailType: $thumbnailType, */entries: entries)
                 }
             }
             .padding(.top, 1)
-            //allows adding buttons and titles
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Text("Journal Entries")
                             .font(.title)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.bold)
                         Menu {
                             //displays each layout from the layoutType
                             ForEach(LayoutType.allCases, id: \.self) { layout in
@@ -107,14 +114,8 @@ struct JournalEntriesView: View {
 
 //struct for diary entry list view
 struct DiaryEntryListView: View {
-    enum ThumbnailType {
-        case date
-        case title
-        case image
-    }
-    
+    @Binding var thumbnailType: ThumbnailType
     let entries: [DiaryEntry]
-    let thumbnailType: ThumbnailType
     
     var body: some View {
         NavigationView {
@@ -126,17 +127,12 @@ struct DiaryEntryListView: View {
                             Text("\(entry.date, formatter: DateFormatter.date)")
                                 .font(.headline)
                         case .title:
-                            Text(entry.title)
+                            Text(entry.text)
                                 .font(.headline)
                         case .image:
-                            if let imageData = entry.imageData, let uiImage = UIImage(data: imageData) {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .scaledToFit()
-                            } else {
-                                Text("No Image")
-                                    .font(.headline)
-                            }
+                            // Placeholder text as there's no image data in DiaryEntry struct
+                            Text("No Image")
+                                .font(.headline)
                         }
                         Text(entry.text)
                             .font(.body)
@@ -147,6 +143,7 @@ struct DiaryEntryListView: View {
         }
     }
 }
+
 
 
 //Struct for displaying entries in a grid/gallery format
