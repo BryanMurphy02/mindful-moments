@@ -16,10 +16,10 @@ struct DiaryEntry: Identifiable {
     let text: String
 }
 
-enum ThumbnailType {
-    case date
-    case title
-    case image
+enum ThumbnailType: String, CaseIterable {
+    case date = "Date"
+    case title = "Title"
+    case image = "Image"
 }
 
 //sample data for two entries
@@ -96,6 +96,22 @@ struct JournalEntriesView: View {
                                     }
                                 }
                             }
+                            // Add options from the ThumbnailType enum
+                            Divider()
+                            ForEach(ThumbnailType.allCases, id: \.self) { thumbnailType in
+                                Button(action: {
+                                    self.thumbnailType = thumbnailType
+                                }) {
+                                    HStack {
+                                        Text(thumbnailType.rawValue) // Use rawValue instead of description
+                                        if thumbnailType == self.thumbnailType {
+                                            Spacer()
+                                            Image(systemName: "checkmark")
+                                                .foregroundColor(.blue)
+                                        }
+                                    }
+                                }
+                            }
                         } label: {
                             Image(systemName: "ellipsis.circle")
                                 .foregroundColor(.blue)
@@ -122,6 +138,7 @@ struct DiaryEntryListView: View {
             List {
                 ForEach(entries, id: \.id) { entry in
                     VStack(alignment: .leading) {
+                        // Use thumbnailType directly or access its properties/methods
                         switch thumbnailType {
                         case .date:
                             Text("\(entry.date, formatter: DateFormatter.date)")
@@ -130,19 +147,22 @@ struct DiaryEntryListView: View {
                             Text(entry.text)
                                 .font(.headline)
                         case .image:
-                            // Placeholder text as there's no image data in DiaryEntry struct
+                            // Placeholder text since there's no image data in DiaryEntry struct
                             Text("No Image")
                                 .font(.headline)
                         }
-                        Text(entry.text)
-                            .font(.body)
-                            .foregroundColor(.secondary)
+                        //Displays the text of the entry
+//                        Text(entry.text)
+//                            .font(.body)
+//                            .foregroundColor(.secondary)
                     }
                 }
             }
         }
     }
 }
+
+
 
 
 
