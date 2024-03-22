@@ -80,34 +80,43 @@ struct JournalEntriesView: View {
                             .font(.title)
                             .fontWeight(.bold)
                         Menu {
-                            //displays each layout from the layoutType
-                            ForEach(LayoutType.allCases, id: \.self) { layout in
-                                Button(action: {
-                                    self.selectedLayout = layout
-                                }) {
-                                    //adds check marks on the selected view
-                                    HStack {
-                                        Text(layout.rawValue)
-                                        if layout == selectedLayout {
-                                            Spacer()
-                                            Image(systemName: "checkmark")
-                                                .foregroundColor(.blue)
+                            //Adds section header for menu
+                            Section(header: Text("General Settings")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.black)) {
+                                //displays each layout from the layoutType
+                                ForEach(LayoutType.allCases, id: \.self) { layout in
+                                    Button(action: {
+                                        self.selectedLayout = layout
+                                    }) {
+                                        //adds check marks on the selected view
+                                        HStack {
+                                            Text(layout.rawValue)
+                                            if layout == selectedLayout {
+                                                Spacer()
+                                                Image(systemName: "checkmark")
+                                                    .foregroundColor(.blue)
+                                            }
                                         }
                                     }
                                 }
                             }
                             // Add options from the ThumbnailType enum
                             Divider()
-                            ForEach(ThumbnailType.allCases, id: \.self) { thumbnailType in
-                                Button(action: {
-                                    self.thumbnailType = thumbnailType
-                                }) {
-                                    HStack {
-                                        Text(thumbnailType.rawValue) // Use rawValue instead of description
-                                        if thumbnailType == self.thumbnailType {
-                                            Spacer()
-                                            Image(systemName: "checkmark")
-                                                .foregroundColor(.blue)
+                            Section(header: Text("Thumbnail Settings")
+                                .font(.system(size: 25, weight: .semibold))
+                                .foregroundColor(.black)) {
+                                ForEach(ThumbnailType.allCases, id: \.self) { thumbnailType in
+                                    Button(action: {
+                                        self.thumbnailType = thumbnailType
+                                    }) {
+                                        HStack {
+                                            Text(thumbnailType.rawValue) // Use rawValue instead of description
+                                            if thumbnailType == self.thumbnailType {
+                                                Spacer()
+                                                Image(systemName: "checkmark")
+                                                    .foregroundColor(.blue)
+                                            }
                                         }
                                     }
                                 }
