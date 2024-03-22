@@ -81,7 +81,7 @@ struct JournalEntriesView: View {
                             .fontWeight(.bold)
                         Menu {
                             //Adds section header for menu
-                            Section(header: Text("General Settings")
+                            Section(header: Text("Appearance Settings")
                                 .font(.system(size: 16, weight: .semibold))
                                 .foregroundColor(.black)) {
                                 //displays each layout from the layoutType
