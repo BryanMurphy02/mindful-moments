@@ -10,7 +10,7 @@ import SwiftUI
 
 //represents a single entry
 //Identifiable makes it so each entry has a unique identifier for each instance
-struct DiaryEntry: Identifiable {
+struct JournalEntry: Identifiable {
     let id: UUID // Unique identifier for each entry
     let date: Date
     let text: String
@@ -23,19 +23,19 @@ enum ThumbnailType: String, CaseIterable {
 }
 
 //sample data for two entries
-let entries: [DiaryEntry] = [
-    DiaryEntry(id: UUID(), date: Date(), text: "Today's entry"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-172800), text: "Two days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-259200), text: "Three days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-345600), text: "Four days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-432000), text: "Five days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-518400), text: "Six days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-604800), text: "A week ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-691200), text: "Eight days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-777600), text: "Nine days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-864000), text: "Ten days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-950400), text: "Eleven days ago")
+let entries: [JournalEntry] = [
+    JournalEntry(id: UUID(), date: Date(), text: "Today's entry"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-172800), text: "Two days ago"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-259200), text: "Three days ago"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-345600), text: "Four days ago"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-432000), text: "Five days ago"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-518400), text: "Six days ago"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-604800), text: "A week ago"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-691200), text: "Eight days ago"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-777600), text: "Nine days ago"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-864000), text: "Ten days ago"),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-950400), text: "Eleven days ago")
 
 ]
 
@@ -67,9 +67,9 @@ struct JournalEntriesView: View {
             VStack {
                 // Show either List or Grid based on selection
                 if selectedLayout == .list {
-                    DiaryEntryListView(thumbnailType: $thumbnailType, entries: entries)
+                    JournalEntryListView(thumbnailType: $thumbnailType, entries: entries)
                 } else {
-                    DiaryEntryGridView(thumbnailType: $thumbnailType, entries: entries)
+                    JournalEntryGridView(thumbnailType: $thumbnailType, entries: entries)
                 }
             }
             .padding(.top, 1)
@@ -139,9 +139,9 @@ struct JournalEntriesView: View {
 
 //struct for diary entry list view
 //allows thumbnails
-struct DiaryEntryListView: View {
+struct JournalEntryListView: View {
     @Binding var thumbnailType: ThumbnailType
-    let entries: [DiaryEntry]
+    let entries: [JournalEntry]
     
     var body: some View {
         NavigationView {
@@ -173,9 +173,9 @@ struct DiaryEntryListView: View {
 
 
 //Struct for displaying entries in a grid/gallery format
-struct DiaryEntryGridView: View {
+struct JournalEntryGridView: View {
     @Binding var thumbnailType: ThumbnailType
-    let entries: [DiaryEntry]
+    let entries: [JournalEntry]
     
     var body: some View {
         NavigationView {
@@ -185,7 +185,7 @@ struct DiaryEntryGridView: View {
                     //iterates over the amount of entries
                     ForEach(entries, id: \.id) { entry in
                         //calling secondary grid struct
-                        DiaryEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
+                        JournalEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
                     }
                 }
                 .padding()
@@ -196,8 +196,8 @@ struct DiaryEntryGridView: View {
 }
 
 //Struct to display an entry in the DiaryEntryGridView
-struct DiaryEntryGridCell: View {
-    let entry: DiaryEntry
+struct JournalEntryGridCell: View {
+    let entry: JournalEntry
     @Binding var thumbnailType: ThumbnailType
     
     var body: some View {
@@ -221,6 +221,8 @@ struct DiaryEntryGridCell: View {
         .cornerRadius(8)
     }
 }
+
+
 
 
 #Preview {
