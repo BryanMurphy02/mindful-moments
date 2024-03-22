@@ -222,9 +222,37 @@ struct JournalEntryGridCell: View {
     }
 }
 
+struct JournalEntryDetailView: View {
+    let entry: JournalEntry
+    
+    var body: some View {
+            Text(entry.text)
+                .navigationTitle("Entry Details")
+    }
+}
 
+struct ClickView: View {
+    let entries: [JournalEntry]
+    
+    var body: some View {
+        NavigationView {
+            List(entries) { entry in
+                NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
+                    Text(entry.text)
+                }
+            }
+            .navigationTitle("Diary Entries")
+        }
+    }
+}
 
 
 #Preview {
-    JournalEntriesView()
+//    JournalEntriesView()
+    ClickView(entries: [
+        JournalEntry(id: UUID(), date: Date(), text: "Today's entry"),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry"),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-172800), text: "Two days ago"),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-259200), text: "Three days ago")
+    ])
 }
