@@ -161,10 +161,6 @@ struct DiaryEntryListView: View {
                             Text("No Image")
                                 .font(.headline)
                         }
-                        //Displays the text of the entry
-//                        Text(entry.text)
-//                            .font(.body)
-//                            .foregroundColor(.secondary)
                     }
                 }
             }
@@ -219,10 +215,6 @@ struct DiaryEntryGridCell: View {
                 Text("No Image")
                     .font(.headline)
             }
-            //Displays the text of the entry
-//                        Text(entry.text)
-//                            .font(.body)
-//                            .foregroundColor(.secondary)
         }
         .padding()
         .background(Color.secondary.opacity(0.1))
