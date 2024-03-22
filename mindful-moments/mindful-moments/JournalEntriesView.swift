@@ -69,7 +69,7 @@ struct JournalEntriesView: View {
                 if selectedLayout == .list {
                     DiaryEntryListView(thumbnailType: $thumbnailType, entries: entries)
                 } else {
-                    DiaryEntryGridView(/*thumbnailType: $thumbnailType, */entries: entries)
+                    DiaryEntryGridView(thumbnailType: $thumbnailType, entries: entries)
                 }
             }
             .padding(.top, 1)
@@ -178,6 +178,7 @@ struct DiaryEntryListView: View {
 
 //Struct for displaying entries in a grid/gallery format
 struct DiaryEntryGridView: View {
+    @Binding var thumbnailType: ThumbnailType
     let entries: [DiaryEntry]
     
     var body: some View {
@@ -186,9 +187,9 @@ struct DiaryEntryGridView: View {
                 //LazyVGrid makes columns where you can adjust the width
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))], spacing: 10) {
                     //iterates over the amount of entries
-                    ForEach(entries) { entry in
+                    ForEach(entries, id: \.id) { entry in
                         //calling secondary grid struct
-                        DiaryEntryGridCell(entry: entry)
+                        DiaryEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
                     }
                 }
                 .padding()
@@ -201,20 +202,34 @@ struct DiaryEntryGridView: View {
 //Struct to display an entry in the DiaryEntryGridView
 struct DiaryEntryGridCell: View {
     let entry: DiaryEntry
+    @Binding var thumbnailType: ThumbnailType
     
     var body: some View {
-        VStack {
-            Text("\(entry.date, formatter: DateFormatter.date)")
-                .font(.headline)
-            Text(entry.text)
-                .font(.body)
-                .foregroundColor(.secondary)
+        VStack(alignment: .leading) {
+            // Use thumbnailType directly or access its properties/methods
+            switch thumbnailType {
+            case .date:
+                Text("\(entry.date, formatter: DateFormatter.date)")
+                    .font(.headline)
+            case .title:
+                Text(entry.text)
+                    .font(.headline)
+            case .image:
+                // Placeholder text since there's no image data in DiaryEntry struct
+                Text("No Image")
+                    .font(.headline)
+            }
+            //Displays the text of the entry
+//                        Text(entry.text)
+//                            .font(.body)
+//                            .foregroundColor(.secondary)
         }
         .padding()
         .background(Color.secondary.opacity(0.1))
         .cornerRadius(8)
     }
 }
+
 
 #Preview {
     JournalEntriesView()
