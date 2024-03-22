@@ -16,6 +16,12 @@ struct DiaryEntry: Identifiable {
     let text: String
 }
 
+enum ThumbnailType: String, CaseIterable {
+    case date = "Date"
+    case title = "Title"
+    case image = "Image"
+}
+
 //sample data for two entries
 let entries: [DiaryEntry] = [
     DiaryEntry(id: UUID(), date: Date(), text: "Today's entry"),
@@ -53,38 +59,64 @@ struct JournalEntriesView: View {
     
     //State variable that tracks the selected layout style
     @State private var selectedLayout: LayoutType = .list
+    //State variable for setting the thumbnail type
+    @State private var thumbnailType: ThumbnailType = .date
     
     var body: some View {
         NavigationView {
             VStack {
                 // Show either List or Grid based on selection
                 if selectedLayout == .list {
-                    DiaryEntryListView(entries: entries)
+                    DiaryEntryListView(thumbnailType: $thumbnailType, entries: entries)
                 } else {
-                    DiaryEntryGridView(entries: entries)
+                    DiaryEntryGridView(/*thumbnailType: $thumbnailType, */entries: entries)
                 }
             }
             .padding(.top, 1)
-            //allows adding buttons and titles
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Text("Journal Entries")
                             .font(.title)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.bold)
                         Menu {
-                            //displays each layout from the layoutType
-                            ForEach(LayoutType.allCases, id: \.self) { layout in
-                                Button(action: {
-                                    self.selectedLayout = layout
-                                }) {
-                                    //adds check marks on the selected view
-                                    HStack {
-                                        Text(layout.rawValue)
-                                        if layout == selectedLayout {
-                                            Spacer()
-                                            Image(systemName: "checkmark")
-                                                .foregroundColor(.blue)
+                            //Adds section header for menu
+                            Section(header: Text("Appearance Settings")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.black)) {
+                                //displays each layout from the layoutType
+                                ForEach(LayoutType.allCases, id: \.self) { layout in
+                                    Button(action: {
+                                        self.selectedLayout = layout
+                                    }) {
+                                        //adds check marks on the selected view
+                                        HStack {
+                                            Text(layout.rawValue)
+                                            if layout == selectedLayout {
+                                                Spacer()
+                                                Image(systemName: "checkmark")
+                                                    .foregroundColor(.blue)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            // Add options from the ThumbnailType enum
+                            Divider()
+                            Section(header: Text("Thumbnail Settings")
+                                .font(.system(size: 25, weight: .semibold))
+                                .foregroundColor(.black)) {
+                                ForEach(ThumbnailType.allCases, id: \.self) { thumbnailType in
+                                    Button(action: {
+                                        self.thumbnailType = thumbnailType
+                                    }) {
+                                        HStack {
+                                            Text(thumbnailType.rawValue) // Use rawValue instead of description
+                                            if thumbnailType == self.thumbnailType {
+                                                Spacer()
+                                                Image(systemName: "checkmark")
+                                                    .foregroundColor(.blue)
+                                            }
                                         }
                                     }
                                 }
@@ -106,24 +138,43 @@ struct JournalEntriesView: View {
 }
 
 //struct for diary entry list view
+//allows thumbnails
 struct DiaryEntryListView: View {
+    @Binding var thumbnailType: ThumbnailType
     let entries: [DiaryEntry]
     
     var body: some View {
         NavigationView {
-            List(entries) { entry in
-                VStack(alignment: .leading) {
-                    Text("\(entry.date, formatter: DateFormatter.date)")
-                        .font(.headline)
-                    Text(entry.text)
-                        .font(.body)
-                        .foregroundColor(.secondary)
+            List {
+                ForEach(entries, id: \.id) { entry in
+                    VStack(alignment: .leading) {
+                        // Use thumbnailType directly or access its properties/methods
+                        switch thumbnailType {
+                        case .date:
+                            Text("\(entry.date, formatter: DateFormatter.date)")
+                                .font(.headline)
+                        case .title:
+                            Text(entry.text)
+                                .font(.headline)
+                        case .image:
+                            // Placeholder text since there's no image data in DiaryEntry struct
+                            Text("No Image")
+                                .font(.headline)
+                        }
+                        //Displays the text of the entry
+//                        Text(entry.text)
+//                            .font(.body)
+//                            .foregroundColor(.secondary)
+                    }
                 }
             }
-//            .navigationTitle("Diary Entries")
         }
     }
 }
+
+
+
+
 
 //Struct for displaying entries in a grid/gallery format
 struct DiaryEntryGridView: View {
