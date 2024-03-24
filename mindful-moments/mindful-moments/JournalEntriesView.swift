@@ -13,29 +13,30 @@ import SwiftUI
 struct JournalEntry: Identifiable {
     let id: UUID // Unique identifier for each entry
     let date: Date
-    let text: String
+    let name: String
+    let content: String
 }
 
 enum ThumbnailType: String, CaseIterable {
     case date = "Date"
     case title = "Title"
-    case image = "Image"
+//    case image = "Image"
 }
 
 //sample data for two entries
 let entries: [JournalEntry] = [
-    JournalEntry(id: UUID(), date: Date(), text: "Today's entry"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-172800), text: "Two days ago"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-259200), text: "Three days ago"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-345600), text: "Four days ago"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-432000), text: "Five days ago"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-518400), text: "Six days ago"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-604800), text: "A week ago"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-691200), text: "Eight days ago"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-777600), text: "Nine days ago"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-864000), text: "Ten days ago"),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-950400), text: "Eleven days ago")
+//    JournalEntry(id: UUID(), date: Date(), text: "Today's entry"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-172800), text: "Two days ago"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-259200), text: "Three days ago"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-345600), text: "Four days ago"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-432000), text: "Five days ago"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-518400), text: "Six days ago"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-604800), text: "A week ago"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-691200), text: "Eight days ago"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-777600), text: "Nine days ago"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-864000), text: "Ten days ago"),
+//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-950400), text: "Eleven days ago")
 
 ]
 
@@ -154,12 +155,12 @@ struct JournalEntryListView: View {
                             Text("\(entry.date, formatter: DateFormatter.date)")
                                 .font(.headline)
                         case .title:
-                            Text(entry.text)
+                            Text(entry.content)
                                 .font(.headline)
-                        case .image:
-                            // Placeholder text since there's no image data in DiaryEntry struct
-                            Text("No Image")
-                                .font(.headline)
+//                        case .image:
+//                            // Placeholder text since there's no image data in DiaryEntry struct
+//                            Text("No Image")
+//                                .font(.headline)
                         }
                     }
                 }
@@ -208,12 +209,12 @@ struct JournalEntryGridCell: View {
                 Text("\(entry.date, formatter: DateFormatter.date)")
                     .font(.headline)
             case .title:
-                Text(entry.text)
+                Text(entry.content)
                     .font(.headline)
-            case .image:
-                // Placeholder text since there's no image data in DiaryEntry struct
-                Text("No Image")
-                    .font(.headline)
+//            case .image:
+//                // Placeholder text since there's no image data in DiaryEntry struct
+//                Text("No Image")
+//                    .font(.headline)
             }
         }
         .padding()
@@ -226,7 +227,7 @@ struct JournalEntryDetailView: View {
     let entry: JournalEntry
     
     var body: some View {
-            Text(entry.text)
+            Text(entry.content)
                 .navigationTitle("Entry Details")
     }
 }
@@ -238,7 +239,7 @@ struct ClickView: View {
         NavigationView {
             List(entries) { entry in
                 NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
-                    Text(entry.text)
+                    Text(entry.content)
                 }
             }
             .navigationTitle("Diary Entries")
@@ -248,11 +249,5 @@ struct ClickView: View {
 
 
 #Preview {
-//    JournalEntriesView()
-    ClickView(entries: [
-        JournalEntry(id: UUID(), date: Date(), text: "Today's entry"),
-        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry"),
-        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-172800), text: "Two days ago"),
-        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-259200), text: "Three days ago")
-    ])
+    JournalEntriesView()
 }
