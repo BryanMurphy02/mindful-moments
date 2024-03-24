@@ -25,20 +25,17 @@ enum ThumbnailType: String, CaseIterable {
 
 //sample data for two entries
 let entries: [JournalEntry] = [
-//    JournalEntry(id: UUID(), date: Date(), text: "Today's entry"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-172800), text: "Two days ago"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-259200), text: "Three days ago"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-345600), text: "Four days ago"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-432000), text: "Five days ago"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-518400), text: "Six days ago"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-604800), text: "A week ago"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-691200), text: "Eight days ago"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-777600), text: "Nine days ago"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-864000), text: "Ten days ago"),
-//    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-950400), text: "Eleven days ago")
-
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 1), name: "Morning Reflection", content: "Started the day with a cup of coffee and some deep breathing exercises. Feeling energized and ready to tackle the day ahead."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 2), name: "Productive Workday", content: "Managed to complete all tasks on my to-do list today. Celebrating this small victory with some time for self-care in the evening."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 3), name: "Gratitude Journal", content: "Reflecting on the things I'm grateful for today: family, friends, and the opportunity to pursue my passions."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 4), name: "Creative Inspiration", content: "Spent the afternoon sketching in the park. Nature always seems to spark new ideas and creativity within me."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 5), name: "Personal Growth", content: "Journaling about recent challenges and how they've helped me grow as a person. Embracing the process of continuous improvement."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 6), name: "Wellness Check-In", content: "Taking a moment to assess my physical and mental well-being. Prioritizing self-care activities to maintain balance."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 7), name: "Reflecting on Achievements", content: "Looking back on past accomplishments and setting new goals for the future. Excited about what lies ahead."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 9), name: "Mindfulness Practice", content: "Engaging in mindfulness meditation.")
 ]
+
 
 //helper function to format the date values for visual purposes
 extension DateFormatter {
@@ -155,12 +152,8 @@ struct JournalEntryListView: View {
                             Text("\(entry.date, formatter: DateFormatter.date)")
                                 .font(.headline)
                         case .title:
-                            Text(entry.content)
+                            Text(entry.name)
                                 .font(.headline)
-//                        case .image:
-//                            // Placeholder text since there's no image data in DiaryEntry struct
-//                            Text("No Image")
-//                                .font(.headline)
                         }
                     }
                 }
@@ -209,12 +202,8 @@ struct JournalEntryGridCell: View {
                 Text("\(entry.date, formatter: DateFormatter.date)")
                     .font(.headline)
             case .title:
-                Text(entry.content)
+                Text(entry.name)
                     .font(.headline)
-//            case .image:
-//                // Placeholder text since there's no image data in DiaryEntry struct
-//                Text("No Image")
-//                    .font(.headline)
             }
         }
         .padding()
