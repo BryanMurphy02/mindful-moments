@@ -145,15 +145,17 @@ struct JournalEntryListView: View {
         NavigationView {
             List {
                 ForEach(entries, id: \.id) { entry in
-                    VStack(alignment: .leading) {
-                        // Use thumbnailType directly or access its properties/methods
-                        switch thumbnailType {
-                        case .date:
-                            Text("\(entry.date, formatter: DateFormatter.date)")
-                                .font(.headline)
-                        case .title:
-                            Text(entry.name)
-                                .font(.headline)
+                    NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
+                        VStack(alignment: .leading) {
+                            // Use thumbnailType directly or access its properties/methods
+                            switch thumbnailType {
+                            case .date:
+                                Text("\(entry.date, formatter: DateFormatter.date)")
+                                    .font(.headline)
+                            case .title:
+                                Text(entry.name)
+                                    .font(.headline)
+                            }
                         }
                     }
                 }
@@ -179,12 +181,13 @@ struct JournalEntryGridView: View {
                     //iterates over the amount of entries
                     ForEach(entries, id: \.id) { entry in
                         //calling secondary grid struct
-                        JournalEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
+                        NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
+                            JournalEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
+                        }
                     }
                 }
                 .padding()
             }
-//            .navigationTitle("Diary Entries")
         }
     }
 }
@@ -212,29 +215,22 @@ struct JournalEntryGridCell: View {
     }
 }
 
+//Struct to display an entry and its contents
 struct JournalEntryDetailView: View {
     let entry: JournalEntry
     
     var body: some View {
+        VStack {
+            Text(entry.name)
+                .font(.title)
+                .padding()
             Text(entry.content)
-                .navigationTitle("Entry Details")
-    }
-}
-
-struct ClickView: View {
-    let entries: [JournalEntry]
-    
-    var body: some View {
-        NavigationView {
-            List(entries) { entry in
-                NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
-                    Text(entry.content)
-                }
-            }
-            .navigationTitle("Diary Entries")
+                .padding()
+            Spacer()
         }
     }
 }
+
 
 
 #Preview {
