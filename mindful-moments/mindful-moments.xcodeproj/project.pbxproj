@@ -21,6 +21,8 @@
 		89BC06AB2B8A70F700F11463 /* mindful_momentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06AA2B8A70F700F11463 /* mindful_momentsTests.swift */; };
 		89BC06B52B8A70F700F11463 /* mindful_momentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06B42B8A70F700F11463 /* mindful_momentsUITests.swift */; };
 		89BC06B72B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06B62B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift */; };
+		89D9C3C22BB1C0800052ED8F /* textProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D9C3C12BB1C0800052ED8F /* textProcessing.swift */; };
+		89D9C3C42BB20B3A0052ED8F /* emotionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D9C3C32BB20B3A0052ED8F /* emotionDictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		89BC06B02B8A70F700F11463 /* mindful-momentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mindful-momentsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BC06B42B8A70F700F11463 /* mindful_momentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindful_momentsUITests.swift; sourceTree = "<group>"; };
 		89BC06B62B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindful_momentsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		89D9C3C12BB1C0800052ED8F /* textProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textProcessing.swift; sourceTree = "<group>"; };
+		89D9C3C32BB20B3A0052ED8F /* emotionDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emotionDictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 		89BC06982B8A70F300F11463 /* mindful-moments */ = {
 			isa = PBXGroup;
 			children = (
+				89D9C3C02BB1C0640052ED8F /* MoodAnalysis */,
 				89BC06992B8A70F300F11463 /* mindful_momentsApp.swift */,
 				0181F7522BA37629008CB43D /* HomeView.swift */,
 				8944A4592B8D329700547EDF /* SettingsView.swift */,
@@ -146,6 +151,15 @@
 				89BC06B62B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift */,
 			);
 			path = "mindful-momentsUITests";
+			sourceTree = "<group>";
+		};
+		89D9C3C02BB1C0640052ED8F /* MoodAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+				89D9C3C12BB1C0800052ED8F /* textProcessing.swift */,
+				89D9C3C32BB20B3A0052ED8F /* emotionDictionary.swift */,
+			);
+			path = MoodAnalysis;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,8 +295,10 @@
 				0181F7532BA37629008CB43D /* HomeView.swift in Sources */,
 				0181F7512BA35344008CB43D /* JournalDataModel.xcdatamodeld in Sources */,
 				8944A45C2B8D32E300547EDF /* NewEntryView.swift in Sources */,
+				89D9C3C22BB1C0800052ED8F /* textProcessing.swift in Sources */,
 				89BC069C2B8A70F300F11463 /* ContentView.swift in Sources */,
 				89BC069A2B8A70F300F11463 /* mindful_momentsApp.swift in Sources */,
+				89D9C3C42BB20B3A0052ED8F /* emotionDictionary.swift in Sources */,
 				8944A4542B8D1CB100547EDF /* CalendarView.swift in Sources */,
 				8944A45A2B8D329700547EDF /* SettingsView.swift in Sources */,
 				8944A4562B8D27E500547EDF /* MoodView.swift in Sources */,
