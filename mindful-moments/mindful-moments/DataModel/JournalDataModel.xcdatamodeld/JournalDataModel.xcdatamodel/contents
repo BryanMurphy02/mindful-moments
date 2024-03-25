@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22757" systemVersion="23B74" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="JournalEntry" representedClassName="JournalEntry" syncable="YES" codeGenerationType="class">
+    <entity name="JournalEntry" representedClassName=".JournalEntry" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="entryID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="lastEdited" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="contains" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediaFile" inverseName="belongsToEntry" inverseEntity="MediaFile"/>
+        <relationship name="taggedWith" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="entries" inverseEntity="Tag"/>
     </entity>
-    <entity name="MediaFile" representedClassName="MediaFile" syncable="YES" codeGenerationType="class">
+    <entity name="MediaFile" representedClassName=".MediaFile" syncable="YES">
         <attribute name="mediaID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="path" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="belongsToEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JournalEntry"/>
+        <relationship name="belongsToEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="JournalEntry" inverseName="contains" inverseEntity="JournalEntry"/>
     </entity>
-    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+    <entity name="Tag" representedClassName=".Tag" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="tagID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="JournalEntry"/>
+        <relationship name="entries" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="JournalEntry" inverseName="taggedWith" inverseEntity="JournalEntry"/>
     </entity>
 </model>

@@ -14,20 +14,33 @@ import AVKit
 struct EntryView: View {
     // Managed Object Context for CoreData
     @Environment(\.managedObjectContext) private var viewContext
-    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var dataController: DataController
+    @Environment(\.dismiss) private var dismiss
+
+        
+    let entry: JournalEntry
     
     // State variables
-    @State var name: String
-    @State var entryContent: String
-    @State var tags: [String]
-    @State var mediaPaths: [String]
+    @State var entryData: EntryData
+
+    init(entry: JournalEntry) {
+        self.entry = entry
+        
+        // Make sure to use the correct property names and labels
+        _entryData = State(initialValue: EntryData(name: entry.name ?? "",
+                                                   content: entry.content ?? "",
+                                                   tags: [],  // Update with correct property or remove if not needed
+                                                   mediaFiles: []))  // Update with correct property or remove if not needed
+    }
+    
+    //var dismiss: DismissAction { get }
     
     var body: some View {
         VStack {
             // Top bar
-            EntryTopBarView(name: name, saveAction: {
+            EntryTopBarView(name: entryData.name, saveAction: {
                 //TODO: save action
-                DataController().addEntry(name: name, context: viewContext)
+                DataController().addEntry(entryData: entryData)
                 dismiss()
             }, backAction: {})
 
@@ -35,16 +48,16 @@ struct EntryView: View {
             Divider().background(Color.gray).padding(.bottom)
 
             // Tags
-            TagListView(tags: tags)
+            TagListView(tags: entryData.tags)
 
             // Media
-            if !mediaPaths.isEmpty {
-                MediaView(mediaPaths: mediaPaths)
+            if !entryData.mediaFiles.isEmpty {
+                MediaView(mediaPaths: [])
             }
 
             // Text entry
             ScrollView {
-                TextField("Enter your text here", text: $entryContent).padding()
+                TextField("Enter your text here", text: $entryData.content).padding()
             }
 
             Spacer()
@@ -109,7 +122,7 @@ struct EntryTopBarView: View {
 }
 
 struct TagListView: View {
-    var tags: [String]
+    var tags: [Tag]
 
     var body: some View {
         HStack(spacing: 5) {
@@ -117,7 +130,7 @@ struct TagListView: View {
                 PlaceholderTagView()
             } else {
                 ForEach(tags, id: \.self) { tag in
-                    TagView(tagName: tag)
+                    TagView(tag: tag)
                 }
             }
             
@@ -133,10 +146,10 @@ struct TagListView: View {
 }
 
 struct TagView: View {
-    var tagName: String
+    var tag: Tag
 
     var body: some View {
-        Text(tagName)
+        Text(tag.name)
             .font(.system(size: 14))
             .foregroundColor(.white)
             .padding(.horizontal, 4)
@@ -191,9 +204,10 @@ struct MediaItemView: View {
 }
 
 // Preview
-struct EntryView_Previews: PreviewProvider {
-    static var previews: some View {
-        EntryView(name: "New Entry", entryContent: "asdfasdf", tags: ["Tag 1", "Tag 2", "Tag 3"], mediaPaths: [])
-    }
-}
+//struct EntryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let entry = JournalEntry(name: "Test View", content: "This is test text.\nNewLine?", date: Date())
+//        EntryView(entry: entry)
+//    }
+//}
 

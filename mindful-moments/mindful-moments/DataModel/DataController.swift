@@ -9,38 +9,65 @@ import Foundation
 import CoreData
 
 class DataController: ObservableObject {
-    let container = NSPersistentContainer(name: "JournalDataModel")
+    //let container = NSPersistentContainer(name: "JournalDataModel")
+    let container: NSPersistentContainer
     
     init() {
-        container.loadPersistentStores { desc, error in
+        container = NSPersistentContainer(name: "JournalDataModel")
+        container.loadPersistentStores { _, error in
             if let error = error {
-                print("Failed to load the data \(error.localizedDescription)")
+                fatalError("Failed to load the data \(error.localizedDescription)")
             }
         }
     }
     
-    func save(context: NSManagedObjectContext) {
-        do {
-            try context.save()
-            print("Data saved!! Yippie!")
-        } catch {
-            print("We could not save the data")
+    var viewContext: NSManagedObjectContext {
+        container.viewContext
+    }
+        
+    func save() {
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+                print("Data saved successfully!")
+            } catch {
+                print("Error saving data: \(error.localizedDescription)")
+            }
         }
     }
     
-    func addEntry(name: String, context: NSManagedObjectContext) {
-        let entry = JournalEntry(context: context)
-        entry.entryID = UUID()
-        entry.date = Date()
-        entry.name = name
+    func addEntry(entryData: EntryData) {
+        let entry = JournalEntry.createEntry(entryData: entryData, in: viewContext)
+        save()
+    }
         
-        save(context: context)
+    func editEntry(entry: JournalEntry, entryData: EntryData) {
+        entry.update(name: entryData.name, content: entryData.content)
+        save()
+    }
+        
+    func deleteEntry(entry: JournalEntry) {
+        entry.delete()
+        save()
     }
     
-    func editEntry(entry: JournalEntry, name: String, context: NSManagedObjectContext) {
-        entry.lastEdited = Date()
-        entry.name = name
+    func addTag(name: String) {
+        let tag = Tag.createTag(name: name, in: viewContext)
+        save()
+    }
         
-        save(context: context)
+    func deleteTag(tag: Tag) {
+        tag.delete()
+        save()
+    }
+        
+    func addMediaFile(path: String, type: String, entry: JournalEntry) {
+        let mediaFile = MediaFile.createMediaFile(path: path, type: type, belongsToEntry: entry, in: viewContext)
+        save()
+    }
+        
+    func deleteMediaFile(mediaFile: MediaFile) {
+        mediaFile.delete()
+        save()
     }
 }

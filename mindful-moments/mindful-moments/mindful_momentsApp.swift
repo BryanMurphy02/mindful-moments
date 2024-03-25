@@ -24,11 +24,13 @@ struct mindful_momentsApp: App {
                 }
                 JournalEntriesView()
                     .environment(\.managedObjectContext, dataController.container.viewContext)
+                    .environmentObject(dataController)
                     .tabItem {
                         Label("Journal Entries", systemImage: "book.circle")
                     }
                 NewEntryView()
                     .environment(\.managedObjectContext, dataController.container.viewContext)
+                    .environmentObject(dataController)
                     .tabItem {
                         Label("", systemImage: "plus.circle.fill")
                     }
