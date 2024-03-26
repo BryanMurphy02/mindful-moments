@@ -10,34 +10,32 @@ import SwiftUI
 
 //represents a single entry
 //Identifiable makes it so each entry has a unique identifier for each instance
-struct DiaryEntry: Identifiable {
+struct JournalEntry: Identifiable {
     let id: UUID // Unique identifier for each entry
     let date: Date
-    let text: String
+    let name: String
+    let content: String
 }
 
 enum ThumbnailType: String, CaseIterable {
     case date = "Date"
     case title = "Title"
-    case image = "Image"
+//    case image = "Image"
 }
 
 //sample data for two entries
-let entries: [DiaryEntry] = [
-    DiaryEntry(id: UUID(), date: Date(), text: "Today's entry"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-172800), text: "Two days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-259200), text: "Three days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-345600), text: "Four days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-432000), text: "Five days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-518400), text: "Six days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-604800), text: "A week ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-691200), text: "Eight days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-777600), text: "Nine days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-864000), text: "Ten days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-950400), text: "Eleven days ago")
-
+let entries: [JournalEntry] = [
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 1), name: "Morning Reflection", content: "Started the day with a cup of coffee and some deep breathing exercises. Feeling energized and ready to tackle the day ahead."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 2), name: "Productive Workday", content: "Managed to complete all tasks on my to-do list today. Celebrating this small victory with some time for self-care in the evening."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 3), name: "Gratitude Journal", content: "Reflecting on the things I'm grateful for today: family, friends, and the opportunity to pursue my passions."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 4), name: "Creative Inspiration", content: "Spent the afternoon sketching in the park. Nature always seems to spark new ideas and creativity within me."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 5), name: "Personal Growth", content: "Journaling about recent challenges and how they've helped me grow as a person. Embracing the process of continuous improvement."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 6), name: "Wellness Check-In", content: "Taking a moment to assess my physical and mental well-being. Prioritizing self-care activities to maintain balance."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 7), name: "Reflecting on Achievements", content: "Looking back on past accomplishments and setting new goals for the future. Excited about what lies ahead."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 9), name: "Mindfulness Practice", content: "Engaging in mindfulness meditation.")
 ]
+
 
 //helper function to format the date values for visual purposes
 extension DateFormatter {
@@ -67,9 +65,9 @@ struct JournalEntriesView: View {
             VStack {
                 // Show either List or Grid based on selection
                 if selectedLayout == .list {
-                    DiaryEntryListView(thumbnailType: $thumbnailType, entries: entries)
+                    JournalEntryListView(thumbnailType: $thumbnailType, entries: entries)
                 } else {
-                    DiaryEntryGridView(thumbnailType: $thumbnailType, entries: entries)
+                    JournalEntryGridView(thumbnailType: $thumbnailType, entries: entries)
                 }
             }
             .padding(.top, 1)
@@ -139,27 +137,25 @@ struct JournalEntriesView: View {
 
 //struct for diary entry list view
 //allows thumbnails
-struct DiaryEntryListView: View {
+struct JournalEntryListView: View {
     @Binding var thumbnailType: ThumbnailType
-    let entries: [DiaryEntry]
+    let entries: [JournalEntry]
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(entries, id: \.id) { entry in
-                    VStack(alignment: .leading) {
-                        // Use thumbnailType directly or access its properties/methods
-                        switch thumbnailType {
-                        case .date:
-                            Text("\(entry.date, formatter: DateFormatter.date)")
-                                .font(.headline)
-                        case .title:
-                            Text(entry.text)
-                                .font(.headline)
-                        case .image:
-                            // Placeholder text since there's no image data in DiaryEntry struct
-                            Text("No Image")
-                                .font(.headline)
+                    NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
+                        VStack(alignment: .leading) {
+                            // Use thumbnailType directly or access its properties/methods
+                            switch thumbnailType {
+                            case .date:
+                                Text("\(entry.date, formatter: DateFormatter.date)")
+                                    .font(.headline)
+                            case .title:
+                                Text(entry.name)
+                                    .font(.headline)
+                            }
                         }
                     }
                 }
@@ -173,9 +169,9 @@ struct DiaryEntryListView: View {
 
 
 //Struct for displaying entries in a grid/gallery format
-struct DiaryEntryGridView: View {
+struct JournalEntryGridView: View {
     @Binding var thumbnailType: ThumbnailType
-    let entries: [DiaryEntry]
+    let entries: [JournalEntry]
     
     var body: some View {
         NavigationView {
@@ -185,19 +181,20 @@ struct DiaryEntryGridView: View {
                     //iterates over the amount of entries
                     ForEach(entries, id: \.id) { entry in
                         //calling secondary grid struct
-                        DiaryEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
+                        NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
+                            JournalEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
+                        }
                     }
                 }
                 .padding()
             }
-//            .navigationTitle("Diary Entries")
         }
     }
 }
 
 //Struct to display an entry in the DiaryEntryGridView
-struct DiaryEntryGridCell: View {
-    let entry: DiaryEntry
+struct JournalEntryGridCell: View {
+    let entry: JournalEntry
     @Binding var thumbnailType: ThumbnailType
     
     var body: some View {
@@ -208,11 +205,7 @@ struct DiaryEntryGridCell: View {
                 Text("\(entry.date, formatter: DateFormatter.date)")
                     .font(.headline)
             case .title:
-                Text(entry.text)
-                    .font(.headline)
-            case .image:
-                // Placeholder text since there's no image data in DiaryEntry struct
-                Text("No Image")
+                Text(entry.name)
                     .font(.headline)
             }
         }
@@ -221,6 +214,23 @@ struct DiaryEntryGridCell: View {
         .cornerRadius(8)
     }
 }
+
+//Struct to display an entry and its contents
+struct JournalEntryDetailView: View {
+    let entry: JournalEntry
+    
+    var body: some View {
+        VStack {
+            Text(entry.name)
+                .font(.title)
+                .padding()
+            Text(entry.content)
+                .padding()
+            Spacer()
+        }
+    }
+}
+
 
 
 #Preview {
