@@ -27,7 +27,7 @@ struct EntryView: View {
         self.entry = entry
         
         // Make sure to use the correct property names and labels
-        _entryData = State(initialValue: EntryData(name: entry.name ?? "",
+        _entryData = State(initialValue: EntryData(name: entry.name,
                                                    content: entry.content ?? "",
                                                    tags: [],  // Update with correct property or remove if not needed
                                                    mediaFiles: []))  // Update with correct property or remove if not needed
@@ -40,7 +40,8 @@ struct EntryView: View {
             // Top bar
             EntryTopBarView(name: entryData.name, saveAction: {
                 //TODO: save action
-                DataController().addEntry(entryData: entryData)
+                dataController.addEntry(entryData: entryData)
+                //DataController().addEntry(entryData: entryData)
                 dismiss()
             }, backAction: {})
 

@@ -36,6 +36,18 @@ class DataController: ObservableObject {
         }
     }
     
+    // Fetch all JournalEntry objects
+    func fetchAllEntries() -> [JournalEntry] {
+        let fetchRequest: NSFetchRequest<JournalEntry> = JournalEntry.fetchRequest()
+        do {
+            let entries = try viewContext.fetch(fetchRequest)
+            return entries
+        } catch {
+            print("Error fetching entries: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
     func addEntry(entryData: EntryData) {
         let entry = JournalEntry.createEntry(entryData: entryData, in: viewContext)
         save()

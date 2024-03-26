@@ -39,10 +39,10 @@ extension JournalEntry {
     }
 
     @NSManaged public var content: String?
-    @NSManaged public var date: Date?
-    @NSManaged public var entryID: UUID?
-    @NSManaged public var lastEdited: Date?
-    @NSManaged public var name: String?
+    @NSManaged public var date: Date
+    @NSManaged public var entryID: UUID
+    @NSManaged public var lastEdited: Date
+    @NSManaged public var name: String
 
 }
 

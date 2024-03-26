@@ -10,28 +10,20 @@ import SwiftUI
 
 //represents a single entry
 //Identifiable makes it so each entry has a unique identifier for each instance
-struct DiaryEntry: Identifiable {
-    let id: UUID // Unique identifier for each entry
-    let date: Date
-    let text: String
+//struct JournalEntry: Identifiable {
+//    let id: UUID // Unique identifier for each entry
+//    let date: Date
+//    let name: String
+//    let content: String
+//}
+
+enum ThumbnailType: String, CaseIterable {
+    case date = "Date"
+    case title = "Title"
+//    case image = "Image"
 }
 
-//sample data for two entries
-let entries: [DiaryEntry] = [
-    DiaryEntry(id: UUID(), date: Date(), text: "Today's entry"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-86400), text: "Yesterday's entry"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-172800), text: "Two days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-259200), text: "Three days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-345600), text: "Four days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-432000), text: "Five days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-518400), text: "Six days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-604800), text: "A week ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-691200), text: "Eight days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-777600), text: "Nine days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-864000), text: "Ten days ago"),
-    DiaryEntry(id: UUID(), date: Date().addingTimeInterval(-950400), text: "Eleven days ago")
 
-]
 
 //helper function to format the date values for visual purposes
 extension DateFormatter {
@@ -44,47 +36,93 @@ extension DateFormatter {
 }
 
 struct JournalEntriesView: View {
-        
+    // Managed Object Context for CoreData
+    //@Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject var dataController: DataController
+   
+    //@Environment(\.dismiss) private var dismiss
+    
     //list of possible layout styles
     enum LayoutType: String, CaseIterable {
         case list = "List"
         case grid = "Grid"
     }
     
+    @State private var entries: [JournalEntry] = []
+    
     //State variable that tracks the selected layout style
     @State private var selectedLayout: LayoutType = .list
+    //State variable for setting the thumbnail type
+    @State private var thumbnailType: ThumbnailType = .date
+    //@Binding var thumbnailType: ThumbnailType
+    
+//    init() { //entries: [JournalEntry]
+//        _entries = State(initialValue: [])
+//    }
     
     var body: some View {
         NavigationView {
             VStack {
                 // Show either List or Grid based on selection
                 if selectedLayout == .list {
-                    DiaryEntryListView(entries: entries)
+                    JournalEntryListView(thumbnailType: $thumbnailType, entries: entries)
                 } else {
-                    DiaryEntryGridView(entries: entries)
+                    JournalEntryGridView(thumbnailType: $thumbnailType, entries: entries)
                 }
             }
             .padding(.top, 1)
-            //allows adding buttons and titles
+            .onAppear {
+                // Initialize entries when the view appears and dataController is available
+                self.entries = dataController.fetchAllEntries()
+            }
+            .onReceive(dataController.objectWillChange) { _ in
+                            // Update entries when dataController's entries change
+                            self.entries = dataController.fetchAllEntries()
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack {
                         Text("Journal Entries")
                             .font(.title)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .fontWeight(.bold)
                         Menu {
-                            //displays each layout from the layoutType
-                            ForEach(LayoutType.allCases, id: \.self) { layout in
-                                Button(action: {
-                                    self.selectedLayout = layout
-                                }) {
-                                    //adds check marks on the selected view
-                                    HStack {
-                                        Text(layout.rawValue)
-                                        if layout == selectedLayout {
-                                            Spacer()
-                                            Image(systemName: "checkmark")
-                                                .foregroundColor(.blue)
+                            //Adds section header for menu
+                            Section(header: Text("Appearance Settings")
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.black)) {
+                                //displays each layout from the layoutType
+                                ForEach(LayoutType.allCases, id: \.self) { layout in
+                                    Button(action: {
+                                        self.selectedLayout = layout
+                                    }) {
+                                        //adds check marks on the selected view
+                                        HStack {
+                                            Text(layout.rawValue)
+                                            if layout == selectedLayout {
+                                                Spacer()
+                                                Image(systemName: "checkmark")
+                                                    .foregroundColor(.blue)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            // Add options from the ThumbnailType enum
+                            Divider()
+                            Section(header: Text("Thumbnail Settings")
+                                .font(.system(size: 25, weight: .semibold))
+                                .foregroundColor(.black)) {
+                                ForEach(ThumbnailType.allCases, id: \.self) { thumbnailType in
+                                    Button(action: {
+                                        self.thumbnailType = thumbnailType
+                                    }) {
+                                        HStack {
+                                            Text(thumbnailType.rawValue) // Use rawValue instead of description
+                                            if thumbnailType == self.thumbnailType {
+                                                Spacer()
+                                                Image(systemName: "checkmark")
+                                                    .foregroundColor(.blue)
+                                            }
                                         }
                                     }
                                 }
@@ -106,28 +144,42 @@ struct JournalEntriesView: View {
 }
 
 //struct for diary entry list view
-struct DiaryEntryListView: View {
-    let entries: [DiaryEntry]
+//allows thumbnails
+struct JournalEntryListView: View {
+    @Binding var thumbnailType: ThumbnailType
+    let entries: [JournalEntry]
     
     var body: some View {
         NavigationView {
-            List(entries) { entry in
-                VStack(alignment: .leading) {
-                    Text("\(entry.date, formatter: DateFormatter.date)")
-                        .font(.headline)
-                    Text(entry.text)
-                        .font(.body)
-                        .foregroundColor(.secondary)
+            List {
+                ForEach(entries, id: \.id) { entry in
+                    NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
+                        VStack(alignment: .leading) {
+                            // Use thumbnailType directly or access its properties/methods
+                            switch thumbnailType {
+                            case .date:
+                                Text("\(entry.date, formatter: DateFormatter.date)")
+                                    .font(.headline)
+                            case .title:
+                                Text(entry.name)
+                                    .font(.headline)
+                            }
+                        }
+                    }
                 }
             }
-//            .navigationTitle("Diary Entries")
         }
     }
 }
 
+
+
+
+
 //Struct for displaying entries in a grid/gallery format
-struct DiaryEntryGridView: View {
-    let entries: [DiaryEntry]
+struct JournalEntryGridView: View {
+    @Binding var thumbnailType: ThumbnailType
+    let entries: [JournalEntry]
     
     var body: some View {
         NavigationView {
@@ -135,29 +187,35 @@ struct DiaryEntryGridView: View {
                 //LazyVGrid makes columns where you can adjust the width
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))], spacing: 10) {
                     //iterates over the amount of entries
-                    ForEach(entries) { entry in
+                    ForEach(entries, id: \.id) { entry in
                         //calling secondary grid struct
-                        DiaryEntryGridCell(entry: entry)
+                        NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
+                            JournalEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
+                        }
                     }
                 }
                 .padding()
             }
-//            .navigationTitle("Diary Entries")
         }
     }
 }
 
 //Struct to display an entry in the DiaryEntryGridView
-struct DiaryEntryGridCell: View {
-    let entry: DiaryEntry
+struct JournalEntryGridCell: View {
+    let entry: JournalEntry
+    @Binding var thumbnailType: ThumbnailType
     
     var body: some View {
-        VStack {
-            Text("\(entry.date, formatter: DateFormatter.date)")
-                .font(.headline)
-            Text(entry.text)
-                .font(.body)
-                .foregroundColor(.secondary)
+        VStack(alignment: .leading) {
+            // Use thumbnailType directly or access its properties/methods
+            switch thumbnailType {
+            case .date:
+                Text("\(entry.date, formatter: DateFormatter.date)")
+                    .font(.headline)
+            case .title:
+                Text(entry.name)
+                    .font(.headline)
+            }
         }
         .padding()
         .background(Color.secondary.opacity(0.1))
@@ -165,6 +223,24 @@ struct DiaryEntryGridCell: View {
     }
 }
 
-#Preview {
-    JournalEntriesView()
+//Struct to display an entry and its contents
+struct JournalEntryDetailView: View {
+    let entry: JournalEntry
+    
+    var body: some View {
+        VStack {
+            Text(entry.name)
+                .font(.title)
+                .padding()
+            Text(entry.content ?? "")
+                .padding()
+            Spacer()
+        }
+    }
 }
+
+
+
+//#Preview {
+//    JournalEntriesView()
+//}
