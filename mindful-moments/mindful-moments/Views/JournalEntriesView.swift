@@ -187,32 +187,58 @@ struct CalendarDatePickerStyle: DatePickerStyle {
 
 //struct for diary entry list view
 //allows thumbnails
+//struct JournalEntryListView: View {
+//    @Binding var thumbnailType: ThumbnailType
+//    let entries: [JournalEntry]
+//    
+//    var body: some View {
+//        NavigationView {
+//            List {
+//                ForEach(entries, id: \.id) { entry in
+//                    NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
+//                        VStack(alignment: .leading) {
+//                            // Use thumbnailType directly or access its properties/methods
+//                            switch thumbnailType {
+//                            case .date:
+//                                Text("\(entry.date, formatter: DateFormatter.date)")
+//                                    .font(.headline)
+//                            case .title:
+//                                Text(entry.name)
+//                                    .font(.headline)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
 struct JournalEntryListView: View {
     @Binding var thumbnailType: ThumbnailType
     let entries: [JournalEntry]
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(entries, id: \.id) { entry in
-                    NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
-                        VStack(alignment: .leading) {
-                            // Use thumbnailType directly or access its properties/methods
-                            switch thumbnailType {
-                            case .date:
-                                Text("\(entry.date, formatter: DateFormatter.date)")
-                                    .font(.headline)
-                            case .title:
-                                Text(entry.name)
-                                    .font(.headline)
-                            }
+        List {
+            ForEach(entries, id: \.id) { entry in
+                NavigationLink(destination: JournalEntryDetailView(entry: entry)) {
+                    VStack(alignment: .leading) {
+                        // Use thumbnailType directly or access its properties/methods
+                        switch thumbnailType {
+                        case .date:
+                            Text("\(entry.date, formatter: DateFormatter.date)")
+                                .font(.headline)
+                        case .title:
+                            Text(entry.name)
+                                .font(.headline)
                         }
                     }
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity) // Fill the entire screen
             }
         }
     }
 }
+
 
 
 
