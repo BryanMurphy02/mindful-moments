@@ -169,10 +169,6 @@ struct JournalEntryCalendarView: View {
     }
 }
 
-
-
-
-
 struct CalendarDatePickerStyle: DatePickerStyle {
     @Binding var selectedDate: Date
 
@@ -184,6 +180,21 @@ struct CalendarDatePickerStyle: DatePickerStyle {
         }
     }
 }
+
+// Define DatePickerCellConfiguration
+struct DatePickerCellConfiguration {
+    var background: Color
+    var foregroundColor: Color
+}
+
+// Conform JournalEntry to Equatable
+extension JournalEntry: Equatable {
+    static func ==(lhs: JournalEntry, rhs: JournalEntry) -> Bool {
+        return lhs.id == rhs.id // Assuming 'id' is unique for each entry
+    }
+}
+
+
 
 //struct for diary entry list view
 //allows thumbnails
