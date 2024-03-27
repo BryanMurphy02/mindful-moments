@@ -69,7 +69,7 @@ struct JournalEntriesView: View {
                     JournalEntryListView(thumbnailType: $thumbnailType, entries: entries)
                 } 
                 else if selectedLayout == .calendar{
-                    JournalEntryCalendarView(entries: entries)
+                    JournalEntryCalendarView(thumbnailType: $thumbnailType, entries: entries)
                 }
                 else {
                     JournalEntryGridView(thumbnailType: $thumbnailType, entries: entries)
@@ -140,28 +140,36 @@ struct JournalEntriesView: View {
     }
 }
 
-//Calendar view
+////Calendar view
 struct JournalEntryCalendarView: View {
     @State private var selectedDate = Date()
+    @Binding var thumbnailType: ThumbnailType
     let entries: [JournalEntry]
 
     var body: some View {
         VStack {
-            // Date Picker
+            // Date Picker displayed in calendar view
             DatePicker("", selection: $selectedDate, displayedComponents: .date)
                 .labelsHidden()
                 .datePickerStyle(CalendarDatePickerStyle(selectedDate: $selectedDate))
                 .padding()
+            
+            // Journal Entry List View
+            JournalEntryListView(thumbnailType: $thumbnailType, entries: filteredEntries)
+            
             Spacer()
         }
     }
     
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        return formatter
+    private var filteredEntries: [JournalEntry] {
+        // Filter entries based on the selected date
+        return entries.filter { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }
     }
 }
+
+
+
+
 
 struct CalendarDatePickerStyle: DatePickerStyle {
     @Binding var selectedDate: Date
