@@ -33,6 +33,8 @@ let entries: [JournalEntry] = [
     JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 6), name: "Wellness Check-In", content: "Taking a moment to assess my physical and mental well-being. Prioritizing self-care activities to maintain balance."),
     JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 7), name: "Reflecting on Achievements", content: "Looking back on past accomplishments and setting new goals for the future. Excited about what lies ahead."),
     JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening2", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
+    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening3", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
     JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 9), name: "Mindfulness Practice", content: "Engaging in mindfulness meditation.")
 ]
 
