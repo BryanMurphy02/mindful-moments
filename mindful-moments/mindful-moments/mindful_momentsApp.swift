@@ -20,7 +20,7 @@ struct mindful_momentsApp: App {
                 }.tabItem {
                     Label("Home", systemImage: "house.fill")
                 }
-                ContentView()
+                JournalEntriesView()
                     .tabItem {
                         Label("Journal Entries", systemImage: "book.circle")
                     }
@@ -28,13 +28,13 @@ struct mindful_momentsApp: App {
                     .tabItem {
                         Label("", systemImage: "plus.circle.fill")
                     }
-                CalendarView()
-                    .tabItem {
-                        Label("Calendar", systemImage: "calendar.circle")
-                    }
                 MoodView()
                     .tabItem {
                         Label("Moods", systemImage: "chart.xyaxis.line")
+                    }
+                SettingsView()
+                    .tabItem {
+                        Label("Settings", systemImage: "gearshape")
                     }
             }
         }
