@@ -52,6 +52,7 @@ struct JournalEntriesView: View {
     //list of possible layout styles
     enum LayoutType: String, CaseIterable {
         case list = "List"
+        case calendar = "Calendar"
         case grid = "Grid"
     }
     
@@ -66,7 +67,11 @@ struct JournalEntriesView: View {
                 // Show either List or Grid based on selection
                 if selectedLayout == .list {
                     JournalEntryListView(thumbnailType: $thumbnailType, entries: entries)
-                } else {
+                } 
+                else if selectedLayout == .calendar{
+                    JournalEntryCalendarView(entries: entries)
+                }
+                else {
                     JournalEntryGridView(thumbnailType: $thumbnailType, entries: entries)
                 }
             }
@@ -136,6 +141,39 @@ struct JournalEntriesView: View {
 }
 
 //Calendar view
+struct JournalEntryCalendarView: View {
+    @State private var selectedDate = Date()
+    let entries: [JournalEntry]
+
+    var body: some View {
+        VStack {
+            // Date Picker
+            DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                .labelsHidden()
+                .datePickerStyle(CalendarDatePickerStyle(selectedDate: $selectedDate))
+                .padding()
+            Spacer()
+        }
+    }
+    
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        return formatter
+    }
+}
+
+struct CalendarDatePickerStyle: DatePickerStyle {
+    @Binding var selectedDate: Date
+
+    func makeBody(configuration: Configuration) -> some View {
+        VStack {
+            DatePicker("", selection: $selectedDate, displayedComponents: .date)
+                .labelsHidden()
+                .datePickerStyle(GraphicalDatePickerStyle()) // Display as calendar
+        }
+    }
+}
 
 //struct for diary entry list view
 //allows thumbnails
