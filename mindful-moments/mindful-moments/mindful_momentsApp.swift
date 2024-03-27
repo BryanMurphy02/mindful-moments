@@ -32,7 +32,7 @@ struct mindful_momentsApp: App {
                     .tabItem {
                         Label("Moods", systemImage: "chart.xyaxis.line")
                     }
-                SettingsView()
+                CalendarTestView()
                     .tabItem {
                         Label("Settings", systemImage: "gearshape")
                     }

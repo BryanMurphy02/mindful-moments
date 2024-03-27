@@ -135,6 +135,8 @@ struct JournalEntriesView: View {
     }
 }
 
+//Calendar view
+
 //struct for diary entry list view
 //allows thumbnails
 struct JournalEntryListView: View {
