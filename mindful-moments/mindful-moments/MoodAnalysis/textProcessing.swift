@@ -387,7 +387,20 @@ let emotionCount: [String: Int] = [
 ]
 
 
-let journalEntry = "Today dawned with a crisp chill in the air, signaling the slow transition from winter's icy grip to the gentle embrace of spring. As I sipped my morning coffee, tendrils of steam curling upwards, I contemplated the promise of a new day. The streets outside echoed with the hurried footsteps of commuters, each lost in their own world of thoughts and ambitions. Yet, amidst the cacophony of city life, there exists a quiet sanctuary within the pages of my journal, where the clamor of the outside world fades into insignificance. In the solitude of my thoughts, I found refuge, pen in hand, poised to capture the fleeting moments that make life so precious. With each stroke of ink upon the blank canvas of my journal, I immortalize fragments of my existence, weaving them into a tapestry of memories that will endure the passage of time. Today, I reflected on the beauty of impermanence, recognizing that every sunrise brings with it the promise of new beginnings, and every sunset heralds the close of another chapter. In embracing the transience of life, I find liberation, for it is in letting go that we truly learn to live. As the day draws to a close and the sky is painted in hues of crimson and gold, I am reminded of the fleeting nature of time. And so, with gratitude in my heart and pen in hand, I bid adieu to today, knowing that tomorrow holds the promise of new adventures and untold wonders."
+//let journalEntry = "Today dawned with a crisp chill in the air, signaling the slow transition from winter's icy grip to the gentle embrace of spring. As I sipped my morning coffee, tendrils of steam curling upwards, I contemplated the promise of a new day. The streets outside echoed with the hurried footsteps of commuters, each lost in their own world of thoughts and ambitions. Yet, amidst the cacophony of city life, there exists a quiet sanctuary within the pages of my journal, where the clamor of the outside world fades into insignificance. In the solitude of my thoughts, I found refuge, pen in hand, poised to capture the fleeting moments that make life so precious. With each stroke of ink upon the blank canvas of my journal, I immortalize fragments of my existence, weaving them into a tapestry of memories that will endure the passage of time. Today, I reflected on the beauty of impermanence, recognizing that every sunrise brings with it the promise of new beginnings, and every sunset heralds the close of another chapter. In embracing the transience of life, I find liberation, for it is in letting go that we truly learn to live. As the day draws to a close and the sky is painted in hues of crimson and gold, I am reminded of the fleeting nature of time. And so, with gratitude in my heart and pen in hand, I bid adieu to today, knowing that tomorrow holds the promise of new adventures and untold wonders."
+
+let journalEntry = """
+Today marked the beginning of a new chapter in my life. As the sun rose, I felt a surge of excitement coursing through my veins. The possibilities seemed endless, like the vast expanse of the sky stretching out before me. With each step I took, I embraced the sense of adventure that lay ahead.
+
+I decided to explore the quaint streets of the old town, each cobblestone pathway whispering tales of bygone eras. The charming architecture seemed to beckon me closer, inviting me to unravel its mysteries. I found myself lost in the maze of narrow alleys, discovering hidden gems around every corner.
+
+The aroma of freshly brewed coffee led me to a cozy café tucked away from the hustle and bustle of the city. As I sipped my steaming cup, I immersed myself in the pages of a captivating novel, transported to distant lands and faraway adventures. Time seemed to stand still as I savored each moment of solitude.
+
+In the afternoon, I ventured into nature's embrace, wandering through verdant meadows and ancient woodlands. The gentle breeze whispered secrets of the forest, while the songs of birds filled the air with melodies of joy. With every breath, I felt a deep connection to the earth beneath my feet, grateful for the beauty that surrounded me.
+
+As the day drew to a close, I reflected on the experiences that had filled my heart with warmth and wonder. Though the journey ahead may be uncertain, I embrace it with open arms, knowing that each step brings me closer to the person I am meant to be.
+"""
+
 
 
 func preprocessText(_ text: String, stopwords: Set<String>) -> String {
@@ -399,7 +412,7 @@ func preprocessText(_ text: String, stopwords: Set<String>) -> String {
     let punctuation = CharacterSet.punctuationCharacters
     tokens = tokens.map { token in
         //processedToken contains words that passed filtration
-        var processedToken = token.trimmingCharacters(in: punctuation)
+        let processedToken = token.trimmingCharacters(in: punctuation)
         //Checking to see if the lowercase version of the token is within the stop words
         if !stopwords.contains(processedToken.lowercased()) {
             return processedToken.lowercased()
@@ -414,7 +427,25 @@ func preprocessText(_ text: String, stopwords: Set<String>) -> String {
     return processedText
 }
 
-
+func processText(text: String, emotionDictionary: [String: Set<String>]) -> [String:Int]{
+    var emotionCount = [String: Int]()
+    
+    // Split the text into words
+    let words = text.components(separatedBy: .whitespacesAndNewlines)
+    
+    // Loop through each word
+    for word in words {
+        // Loop through each emotion set in the emotional dictionary
+        for (emotion, wordSet) in emotionDictionary {
+            // Check if the word is in the current emotion set
+            if wordSet.contains(word) {
+                // Increment the count for the emotion
+                emotionCount[emotion, default: 0] += 1
+            }
+        }
+    }
+    return emotionCount
+}
 
 
 func runExample() {
@@ -422,4 +453,15 @@ func runExample() {
     print(preprocessedEntry)
 }
 
+func runProcessExample(){
+    // Count emotions in the text
+    let emotionCount = processText(text: journalEntry, emotionDictionary: emotionalDictionary)
+
+    // Print the emotion counts
+    for (emotion, count) in emotionCount {
+        print("\(emotion): \(count)")
+    }
+}
+
+runProcessExample()
 //runExample()
