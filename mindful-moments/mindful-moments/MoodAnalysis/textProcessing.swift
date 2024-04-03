@@ -313,6 +313,82 @@ let emotionalDictionary: [String: Set<String>] = [
                   "questioning", "skeptical", "hesitant", "wavering", "uncertain"]
 ]
 
+let emotionCount: [String: Int] = [
+    "happy": 0,
+    "sad": 0,
+    "angry": 0,
+    "surprised": 0,
+    "fearful": 0,
+    "disgusted": 0,
+    "confident": 0,
+    "relieved": 0,
+    "hopeless": 0,
+    "proud": 0,
+    "embarrassed": 0,
+    "envious": 0,
+    "hopeful": 0,
+    "shocked": 0,
+    "nostalgic": 0,
+    "ecstatic": 0,
+    "lonely": 0,
+    "confused": 0,
+    "satisfied": 0,
+    "ashamed": 0,
+    "anxious": 0,
+    "amused": 0,
+    "calm": 0,
+    "admiration": 0,
+    "bored": 0,
+    "charmed": 0,
+    "disappointed": 0,
+    "empowered": 0,
+    "excited": 0,
+    "grateful": 0,
+    "guilty": 0,
+    "inspired": 0,
+    "jealous": 0,
+    "motivated": 0,
+    "nervous": 0,
+    "content": 0,
+    "exhilarated": 0,
+    "bewildered": 0,
+    "sympathetic": 0,
+    "invigorated": 0,
+    "awe": 0,
+    "curious": 0,
+    "comforted": 0,
+    "discontent": 0,
+    "suspicious": 0,
+    "nostalgia": 0,
+    "thrilled": 0,
+    "disheartened": 0,
+    "graceful": 0,
+    "amazed": 0,
+    "vulnerable": 0,
+    "fulfilled": 0,
+    "hope": 0,
+    "overwhelmed": 0,
+    "apathetic": 0,
+    "determined": 0,
+    "guarded": 0,
+    "insignificant": 0,
+    "rejuvenated": 0,
+    "enthusiastic": 0,
+    "melancholic": 0,
+    "serene": 0,
+    "enraged": 0,
+    "defeated": 0,
+    "despondent": 0,
+    "anguished": 0,
+    "refreshed": 0,
+    "pensive": 0,
+    "regretful": 0,
+    "doubtful": 0
+]
+
+
+let journalEntry = "Today dawned with a crisp chill in the air, signaling the slow transition from winter's icy grip to the gentle embrace of spring. As I sipped my morning coffee, tendrils of steam curling upwards, I contemplated the promise of a new day. The streets outside echoed with the hurried footsteps of commuters, each lost in their own world of thoughts and ambitions. Yet, amidst the cacophony of city life, there exists a quiet sanctuary within the pages of my journal, where the clamor of the outside world fades into insignificance. In the solitude of my thoughts, I found refuge, pen in hand, poised to capture the fleeting moments that make life so precious. With each stroke of ink upon the blank canvas of my journal, I immortalize fragments of my existence, weaving them into a tapestry of memories that will endure the passage of time. Today, I reflected on the beauty of impermanence, recognizing that every sunrise brings with it the promise of new beginnings, and every sunset heralds the close of another chapter. In embracing the transience of life, I find liberation, for it is in letting go that we truly learn to live. As the day draws to a close and the sky is painted in hues of crimson and gold, I am reminded of the fleeting nature of time. And so, with gratitude in my heart and pen in hand, I bid adieu to today, knowing that tomorrow holds the promise of new adventures and untold wonders."
+
 
 func preprocessText(_ text: String, stopwords: Set<String>) -> String {
     //splits the text into an array of substrings using whitespace
@@ -338,12 +414,12 @@ func preprocessText(_ text: String, stopwords: Set<String>) -> String {
     return processedText
 }
 
-func runExample() {
-    let journalEntry = "Today dawned with a crisp chill in the air, signaling the slow transition from winter's icy grip to the gentle embrace of spring. As I sipped my morning coffee, tendrils of steam curling upwards, I contemplated the promise of a new day. The streets outside echoed with the hurried footsteps of commuters, each lost in their own world of thoughts and ambitions. Yet, amidst the cacophony of city life, there exists a quiet sanctuary within the pages of my journal, where the clamor of the outside world fades into insignificance. In the solitude of my thoughts, I found refuge, pen in hand, poised to capture the fleeting moments that make life so precious. With each stroke of ink upon the blank canvas of my journal, I immortalize fragments of my existence, weaving them into a tapestry of memories that will endure the passage of time. Today, I reflected on the beauty of impermanence, recognizing that every sunrise brings with it the promise of new beginnings, and every sunset heralds the close of another chapter. In embracing the transience of life, I find liberation, for it is in letting go that we truly learn to live. As the day draws to a close and the sky is painted in hues of crimson and gold, I am reminded of the fleeting nature of time. And so, with gratitude in my heart and pen in hand, I bid adieu to today, knowing that tomorrow holds the promise of new adventures and untold wonders."
-    
 
+
+
+func runExample() {
     let preprocessedEntry = preprocessText(journalEntry, stopwords: stopwords)
     print(preprocessedEntry)
 }
 
-runExample()
+//runExample()
