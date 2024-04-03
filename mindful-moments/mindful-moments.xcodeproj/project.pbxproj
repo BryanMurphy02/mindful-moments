@@ -22,8 +22,7 @@
 		89BC06AB2B8A70F700F11463 /* mindful_momentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06AA2B8A70F700F11463 /* mindful_momentsTests.swift */; };
 		89BC06B52B8A70F700F11463 /* mindful_momentsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06B42B8A70F700F11463 /* mindful_momentsUITests.swift */; };
 		89BC06B72B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06B62B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift */; };
-		89C18A102BB3B0B400450840 /* emotionDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C18A0F2BB3B0B400450840 /* emotionDictionary.swift */; };
-		89C18A122BB3B0E000450840 /* textProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C18A112BB3B0E000450840 /* textProcessing.swift */; };
+		89F229442BB65D3C0057A5FA /* textProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F229432BB65D3C0057A5FA /* textProcessing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +61,7 @@
 		89BC06B02B8A70F700F11463 /* mindful-momentsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mindful-momentsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BC06B42B8A70F700F11463 /* mindful_momentsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindful_momentsUITests.swift; sourceTree = "<group>"; };
 		89BC06B62B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindful_momentsUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		89C18A0F2BB3B0B400450840 /* emotionDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emotionDictionary.swift; sourceTree = "<group>"; };
-		89C18A112BB3B0E000450840 /* textProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textProcessing.swift; sourceTree = "<group>"; };
+		89F229432BB65D3C0057A5FA /* textProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textProcessing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,16 +89,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8963DE0E2BB3A2DD00295884 /* MoodAnalysis */ = {
-			isa = PBXGroup;
-			children = (
-				89C18A0F2BB3B0B400450840 /* emotionDictionary.swift */,
-				89C18A112BB3B0E000450840 /* textProcessing.swift */,
-			);
-			name = MoodAnalysis;
-			path = ../../../../../Desktop/MoodAnalysis;
-			sourceTree = "<group>";
-		};
 		8963DE112BB3A33700295884 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,9 +135,9 @@
 		89BC06982B8A70F300F11463 /* mindful-moments */ = {
 			isa = PBXGroup;
 			children = (
+				89F229402BB65D0A0057A5FA /* MoodAnalysis */,
 				8963DE122BB3A35100295884 /* Views */,
 				8963DE112BB3A33700295884 /* Helpers */,
-				8963DE0E2BB3A2DD00295884 /* MoodAnalysis */,
 				89BC06992B8A70F300F11463 /* mindful_momentsApp.swift */,
 				89BC069D2B8A70F600F11463 /* Assets.xcassets */,
 				89BC069F2B8A70F600F11463 /* Preview Content */,
@@ -180,6 +168,14 @@
 				89BC06B62B8A70F700F11463 /* mindful_momentsUITestsLaunchTests.swift */,
 			);
 			path = "mindful-momentsUITests";
+			sourceTree = "<group>";
+		};
+		89F229402BB65D0A0057A5FA /* MoodAnalysis */ = {
+			isa = PBXGroup;
+			children = (
+				89F229432BB65D3C0057A5FA /* textProcessing.swift */,
+			);
+			path = MoodAnalysis;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,11 +313,10 @@
 				8963DE182BB3AE0200295884 /* CalendarTestView.swift in Sources */,
 				89BC069C2B8A70F300F11463 /* ContentView.swift in Sources */,
 				89BC069A2B8A70F300F11463 /* mindful_momentsApp.swift in Sources */,
-				89C18A122BB3B0E000450840 /* textProcessing.swift in Sources */,
 				896A43432BA4D88500E3B48E /* JournalEntriesView.swift in Sources */,
-				89C18A102BB3B0B400450840 /* emotionDictionary.swift in Sources */,
 				8944A45A2B8D329700547EDF /* SettingsView.swift in Sources */,
 				892610752BB09F2700A44F0C /* EntryView.swift in Sources */,
+				89F229442BB65D3C0057A5FA /* textProcessing.swift in Sources */,
 				8944A4562B8D27E500547EDF /* MoodView.swift in Sources */,
 				89234A542B9A41F900382CCD /* NotificationsView.swift in Sources */,
 			);
