@@ -389,18 +389,33 @@ let emotionCount: [String: Int] = [
 
 //let journalEntry = "Today dawned with a crisp chill in the air, signaling the slow transition from winter's icy grip to the gentle embrace of spring. As I sipped my morning coffee, tendrils of steam curling upwards, I contemplated the promise of a new day. The streets outside echoed with the hurried footsteps of commuters, each lost in their own world of thoughts and ambitions. Yet, amidst the cacophony of city life, there exists a quiet sanctuary within the pages of my journal, where the clamor of the outside world fades into insignificance. In the solitude of my thoughts, I found refuge, pen in hand, poised to capture the fleeting moments that make life so precious. With each stroke of ink upon the blank canvas of my journal, I immortalize fragments of my existence, weaving them into a tapestry of memories that will endure the passage of time. Today, I reflected on the beauty of impermanence, recognizing that every sunrise brings with it the promise of new beginnings, and every sunset heralds the close of another chapter. In embracing the transience of life, I find liberation, for it is in letting go that we truly learn to live. As the day draws to a close and the sky is painted in hues of crimson and gold, I am reminded of the fleeting nature of time. And so, with gratitude in my heart and pen in hand, I bid adieu to today, knowing that tomorrow holds the promise of new adventures and untold wonders."
 
+//let journalEntry = """
+//Today marked the beginning of a new chapter in my life. As the sun rose, I felt a surge of excitement coursing through my veins. The possibilities seemed endless, like the vast expanse of the sky stretching out before me. With each step I took, I embraced the sense of adventure that lay ahead.
+//
+//I decided to explore the quaint streets of the old town, each cobblestone pathway whispering tales of bygone eras. The charming architecture seemed to beckon me closer, inviting me to unravel its mysteries. I found myself lost in the maze of narrow alleys, discovering hidden gems around every corner.
+//
+//The aroma of freshly brewed coffee led me to a cozy café tucked away from the hustle and bustle of the city. As I sipped my steaming cup, I immersed myself in the pages of a captivating novel, transported to distant lands and faraway adventures. Time seemed to stand still as I savored each moment of solitude.
+//
+//In the afternoon, I ventured into nature's embrace, wandering through verdant meadows and ancient woodlands. The gentle breeze whispered secrets of the forest, while the songs of birds filled the air with melodies of joy. With every breath, I felt a deep connection to the earth beneath my feet, grateful for the beauty that surrounded me.
+//
+//As the day drew to a close, I reflected on the experiences that had filled my heart with warmth and wonder. Though the journey ahead may be uncertain, I embrace it with open arms, knowing that each step brings me closer to the person I am meant to be.
+//"""
+//
+
+
 let journalEntry = """
-Today marked the beginning of a new chapter in my life. As the sun rose, I felt a surge of excitement coursing through my veins. The possibilities seemed endless, like the vast expanse of the sky stretching out before me. With each step I took, I embraced the sense of adventure that lay ahead.
+Oh, what a glorious day it has been! From the moment I opened my eyes this morning, I could feel the sunshine streaming through my window, filling my room with warmth and joy. It was as if the universe itself was smiling down upon me, eager to share in the boundless happiness that awaited.
 
-I decided to explore the quaint streets of the old town, each cobblestone pathway whispering tales of bygone eras. The charming architecture seemed to beckon me closer, inviting me to unravel its mysteries. I found myself lost in the maze of narrow alleys, discovering hidden gems around every corner.
+As I stepped outside, the air was crisp and invigorating, tinged with the promise of endless possibilities. I danced down the street, my heart brimming with excitement and anticipation for the day ahead. Every flower seemed to bloom brighter, every bird sang sweeter, as if nature itself was celebrating my presence.
 
-The aroma of freshly brewed coffee led me to a cozy café tucked away from the hustle and bustle of the city. As I sipped my steaming cup, I immersed myself in the pages of a captivating novel, transported to distant lands and faraway adventures. Time seemed to stand still as I savored each moment of solitude.
+I spent the morning surrounded by my loved ones, laughter filling the air like music. We shared stories and jokes, basking in the glow of each other's company. Every hug, every smile, filled me with an overwhelming sense of gratitude for the wonderful people in my life.
 
-In the afternoon, I ventured into nature's embrace, wandering through verdant meadows and ancient woodlands. The gentle breeze whispered secrets of the forest, while the songs of birds filled the air with melodies of joy. With every breath, I felt a deep connection to the earth beneath my feet, grateful for the beauty that surrounded me.
+In the afternoon, I embarked on a grand adventure, exploring new sights and sounds that filled my soul with wonder. I chased butterflies through fields of wildflowers, my spirit soaring with each step. Every moment was a treasure, a precious gift to be cherished forever.
 
-As the day drew to a close, I reflected on the experiences that had filled my heart with warmth and wonder. Though the journey ahead may be uncertain, I embrace it with open arms, knowing that each step brings me closer to the person I am meant to be.
+As the sun began to set, painting the sky with hues of pink and gold, I found myself overcome with a sense of profound contentment. I watched in awe as the world around me transformed into a canvas of beauty and magic, a reminder of the infinite wonders that await us each day.
+
+And now, as I write these words by the soft glow of candlelight, I am filled with a deep sense of peace and happiness. For today has been nothing short of perfect, a day filled with love, laughter, and endless joy. And for that, I am eternally grateful.
 """
-
 
 
 func preprocessText(_ text: String, stopwords: Set<String>) -> String {
