@@ -399,7 +399,7 @@ func runExample() {
 
 func runProcessExample(){
     // Count emotions in the text
-    let emotionCount = processText(text: journalEntry, emotionDictionary: emotionalDictionary)
+    let emotionCount = processText(text: preprocessText(journalEntry, stopwords: stopwords), emotionDictionary: emotionalDictionary)
 
     // Print the emotion counts
     for (emotion, count) in emotionCount {
