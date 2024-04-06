@@ -29,8 +29,8 @@ class moodClass{
     }
     
     //getting the data from the text processing and converting it to emotionData
-    func getMoodData() -> [emotionData] {
-        let processedData = textProcessor.runProcess()
+    func getMoodData(data: String) -> [emotionData] {
+        let processedData = textProcessor.runProcess(journalContent: data)
         return convertToEmotionData(dictionary: processedData)
     }
     
@@ -83,7 +83,9 @@ class moodClass{
                 }
                 .padding()
                 
-                pieChartView()
+                if let selectedEntry = selectedEntry {
+                    pieChartView(journalEntry: selectedEntry.content)
+                }
             }
         }
     }
@@ -95,9 +97,10 @@ class moodClass{
     //Main chart view
     struct pieChartView: View{
         let moodManager = moodClass()
+        let journalEntry: String
         
         var body: some View {
-            let data = moodManager.getMoodData()
+            let data = moodManager.getMoodData(data: journalEntry)
             // Use Chart view from Charts framework
             Chart(data, id: \.name) { element in
                 SectorMark(
@@ -111,10 +114,7 @@ class moodClass{
         }
     }
 
-    struct MoodViewsPreviews: PreviewProvider {
-        static var previews: some View {
-            pieChartView()
-        }
-    }
+
+
 }
 

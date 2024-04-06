@@ -409,17 +409,17 @@ class textProcessing{
 //    """
 
     //supposed to be more sad
-    let journalEntry = """
-    Today felt like a heavy weight pressing down on my chest, suffocating me with its unbearable sorrow. From the moment I woke up, I could sense the darkness looming over me, casting a shadow on everything I held dear.
-    
-    As I went about my day, each task felt like a Herculean effort, draining me of whatever little energy I had left. The world around me seemed to have lost its color, replaced by shades of gray and despair. Every sound was muted, every smile felt forced, as if I was merely going through the motions of life.
-    
-    I found myself lost in a sea of memories, each one a painful reminder of what once was and what could have been. The tears flowed freely, cascading down my cheeks like silent rivers of grief. It felt as though my heart had been shattered into a million pieces, scattered to the winds with no hope of ever being whole again.
-    
-    I sought solace in the embrace of solitude, seeking refuge from the cacophony of the outside world. But even in the silence, the echoes of my pain reverberated through the emptiness, a constant reminder of the loneliness that consumed me from within.
-    
-    As the day drew to a close, I retreated into myself, seeking refuge beneath the covers of my bed. The darkness enveloped me like a shroud, offering no respite from the relentless ache in my soul. And as I drifted off to sleep, I prayed for a glimmer of hope to pierce through the darkness and guide me back to the light.
-    """
+//    let journalEntry = """
+//    Today felt like a heavy weight pressing down on my chest, suffocating me with its unbearable sorrow. From the moment I woke up, I could sense the darkness looming over me, casting a shadow on everything I held dear.
+//    
+//    As I went about my day, each task felt like a Herculean effort, draining me of whatever little energy I had left. The world around me seemed to have lost its color, replaced by shades of gray and despair. Every sound was muted, every smile felt forced, as if I was merely going through the motions of life.
+//    
+//    I found myself lost in a sea of memories, each one a painful reminder of what once was and what could have been. The tears flowed freely, cascading down my cheeks like silent rivers of grief. It felt as though my heart had been shattered into a million pieces, scattered to the winds with no hope of ever being whole again.
+//    
+//    I sought solace in the embrace of solitude, seeking refuge from the cacophony of the outside world. But even in the silence, the echoes of my pain reverberated through the emptiness, a constant reminder of the loneliness that consumed me from within.
+//    
+//    As the day drew to a close, I retreated into myself, seeking refuge beneath the covers of my bed. The darkness enveloped me like a shroud, offering no respite from the relentless ache in my soul. And as I drifted off to sleep, I prayed for a glimmer of hope to pierce through the darkness and guide me back to the light.
+//    """
 
 
 
@@ -468,21 +468,15 @@ class textProcessing{
     }
 
 
-    func runExample() {
-        let preprocessedEntry = preprocessText(journalEntry, stopwords: stopwords)
-        print(preprocessedEntry)
-    }
+//    func runExample() {
+//        let preprocessedEntry = preprocessText(journalEntry, stopwords: stopwords)
+//        print(preprocessedEntry)
+//    }
 
-    func runProcess() -> [String:Int]{
-        let preprocessedEntry = preprocessText(journalEntry, stopwords: stopwords)
-    //    print(preprocessedEntry)
+    func runProcess(journalContent: String) -> [String:Int]{
+        let preprocessedEntry = preprocessText(journalContent, stopwords: stopwords)
         // Count emotions in the text
         let emotionCount = processText(text: preprocessedEntry, emotionDictionary: emotionalDictionary)
-
-        // Print the emotion counts
-//        for (emotion, count) in emotionCount {
-//            print("\(emotion): \(count)")
-//        }
         return emotionCount
     }
 
