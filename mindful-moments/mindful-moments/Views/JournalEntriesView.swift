@@ -20,23 +20,24 @@ struct JournalEntry: Identifiable {
 enum ThumbnailType: String, CaseIterable {
     case date = "Date"
     case title = "Title"
-//    case image = "Image"
 }
 
 //sample data for two entries
-let entries: [JournalEntry] = [
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 1), name: "Morning Reflection", content: "Started the day with a cup of coffee and some deep breathing exercises. Feeling energized and ready to tackle the day ahead."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 2), name: "Productive Workday", content: "Managed to complete all tasks on my to-do list today. Celebrating this small victory with some time for self-care in the evening."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 3), name: "Gratitude Journal", content: "Reflecting on the things I'm grateful for today: family, friends, and the opportunity to pursue my passions."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 4), name: "Creative Inspiration", content: "Spent the afternoon sketching in the park. Nature always seems to spark new ideas and creativity within me."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 5), name: "Personal Growth", content: "Journaling about recent challenges and how they've helped me grow as a person. Embracing the process of continuous improvement."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 6), name: "Wellness Check-In", content: "Taking a moment to assess my physical and mental well-being. Prioritizing self-care activities to maintain balance."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 7), name: "Reflecting on Achievements", content: "Looking back on past accomplishments and setting new goals for the future. Excited about what lies ahead."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening2", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening3", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
-    JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 9), name: "Mindfulness Practice", content: "Engaging in mindfulness meditation.")
-]
+struct JournalEntries {
+    static let entries: [JournalEntry] = [
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 1), name: "Morning Reflection", content: "Started the day with a cup of coffee and some deep breathing exercises. Feeling energized and ready to tackle the day ahead."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 2), name: "Productive Workday", content: "Managed to complete all tasks on my to-do list today. Celebrating this small victory with some time for self-care in the evening."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 3), name: "Gratitude Journal", content: "Reflecting on the things I'm grateful for today: family, friends, and the opportunity to pursue my passions."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 4), name: "Creative Inspiration", content: "Spent the afternoon sketching in the park. Nature always seems to spark new ideas and creativity within me."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 5), name: "Personal Growth", content: "Journaling about recent challenges and how they've helped me grow as a person. Embracing the process of continuous improvement."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 6), name: "Wellness Check-In", content: "Taking a moment to assess my physical and mental well-being. Prioritizing self-care activities to maintain balance."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 7), name: "Reflecting on Achievements", content: "Looking back on past accomplishments and setting new goals for the future. Excited about what lies ahead."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening2", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 8), name: "Peaceful Evening3", content: "Enjoying a quiet evening at home with a good book and a warm cup of tea. Finding solace in simple pleasures."),
+        JournalEntry(id: UUID(), date: Date().addingTimeInterval(-86400 * 9), name: "Mindfulness Practice", content: "Engaging in mindfulness meditation.")
+    ]
+}
 
 
 //helper function to format the date values for visual purposes
@@ -68,13 +69,13 @@ struct JournalEntriesView: View {
             VStack {
                 // Show either List or Grid based on selection
                 if selectedLayout == .list {
-                    JournalEntryListView(thumbnailType: $thumbnailType, entries: entries)
-                } 
+                    JournalEntryListView(thumbnailType: $thumbnailType, entries: JournalEntries.entries)
+                }
                 else if selectedLayout == .calendar{
-                    JournalEntryCalendarView(thumbnailType: $thumbnailType, entries: entries)
+                    JournalEntryCalendarView(thumbnailType: $thumbnailType, entries: JournalEntries.entries)
                 }
                 else {
-                    JournalEntryGridView(thumbnailType: $thumbnailType, entries: entries)
+                    JournalEntryGridView(thumbnailType: $thumbnailType, entries: JournalEntries.entries)
                 }
             }
             .padding(.top, 1)
