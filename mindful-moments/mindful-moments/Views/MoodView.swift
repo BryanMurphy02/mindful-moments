@@ -43,6 +43,7 @@ class moodClass{
                     innerRadius: .ratio(0.618),
                     angularInset: 1.5
                 )
+                .cornerRadius(5)
                 .foregroundStyle(by: .value("Name", element.name))
             }
         }
