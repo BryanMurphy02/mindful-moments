@@ -33,33 +33,7 @@ class moodClass{
         let processedData = textProcessor.runProcess(journalContent: data)
         return convertToEmotionData(dictionary: processedData)
     }
-    
-//    struct MoodView: View {
-//        let entries = JournalEntries.entries
-//        @State private var selectedEntry: JournalEntry? = nil
-//        
-//        var body: some View {
-//            VStack {
-//                Menu {
-//                    ForEach(entries, id: \.id) { entry in
-//                        Button(action: {
-//                            selectedEntry = entry
-//                        }) {
-//                            Text("\(entry.date, formatter: DateFormatter.date)")
-//                        }
-//                    }
-//                } label: {
-//                    Text("Select Entry")
-//                }
-//                .padding()
-//                
-//                if let selectedEntry = selectedEntry {
-//                    Text("Selected Entry: \(selectedEntry.name)")
-//                        .padding()
-//                }
-//            }
-//        }
-//    }
+
     struct MoodView: View {
         let entries = JournalEntries.entries
         @State private var selectedEntry: JournalEntry? = nil
