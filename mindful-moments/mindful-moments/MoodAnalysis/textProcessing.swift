@@ -8,68 +8,59 @@ import Foundation
 
 class textProcessing{
     let stopwords: Set<String> = [
-        "a", "was", "of", "and", "the", "in", "to", "is",
-            "I", "you", "he", "she", "it", "we", "they", "me", "him", "her", "them",
-            "this", "that", "there", "here", "with", "for", "on", "at", "by", "from",
-            "as", "or", "but", "not", "if", "when", "where", "how", "why", "which",
-            "who", "whom", "whose",
-            "have", "has", "had", "do", "does", "did", "will", "would", "can", "could",
-            "should", "ought", "must", "might", "may", "into", "out", "up", "down",
-            "over", "under", "between", "among", "through", "above", "below", "around",
-            "before", "after", "underneath", "beside", "along", "while", "during",
-            "against", "within", "without", "across", "beneath", "throughout", "towards",
-            "upon", "unto", "am", "are", "being", "been", "being",
-            "each", "every", "few", "more", "most", "other", "some", "such", "many",
-            "own", "same", "so", "than", "too", "very", "only", "much", "less", "least",
-            "just", "ever", "never", "always", "actually", "even", "already", "still",
-            "almost", "about", "around", "above", "below", "behind", "besides", "between",
-            "beyond", "except", "inside", "outside", "upon", "without", "against", "among",
-            "along", "during", "through", "towards", "before", "after", "under", "over",
-            "thing", "stuff", "fact", "information", "idea", "thought", "event", "problem",
-            "issue", "situation", "case", "point", "aspect", "part", "aspect", "part",
-            "element", "factor", "detail", "feature", "example", "instance", "item",
-            "matter", "subject", "subject", "subject", "object", "concept", "notion",
-            "belief", "opinion", "theory", "hypothesis", "practice", "method", "procedure",
-            "process", "system", "strategy", "approach", "technique", "practice", "action",
-            "activity", "work", "effort", "attempt", "exercise", "experience", "experiment",
-            "trial", "test", "study", "research", "investigation", "analysis", "evaluation",
-            "assessment", "review", "examination", "observation", "observation", "observation",
-            "observation", "comparison", "contrast", "difference", "similarity", "relation",
-            "relationship", "connection", "association", "link", "linkage", "bond", "bridge",
-            "transition", "shift", "change", "variation", "difference", "divergence", "variety",
-            "range", "scope", "extent", "magnitude", "size", "scale", "dimension", "level",
-            "degree", "amount", "quantity", "number", "figure", "total", "whole", "all",
-            "every", "any", "none", "nothing", "something", "anything", "everything",
-            "everyone", "anyone", "no one", "somebody", "nobody", "something", "nothing",
-            "somewhere", "nowhere", "everywhere", "anywhere", "everybody", "anybody", "nobody",
-            "someone", "everyone", "anyone", "no one", "thing", "something", "nothing", "anything",
-            "everything", "object", "entity", "creature", "being", "item", "article", "commodity",
-            "product", "resource", "material", "substance", "matter", "stuff", "thing", "element",
-            "component", "part", "piece", "fraction", "bit", "portion", "segment", "section",
-            "unit", "module", "ingredient", "aspect", "attribute", "quality", "property", "characteristic",
-            "feature", "trait", "mark", "note", "point", "factor", "cause", "reason", "motive",
-            "purpose", "intention", "aim", "goal", "objective", "target", "end", "destination",
-            "result", "outcome", "consequence", "effect", "impact", "influence", "significance",
-            "importance", "relevance", "pertinence", "applicability", "validity", "accuracy",
-            "correctness", "truth", "falsity", "error", "mistake", "fallacy", "illusion",
-            "misconception", "misinterpretation", "misunderstanding", "confusion", "ambiguity",
-            "uncertainty", "doubt", "question", "query", "issue", "problem", "difficulty",
-            "challenge", "obstacle", "barrier", "hindrance", "constraint", "limitation",
-            "restriction", "boundary", "constraint", "limitation", "restriction", "boundary",
-            "condition", "situation", "circumstance", "context", "environment", "setting",
-            "surroundings", "surroundings", "surroundings", "surroundings", "surroundings",
-            "context", "framework", "perspective", "viewpoint", "standpoint", "angle",
-            "position", "stance", "attitude", "approach", "outlook", "belief", "opinion",
-            "persuasion", "conviction", "ideology", "philosophy", "doctrine", "principle",
-            "value", "standard", "norm", "criteria", "requirement", "expectation", "demand",
-            "need", "necessity", "essential", "essential", "essential", "requirement",
-            "expectation", "demand", "need", "necessity", "essential", "essential", "essential",
-            "priority", "preference", "choice", "decision", "selection", "option", "alternative",
-            "possibility", "opportunity", "chance", "prospect", "potential", "potential",
-            "capacity", "capability", "ability", "skill", "talent", "aptitude", "gift",
-            "endowment", "strength", "advantage", "benefit", "gain", "profit", "reward",
-            "advantage"
+        "a", "of", "and", "the", "in", "to", "is", "I", "you", "he", "she", "it", "we", "they",
+        "me", "him", "her", "them", "this", "that", "there", "here", "with", "for", "on", "at",
+        "by", "from", "as", "or", "but", "not", "if", "when", "where", "how", "why", "which", "who",
+        "whom", "whose", "have", "has", "had", "do", "does", "did", "will", "would", "can", "could",
+        "should", "ought", "must", "might", "may", "into", "out", "up", "down", "over", "under",
+        "between", "among", "through", "above", "below", "around", "before", "after", "underneath",
+        "beside", "along", "while", "during", "against", "within", "without", "across", "beneath",
+        "throughout", "towards", "upon", "unto", "am", "are", "being", "been", "each", "every",
+        "few", "more", "most", "other", "some", "such", "many", "own", "same", "so", "than", "too",
+        "very", "only", "much", "less", "least", "just", "ever", "never", "always", "actually",
+        "even", "already", "still", "almost", "about", "around", "above", "below", "behind",
+        "besides", "between", "beyond", "except", "inside", "outside", "upon", "without", "against",
+        "among", "along", "during", "through", "towards", "before", "after", "under", "over", "thing",
+        "stuff", "fact", "information", "idea", "thought", "event", "problem", "issue", "situation",
+        "case", "point", "aspect", "part", "element", "factor", "detail", "feature", "example",
+        "instance", "item", "matter", "subject", "subject", "subject", "object", "concept", "notion",
+        "belief", "opinion", "theory", "hypothesis", "practice", "method", "procedure", "process",
+        "system", "strategy", "approach", "technique", "practice", "action", "activity", "work",
+        "effort", "attempt", "exercise", "experience", "experiment", "trial", "test", "study",
+        "research", "investigation", "analysis", "evaluation", "assessment", "review", "examination",
+        "observation", "observation", "observation", "observation", "comparison", "contrast",
+        "difference", "similarity", "relation", "relationship", "connection", "association",
+        "link", "linkage", "bond", "bridge", "transition", "shift", "change", "variation",
+        "difference", "divergence", "variety", "range", "scope", "extent", "magnitude", "size",
+        "scale", "dimension", "level", "degree", "amount", "quantity", "number", "figure",
+        "total", "whole", "all", "every", "any", "none", "nothing", "something", "anything",
+        "everything", "everyone", "anyone", "no one", "somebody", "nobody", "something", "nothing",
+        "somewhere", "nowhere", "everywhere", "anywhere", "everybody", "anybody", "nobody", "someone",
+        "everyone", "anyone", "no one", "thing", "something", "nothing", "anything", "everything",
+        "object", "entity", "creature", "being", "item", "article", "commodity", "product", "resource",
+        "material", "substance", "matter", "stuff", "thing", "element", "component", "part", "piece",
+        "fraction", "bit", "portion", "segment", "section", "unit", "module", "ingredient", "aspect",
+        "attribute", "quality", "property", "characteristic", "feature", "trait", "mark", "note",
+        "point", "factor", "cause", "reason", "motive", "purpose", "intention", "aim", "goal",
+        "objective", "target", "end", "destination", "result", "outcome", "consequence", "effect",
+        "impact", "influence", "significance", "importance", "relevance", "pertinence", "applicability",
+        "validity", "accuracy", "correctness", "truth", "falsity", "error", "mistake", "fallacy",
+        "illusion", "misconception", "misinterpretation", "misunderstanding", "confusion", "ambiguity",
+        "uncertainty", "doubt", "question", "query", "issue", "problem", "difficulty", "challenge",
+        "obstacle", "barrier", "hindrance", "constraint", "limitation", "restriction", "boundary",
+        "constraint", "limitation", "restriction", "boundary", "condition", "situation", "circumstance",
+        "context", "environment", "setting", "surroundings", "surroundings", "surroundings", "surroundings",
+        "surroundings", "context", "framework", "perspective", "viewpoint", "standpoint", "angle",
+        "position", "stance", "attitude", "approach", "outlook", "belief", "opinion", "persuasion",
+        "conviction", "ideology", "philosophy", "doctrine", "principle", "value", "standard", "norm",
+        "criteria", "requirement", "expectation", "demand", "need", "necessity", "essential", "essential",
+        "essential", "requirement", "expectation", "demand", "need", "necessity", "essential", "essential",
+        "essential", "priority", "preference", "choice", "decision", "selection", "option", "alternative",
+        "possibility", "opportunity", "chance", "prospect", "potential", "potential", "capacity", "capability",
+        "ability", "skill", "talent", "aptitude", "gift", "endowment", "strength", "advantage", "benefit",
+        "gain", "profit", "reward", "advantage"
     ]
+
 
     let emotionalDictionary: [String: Set<String>] = [
         "happy": [
@@ -374,55 +365,6 @@ class textProcessing{
                 "unsatisfiedness", "unpleasedness"]
     ]
 
-
-
-
-    //let journalEntry = "Today dawned with a crisp chill in the air, signaling the slow transition from winter's icy grip to the gentle embrace of spring. As I sipped my morning coffee, tendrils of steam curling upwards, I contemplated the promise of a new day. The streets outside echoed with the hurried footsteps of commuters, each lost in their own world of thoughts and ambitions. Yet, amidst the cacophony of city life, there exists a quiet sanctuary within the pages of my journal, where the clamor of the outside world fades into insignificance. In the solitude of my thoughts, I found refuge, pen in hand, poised to capture the fleeting moments that make life so precious. With each stroke of ink upon the blank canvas of my journal, I immortalize fragments of my existence, weaving them into a tapestry of memories that will endure the passage of time. Today, I reflected on the beauty of impermanence, recognizing that every sunrise brings with it the promise of new beginnings, and every sunset heralds the close of another chapter. In embracing the transience of life, I find liberation, for it is in letting go that we truly learn to live. As the day draws to a close and the sky is painted in hues of crimson and gold, I am reminded of the fleeting nature of time. And so, with gratitude in my heart and pen in hand, I bid adieu to today, knowing that tomorrow holds the promise of new adventures and untold wonders."
-
-    //let journalEntry = """
-    //Today marked the beginning of a new chapter in my life. As the sun rose, I felt a surge of excitement coursing through my veins. The possibilities seemed endless, like the vast expanse of the sky stretching out before me. With each step I took, I embraced the sense of adventure that lay ahead.
-    //
-    //I decided to explore the quaint streets of the old town, each cobblestone pathway whispering tales of bygone eras. The charming architecture seemed to beckon me closer, inviting me to unravel its mysteries. I found myself lost in the maze of narrow alleys, discovering hidden gems around every corner.
-    //
-    //The aroma of freshly brewed coffee led me to a cozy café tucked away from the hustle and bustle of the city. As I sipped my steaming cup, I immersed myself in the pages of a captivating novel, transported to distant lands and faraway adventures. Time seemed to stand still as I savored each moment of solitude.
-    //
-    //In the afternoon, I ventured into nature's embrace, wandering through verdant meadows and ancient woodlands. The gentle breeze whispered secrets of the forest, while the songs of birds filled the air with melodies of joy. With every breath, I felt a deep connection to the earth beneath my feet, grateful for the beauty that surrounded me.
-    //
-    //As the day drew to a close, I reflected on the experiences that had filled my heart with warmth and wonder. Though the journey ahead may be uncertain, I embrace it with open arms, knowing that each step brings me closer to the person I am meant to be.
-    //"""
-
-
-
-    //supposed to be more happy leaning
-    let journalEntry = """
-    Oh, what a glorious day it has been! From the moment I opened my eyes this morning, I could feel the sunshine streaming through my window, filling my room with warmth and joy. It was as if the universe itself was smiling down upon me, eager to share in the boundless happiness that awaited.
-
-    As I stepped outside, the air was crisp and invigorating, tinged with the promise of endless possibilities. I danced down the street, my heart brimming with excitement and anticipation for the day ahead. Every flower seemed to bloom brighter, every bird sang sweeter, as if nature itself was celebrating my presence.
-
-    I spent the morning surrounded by my loved ones, laughter filling the air like music. We shared stories and jokes, basking in the glow of each other's company. Every hug, every smile, filled me with an overwhelming sense of gratitude for the wonderful people in my life.
-
-    In the afternoon, I embarked on a grand adventure, exploring new sights and sounds that filled my soul with wonder. I chased butterflies through fields of wildflowers, my spirit soaring with each step. Every moment was a treasure, a precious gift to be cherished forever.
-
-    As the sun began to set, painting the sky with hues of pink and gold, I found myself overcome with a sense of profound contentment. I watched in awe as the world around me transformed into a canvas of beauty and magic, a reminder of the infinite wonders that await us each day.
-
-    And now, as I write these words by the soft glow of candlelight, I am filled with a deep sense of peace and happiness. For today has been nothing short of perfect, a day filled with love, laughter, and endless joy. And for that, I am eternally grateful.
-    """
-
-    //supposed to be more sad
-    //let journalEntry = """
-    //Today felt like a heavy weight pressing down on my chest, suffocating me with its unbearable sorrow. From the moment I woke up, I could sense the darkness looming over me, casting a shadow on everything I held dear.
-    //
-    //As I went about my day, each task felt like a Herculean effort, draining me of whatever little energy I had left. The world around me seemed to have lost its color, replaced by shades of gray and despair. Every sound was muted, every smile felt forced, as if I was merely going through the motions of life.
-    //
-    //I found myself lost in a sea of memories, each one a painful reminder of what once was and what could have been. The tears flowed freely, cascading down my cheeks like silent rivers of grief. It felt as though my heart had been shattered into a million pieces, scattered to the winds with no hope of ever being whole again.
-    //
-    //I sought solace in the embrace of solitude, seeking refuge from the cacophony of the outside world. But even in the silence, the echoes of my pain reverberated through the emptiness, a constant reminder of the loneliness that consumed me from within.
-    //
-    //As the day drew to a close, I retreated into myself, seeking refuge beneath the covers of my bed. The darkness enveloped me like a shroud, offering no respite from the relentless ache in my soul. And as I drifted off to sleep, I prayed for a glimmer of hope to pierce through the darkness and guide me back to the light.
-    //"""
-
-
-
     func preprocessText(_ text: String, stopwords: Set<String>) -> String {
         //splits the text into an array of substrings using whitespace
         //Stored in the token array
@@ -467,26 +409,11 @@ class textProcessing{
         return emotionCount
     }
 
-
-    func runExample() {
-        let preprocessedEntry = preprocessText(journalEntry, stopwords: stopwords)
-        print(preprocessedEntry)
-    }
-
-    func runProcessExample() -> [String:Int]{
-        let preprocessedEntry = preprocessText(journalEntry, stopwords: stopwords)
-    //    print(preprocessedEntry)
+    func runProcess(journalContent: String) -> [String:Int]{
+        let preprocessedEntry = preprocessText(journalContent, stopwords: stopwords)
         // Count emotions in the text
         let emotionCount = processText(text: preprocessedEntry, emotionDictionary: emotionalDictionary)
-
-        // Print the emotion counts
-//        for (emotion, count) in emotionCount {
-//            print("\(emotion): \(count)")
-//        }
         return emotionCount
     }
-
-    //runProcessExample()
-    //runExample()
 
 }
