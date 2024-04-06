@@ -28,7 +28,7 @@ struct mindful_momentsApp: App {
                     .tabItem {
                         Label("", systemImage: "plus.circle.fill")
                     }
-                MoodView()
+                moodClass.MoodView()
                     .tabItem {
                         Label("Moods", systemImage: "chart.xyaxis.line")
                     }

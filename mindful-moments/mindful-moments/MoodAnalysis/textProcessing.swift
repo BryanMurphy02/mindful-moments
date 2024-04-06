@@ -394,32 +394,32 @@ class textProcessing{
 
 
     //supposed to be more happy leaning
-    let journalEntry = """
-    Oh, what a glorious day it has been! From the moment I opened my eyes this morning, I could feel the sunshine streaming through my window, filling my room with warmth and joy. It was as if the universe itself was smiling down upon me, eager to share in the boundless happiness that awaited.
-
-    As I stepped outside, the air was crisp and invigorating, tinged with the promise of endless possibilities. I danced down the street, my heart brimming with excitement and anticipation for the day ahead. Every flower seemed to bloom brighter, every bird sang sweeter, as if nature itself was celebrating my presence.
-
-    I spent the morning surrounded by my loved ones, laughter filling the air like music. We shared stories and jokes, basking in the glow of each other's company. Every hug, every smile, filled me with an overwhelming sense of gratitude for the wonderful people in my life.
-
-    In the afternoon, I embarked on a grand adventure, exploring new sights and sounds that filled my soul with wonder. I chased butterflies through fields of wildflowers, my spirit soaring with each step. Every moment was a treasure, a precious gift to be cherished forever.
-
-    As the sun began to set, painting the sky with hues of pink and gold, I found myself overcome with a sense of profound contentment. I watched in awe as the world around me transformed into a canvas of beauty and magic, a reminder of the infinite wonders that await us each day.
-
-    And now, as I write these words by the soft glow of candlelight, I am filled with a deep sense of peace and happiness. For today has been nothing short of perfect, a day filled with love, laughter, and endless joy. And for that, I am eternally grateful.
-    """
+//    let journalEntry = """
+//    Oh, what a glorious day it has been! From the moment I opened my eyes this morning, I could feel the sunshine streaming through my window, filling my room with warmth and joy. It was as if the universe itself was smiling down upon me, eager to share in the boundless happiness that awaited.
+//
+//    As I stepped outside, the air was crisp and invigorating, tinged with the promise of endless possibilities. I danced down the street, my heart brimming with excitement and anticipation for the day ahead. Every flower seemed to bloom brighter, every bird sang sweeter, as if nature itself was celebrating my presence.
+//
+//    I spent the morning surrounded by my loved ones, laughter filling the air like music. We shared stories and jokes, basking in the glow of each other's company. Every hug, every smile, filled me with an overwhelming sense of gratitude for the wonderful people in my life.
+//
+//    In the afternoon, I embarked on a grand adventure, exploring new sights and sounds that filled my soul with wonder. I chased butterflies through fields of wildflowers, my spirit soaring with each step. Every moment was a treasure, a precious gift to be cherished forever.
+//
+//    As the sun began to set, painting the sky with hues of pink and gold, I found myself overcome with a sense of profound contentment. I watched in awe as the world around me transformed into a canvas of beauty and magic, a reminder of the infinite wonders that await us each day.
+//
+//    And now, as I write these words by the soft glow of candlelight, I am filled with a deep sense of peace and happiness. For today has been nothing short of perfect, a day filled with love, laughter, and endless joy. And for that, I am eternally grateful.
+//    """
 
     //supposed to be more sad
-    //let journalEntry = """
-    //Today felt like a heavy weight pressing down on my chest, suffocating me with its unbearable sorrow. From the moment I woke up, I could sense the darkness looming over me, casting a shadow on everything I held dear.
-    //
-    //As I went about my day, each task felt like a Herculean effort, draining me of whatever little energy I had left. The world around me seemed to have lost its color, replaced by shades of gray and despair. Every sound was muted, every smile felt forced, as if I was merely going through the motions of life.
-    //
-    //I found myself lost in a sea of memories, each one a painful reminder of what once was and what could have been. The tears flowed freely, cascading down my cheeks like silent rivers of grief. It felt as though my heart had been shattered into a million pieces, scattered to the winds with no hope of ever being whole again.
-    //
-    //I sought solace in the embrace of solitude, seeking refuge from the cacophony of the outside world. But even in the silence, the echoes of my pain reverberated through the emptiness, a constant reminder of the loneliness that consumed me from within.
-    //
-    //As the day drew to a close, I retreated into myself, seeking refuge beneath the covers of my bed. The darkness enveloped me like a shroud, offering no respite from the relentless ache in my soul. And as I drifted off to sleep, I prayed for a glimmer of hope to pierce through the darkness and guide me back to the light.
-    //"""
+    let journalEntry = """
+    Today felt like a heavy weight pressing down on my chest, suffocating me with its unbearable sorrow. From the moment I woke up, I could sense the darkness looming over me, casting a shadow on everything I held dear.
+    
+    As I went about my day, each task felt like a Herculean effort, draining me of whatever little energy I had left. The world around me seemed to have lost its color, replaced by shades of gray and despair. Every sound was muted, every smile felt forced, as if I was merely going through the motions of life.
+    
+    I found myself lost in a sea of memories, each one a painful reminder of what once was and what could have been. The tears flowed freely, cascading down my cheeks like silent rivers of grief. It felt as though my heart had been shattered into a million pieces, scattered to the winds with no hope of ever being whole again.
+    
+    I sought solace in the embrace of solitude, seeking refuge from the cacophony of the outside world. But even in the silence, the echoes of my pain reverberated through the emptiness, a constant reminder of the loneliness that consumed me from within.
+    
+    As the day drew to a close, I retreated into myself, seeking refuge beneath the covers of my bed. The darkness enveloped me like a shroud, offering no respite from the relentless ache in my soul. And as I drifted off to sleep, I prayed for a glimmer of hope to pierce through the darkness and guide me back to the light.
+    """
 
 
 
@@ -473,7 +473,7 @@ class textProcessing{
         print(preprocessedEntry)
     }
 
-    func runProcessExample() -> [String:Int]{
+    func runProcess() -> [String:Int]{
         let preprocessedEntry = preprocessText(journalEntry, stopwords: stopwords)
     //    print(preprocessedEntry)
         // Count emotions in the text
