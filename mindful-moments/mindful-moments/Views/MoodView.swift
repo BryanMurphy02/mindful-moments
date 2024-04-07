@@ -72,12 +72,25 @@ class moodClass{
     }
 
     
-
+    enum selectedItemType {
+        case filter
+        case entry
+        case none
+    }
+    
+    enum timeFilterType: String, CaseIterable {
+        case pastWeek = "Past Week"
+        case pastMonth = "Past Month"
+    }
 
     struct MoodView: View {
         let moodManager = moodClass()
         let entries = JournalEntries.entries
         @State private var selectedEntry: JournalEntry? = nil
+        @State private var selectedItemType: selectedItemType?
+
+//        @State private var selectedFilter: timeFilterType = .pastWeek
+        @State private var selectedFilter: timeFilterType?
         
         init() {
             // Populate globalWeekData when MoodView is initialized
@@ -86,16 +99,32 @@ class moodClass{
         
         var body: some View {
             VStack {
-                Text("Mood Analysis") // Header
-                    .font(.title)
-                    .padding()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
                 Menu {
-                    // Placeholder Section
+                    // Time Filters Section
                     Section(header: Text("Time Filters")) {
-                        Button(action: {
-                            // Action for placeholder menu option
-                        }) {
-                            Text("Past Week")
+                        ForEach(timeFilterType.allCases, id: \.self) { filterType in
+                            Button(action: {
+                                // Action for selecting time filter
+                                selectedFilter = filterType
+                                selectedItemType = .filter
+                            }) {
+                                Text(filterType.rawValue)
+                            }
                         }
                     }
                     
@@ -104,25 +133,51 @@ class moodClass{
                         ForEach(entries, id: \.id) { entry in
                             Button(action: {
                                 selectedEntry = entry
+                                selectedItemType = .entry
                             }) {
                                 Text("\(entry.date, formatter: DateFormatter.date)")
                             }
                         }
                     }
                 } label: {
-                    if let selectedEntry = selectedEntry {
-                        Text("\(selectedEntry.date, formatter: DateFormatter.date)")
-                            .font(.title2)
-                    } else {
-                        Text("Select Entry")
-                            .font(.title2)
+                    if selectedItemType == .filter {
+                        HStack{
+                            Text(selectedFilter!.rawValue)
+//                                .font(.title2)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                            Image(systemName: "calendar")
+                                .font(.title)
+                        }
+                    }
+                    else if selectedItemType == .entry {
+                        HStack{
+                            Text("\(selectedEntry!.date, formatter: DateFormatter.date)")
+//                                .font(.title2)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                            Image(systemName: "calendar")
+                                .font(.title)
+                        }
+                    }else {
+                        HStack{
+                            Text("Past Week")
+//                                .font(.title2)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                            Image(systemName: "calendar")
+                                .font(.title)
+                        }
                     }
                 }
                 .padding()
 
                 
-                
-                if let selectedEntry = selectedEntry {
+                // Conditionally display the appropriate view based on selection
+                if let selectedEntry = selectedEntry, selectedItemType == .entry {
                     GeometryReader { geometry in
                         pieChartView(journalEntry: selectedEntry.content)
                             .frame(width: min(geometry.size.width - 40, 550), // Adjust size as needed
@@ -130,7 +185,6 @@ class moodClass{
                             .padding(.horizontal, 20) // Adjustable padding
                     }
                 } else {
-                    // Display the pie chart representing aggregated emotions data for the past week
                     GeometryReader { geometry in
                         weekPieChartView(emotions: moodManager.globalWeekData)
                             .frame(width: min(geometry.size.width - 40, 550),
@@ -138,10 +192,9 @@ class moodClass{
                             .padding(.horizontal, 20)
                     }
                 }
-
-                
-                Spacer() // Fill remaining space
+                Spacer()
             }
+            
         }
     }
 
@@ -162,6 +215,21 @@ class moodClass{
                 )
                 .cornerRadius(5)
                 .foregroundStyle(by: .value("Name", element.name))
+            }
+            .chartBackground { chartProxy in
+              GeometryReader { geometry in
+                  let frame = geometry[chartProxy.plotFrame!]
+                VStack {
+                    Text("Mood Analysis")
+                        .font(.title2)
+                        .padding()
+                    Image(systemName: "chart.pie.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.blue)
+//                    .foregroundStyle(.secondary)
+                }
+                .position(x: frame.midX, y: frame.midY)
+              }
             }
         }
     }
@@ -185,6 +253,21 @@ class moodClass{
                 )
                 .cornerRadius(5)
                 .foregroundStyle(by: .value("Name", element.name))
+            }
+            .chartBackground { chartProxy in
+              GeometryReader { geometry in
+                  let frame = geometry[chartProxy.plotFrame!]
+                  VStack {
+                      Text("Mood Analysis")
+                          .font(.title2)
+                          .padding()
+                      Image(systemName: "chart.pie.fill")
+                          .font(.largeTitle)
+                          .foregroundColor(.blue)
+  //                    .foregroundStyle(.secondary)
+                  }
+                .position(x: frame.midX, y: frame.midY)
+              }
             }
         }
     }
