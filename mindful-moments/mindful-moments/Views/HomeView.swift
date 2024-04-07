@@ -71,11 +71,12 @@ struct WidgetListView: View {
             WidgetView(title: "Streaks") {
                 StreakWidgetView()
             }
-            .padding(35)
+            .padding(.top, 20)
+            .padding(.bottom, 15)
             WidgetView(title: "Prompt") {
                 PromptWidgetView()
             }
-            .padding(15)
+            .padding(35)
         }
         .padding()
     }
@@ -179,12 +180,16 @@ struct PromptWidgetView: View {
     let promptFile = prompts()
     var body: some View {
         VStack {
-            Text("Daily Prompt")
-                .font(.system(size: 28))
-                .padding()
-            Text(promptFile.getRandomPrompt(from: promptFile.prompts)!)
             Spacer()
-            
+
+            Text(promptFile.getRandomPrompt(from: promptFile.prompts) ?? "")
+                .padding(20)
+                .multilineTextAlignment(.center)
+                .lineSpacing(8) // Adjust line spacing as needed
+                .fixedSize(horizontal: false, vertical: true) // Allow the text to wrap to multiple lines
+
+            Spacer()
+
         }
     }
 }
