@@ -38,21 +38,36 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             //Settings
-            HStack {
-                Spacer()
-                NavigationLink(destination: SettingsView()) {
-                    Image(systemName: "gearshape.fill")
-                        .foregroundColor(.blue)
-                        .font(.system(size: 24))
-                        .padding()
-                }
-            }
             
             // Time
+//            Text(formattedCurrentTime)
+//                .font(.title)
+//                .padding()
+//            Text(formattedCurrentTime)
+//                .font(.custom("Arial", size: 80))
+//                .fontWeight(.bold)
+//                .padding(20)
+//                .foregroundColor(.white)
+//                .background(
+//                    RoundedRectangle(cornerRadius: 10)
+//                        .fill(Color.blue)
+//                        .shadow(color: .gray, radius: 5, x: 0, y: 0)
+//                )
             Text(formattedCurrentTime)
-                .font(.title)
-                .padding()
+                .font(.custom("Avenir Next", size: 40))
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding(30)
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .cornerRadius(20)
+                        .shadow(color: .black, radius: 10, x: 0, y: 0)
+                )
+
+
+
             
             // Widget list (templates, streak, prompt)
             WidgetListView()
@@ -61,6 +76,8 @@ struct HomeView: View {
         }
     }
 }
+
+
 
 struct WidgetListView: View {
     var body: some View {
@@ -81,21 +98,66 @@ struct WidgetListView: View {
     }
 }
 
+//struct WidgetView<Content: View>: View {
+//    var title: String
+//    var content: () -> Content
+//    
+//    var body: some View {
+//        RoundedRectangle(cornerRadius: 10)
+//            .foregroundColor(.blue)
+//            .frame(width: 350, height: 130)
+//            .overlay(
+//                VStack {
+//                    content()
+//                }
+//            )
+//    }
+//}
+//struct WidgetView<Content: View>: View {
+//    var title: String
+//    var content: () -> Content
+//    
+//    var body: some View {
+//        ZStack {
+//            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//                .cornerRadius(20)
+//                .shadow(color: .black, radius: 10, x: 0, y: 0)
+//            VStack {
+//                Text(title)
+//                    .font(.title)
+//                    .fontWeight(.bold)
+//                    .foregroundColor(.white)
+//                    .padding(.top, 10)
+//                content()
+//            }
+//            .padding(20)
+//        }
+//        .frame(width: 350, height: 130)
+//    }
+//}
 struct WidgetView<Content: View>: View {
     var title: String
     var content: () -> Content
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .foregroundColor(.blue)
-            .frame(width: 350, height: 130)
-            .overlay(
-                VStack {
-                    content()
-                }
-            )
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .cornerRadius(20)
+                .shadow(color: .black, radius: 10, x: 0, y: 0)
+            VStack {
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.top, 10) // Reduced top padding
+                content()
+            }
+            .padding(20) // Reduced padding
+        }
+        .frame(width: 350, height: 130) // Reduced frame size
     }
 }
+
 
 struct TemplatesWidgetView: View {
     var body: some View {
