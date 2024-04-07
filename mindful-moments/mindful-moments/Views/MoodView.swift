@@ -72,19 +72,17 @@ class moodClass{
     }
 
     
-
+    enum selectedItemType {
+        case filter
+        case entry
+        case none
+    }
 
     struct MoodView: View {
         let moodManager = moodClass()
         let entries = JournalEntries.entries
         @State private var selectedEntry: JournalEntry? = nil
-        @State private var selectedItemType: selectedItemType = .none
-
-        enum selectedItemType {
-            case filter
-            case entry
-            case none
-        }
+        @State private var selectedItemType: selectedItemType?
         
         
         enum timeFilterType: String, CaseIterable {
@@ -114,6 +112,7 @@ class moodClass{
                             Button(action: {
                                 // Action for selecting time filter
                                 selectedFilter = filterType
+                                selectedItemType = .filter
                             }) {
                                 Text(filterType.rawValue)
                             }
@@ -125,18 +124,19 @@ class moodClass{
                         ForEach(entries, id: \.id) { entry in
                             Button(action: {
                                 selectedEntry = entry
+                                selectedItemType = .entry
                             }) {
                                 Text("\(entry.date, formatter: DateFormatter.date)")
                             }
                         }
                     }
                 } label: {
-                    if let selectedFilter = selectedFilter {
-                        Text(selectedFilter.rawValue + " Selected")
+                    if selectedItemType == .filter {
+                        Text(selectedFilter!.rawValue + " Selected")
                             .font(.title2)
                     }
-                    else if let selectedEntry = selectedEntry {
-                        Text("\(selectedEntry.date, formatter: DateFormatter.date)")
+                    else if selectedItemType == .entry {
+                        Text("\(selectedEntry!.date, formatter: DateFormatter.date)")
                             .font(.title2)
                     } else {
                         Text("Select Entry")
@@ -144,6 +144,8 @@ class moodClass{
                     }
                 }
                 .padding()
+                
+                
 
 
                 
