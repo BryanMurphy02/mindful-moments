@@ -7,6 +7,26 @@
 
 import SwiftUI
 
+let journalEntries = JournalEntries()
+
+//calculates the streak of entries
+func streakCalc(entries: [JournalEntry]) -> Int {
+    var currentStreak = 0
+    var currentDate = Date()
+    var remainingEntries = entries // Make a copy of the entries array
+    
+    // Iterate backward starting from today
+    while let entry = remainingEntries.first(where: { Calendar.current.isDate($0.date, inSameDayAs: currentDate) }) {
+        currentStreak += 1
+        currentDate = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)!
+        remainingEntries.removeAll(where: { Calendar.current.isDate($0.date, inSameDayAs: entry.date) })
+    }
+    
+    return currentStreak
+}
+
+
+
 struct HomeView: View {
     
     // Computed property to get the current time in a formatted string
@@ -132,7 +152,8 @@ struct StreakWidgetView: View {
                 .padding()
             
             HStack{
-                Text("Placeholder Days!")
+                let streak = streakCalc(entries: JournalEntries.entries)
+                Text("\(streak) Days!")
                 Image(systemName: "flame.fill")
                     .foregroundColor(.orange)
             }
