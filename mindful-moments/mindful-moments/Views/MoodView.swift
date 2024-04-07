@@ -100,9 +100,15 @@ class moodClass{
         var body: some View {
             
             VStack {
-                Text("Mood Analysis") // Header
-                    .font(.title)
-                    .padding()
+//                Text("Mood Analysis")
+//                    .font(.title)
+//                    .padding()
+//                Text("Mood Analysis")
+//                    .font(.system(size: 28, weight: .bold)) // Adjust font size and weight
+//                    .padding()
+//                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 2) // Add shadow effect
+//                    .scaleEffect(1.2) // Scale the text
+
 
                 Menu {
                     // Time Filters Section
@@ -143,6 +149,7 @@ class moodClass{
                     }
                 }
                 .padding()
+
                 
                 // Conditionally display the appropriate view based on selection
                 if let selectedEntry = selectedEntry, selectedItemType == .entry {
@@ -189,6 +196,17 @@ class moodClass{
                 .cornerRadius(5)
                 .foregroundStyle(by: .value("Name", element.name))
             }
+            .chartBackground { chartProxy in
+              GeometryReader { geometry in
+                  let frame = geometry[chartProxy.plotFrame!]
+                VStack {
+                  Text("Mood Analysis")
+                        .font(.title)
+//                    .foregroundStyle(.secondary)
+                }
+                .position(x: frame.midX, y: frame.midY)
+              }
+            }
         }
     }
     
@@ -211,6 +229,17 @@ class moodClass{
                 )
                 .cornerRadius(5)
                 .foregroundStyle(by: .value("Name", element.name))
+            }
+            .chartBackground { chartProxy in
+              GeometryReader { geometry in
+                  let frame = geometry[chartProxy.plotFrame!]
+                VStack {
+                  Text("Mood Analysis")
+                        .font(.title)
+//                    .foregroundStyle(.secondary)
+                }
+                .position(x: frame.midX, y: frame.midY)
+              }
             }
         }
     }
