@@ -39,36 +39,17 @@ struct HomeView: View {
     var body: some View {
         VStack {
             Spacer()
-            //Settings
-            
-            // Time
-//            Text(formattedCurrentTime)
-//                .font(.title)
-//                .padding()
-//            Text(formattedCurrentTime)
-//                .font(.custom("Arial", size: 80))
-//                .fontWeight(.bold)
-//                .padding(20)
-//                .foregroundColor(.white)
-//                .background(
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .fill(Color.blue)
-//                        .shadow(color: .gray, radius: 5, x: 0, y: 0)
-//                )
             Text(formattedCurrentTime)
-                .font(.custom("Avenir Next", size: 40))
+                .font(.custom("Avenir Next", size: 30))
                 .fontWeight(.bold)
                 .foregroundColor(.white)
-                .padding(30)
+                .padding(15)
                 .background(
                     LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
                         .cornerRadius(20)
                         .shadow(color: .black, radius: 10, x: 0, y: 0)
                 )
 
-
-
-            
             // Widget list (templates, streak, prompt)
             WidgetListView()
             
@@ -94,7 +75,7 @@ struct WidgetListView: View {
             WidgetView(title: "Prompt") {
                 PromptWidgetView()
             }
-            .padding(35)
+            .padding(15)
         }
         .padding()
     }
@@ -119,7 +100,7 @@ struct WidgetView<Content: View>: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
-                    .padding(.top, 2)
+                    .padding(.top, 5)
                 
                 content()
             }
@@ -180,19 +161,16 @@ struct TemplatesWidgetView: View {
 struct StreakWidgetView: View {
     var body: some View {
         VStack {
-            Text("Current Streak")
-                .font(.system(size: 28))
-                .padding()
-            
+            Spacer()
             HStack{
                 let streak = streakCalc(entries: JournalEntries.entries)
                 Text("\(streak) Days!")
+                    .font(.title)
                 Image(systemName: "flame.fill")
                     .foregroundColor(.orange)
+                    .font(.title)
             }
-            
             Spacer()
-            
         }
     }
 }
@@ -203,8 +181,6 @@ struct PromptWidgetView: View {
             Text("Daily Prompt")
                 .font(.system(size: 28))
                 .padding()
-            
-                Text("Placeholder Prompt")
             
             Spacer()
             
