@@ -98,15 +98,22 @@ class moodClass{
         }
         
         var body: some View {
-            
             VStack {
                 Spacer()
                 Spacer()
                 Spacer()
                 Spacer()
                 Spacer()
-
-
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
                 Menu {
                     // Time Filters Section
                     Section(header: Text("Time Filters")) {
@@ -134,15 +141,36 @@ class moodClass{
                     }
                 } label: {
                     if selectedItemType == .filter {
-                        Text(selectedFilter!.rawValue + " Selected")
-                            .font(.title2)
+                        HStack{
+                            Text(selectedFilter!.rawValue)
+//                                .font(.title2)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                            Image(systemName: "calendar")
+                                .font(.title)
+                        }
                     }
                     else if selectedItemType == .entry {
-                        Text("\(selectedEntry!.date, formatter: DateFormatter.date)")
-                            .font(.title2)
-                    } else {
-                        Text("Select Entry")
-                            .font(.title2)
+                        HStack{
+                            Text("\(selectedEntry!.date, formatter: DateFormatter.date)")
+//                                .font(.title2)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                            Image(systemName: "calendar")
+                                .font(.title)
+                        }
+                    }else {
+                        HStack{
+                            Text("Past Week")
+//                                .font(.title2)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.center)
+                            Image(systemName: "calendar")
+                                .font(.title)
+                        }
                     }
                 }
                 .padding()
@@ -157,16 +185,6 @@ class moodClass{
                             .padding(.horizontal, 20) // Adjustable padding
                     }
                 } else {
-                    // Display the pie chart representing aggregated emotions data for the past week
-//                    Text("Emotions from the past Week")
-//                        .font(.title3)
-//                        .padding()
-                    Text("Emotions from the Past Week")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding()
-                        .multilineTextAlignment(.center) // Center the text if needed
-
                     GeometryReader { geometry in
                         weekPieChartView(emotions: moodManager.globalWeekData)
                             .frame(width: min(geometry.size.width - 40, 550),
@@ -174,10 +192,9 @@ class moodClass{
                             .padding(.horizontal, 20)
                     }
                 }
-
-                
-                Spacer() // Fill remaining space
+                Spacer()
             }
+            
         }
     }
 
