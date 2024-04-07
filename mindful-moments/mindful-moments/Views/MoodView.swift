@@ -103,9 +103,6 @@ class moodClass{
                 Text("Mood Analysis") // Header
                     .font(.title)
                     .padding()
-//                if {
-//                    
-//                }
 
                 Menu {
                     // Time Filters Section
@@ -147,46 +144,8 @@ class moodClass{
                 }
                 .padding()
                 
-                
-//                if selectedItemType == .filter {
-//                    GeometryReader { geometry in
-//                        pieChartView(journalEntry: selectedEntry!.content)
-//                            .frame(width: min(geometry.size.width - 40, 550), // Adjust size as needed
-//                                   height: min(geometry.size.width - 40, 550)) // Adjust size as needed
-//                            .padding(.horizontal, 20) // Adjustable padding
-//                    }
-//                }
-                
-//                if selectedItemType == .filter{
-//                    GeometryReader { geometry in
-//                        weekPieChartView(emotions: moodManager.globalWeekData)
-//                            .frame(width: min(geometry.size.width - 40, 550),
-//                                   height: min(geometry.size.width - 40, 550))
-//                            .padding(.horizontal, 20)
-//                    }
-//                }
-//                else if selectedItemType == .filter{
-//                    GeometryReader { geometry in
-//                        pieChartView(journalEntry: selectedEntry!.content)
-//                            .frame(width: min(geometry.size.width - 40, 550), // Adjust size as needed
-//                                   height: min(geometry.size.width - 40, 550)) // Adjust size as needed
-//                            .padding(.horizontal, 20) // Adjustable padding
-//                    }
-//                }
-//                else {
-//                    GeometryReader { geometry in
-//                        weekPieChartView(emotions: moodManager.globalWeekData)
-//                            .frame(width: min(geometry.size.width - 40, 550),
-//                                   height: min(geometry.size.width - 40, 550))
-//                            .padding(.horizontal, 20)
-//                    }
-//                }
-            
-
-
-                
-                
-                if let selectedEntry = selectedEntry {
+                // Conditionally display the appropriate view based on selection
+                if let selectedEntry = selectedEntry, selectedItemType == .entry {
                     GeometryReader { geometry in
                         pieChartView(journalEntry: selectedEntry.content)
                             .frame(width: min(geometry.size.width - 40, 550), // Adjust size as needed
