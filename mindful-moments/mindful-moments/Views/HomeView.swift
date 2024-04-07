@@ -44,7 +44,6 @@ struct HomeView: View {
                 .fontWeight(.bold)
                 .foregroundColor(.white)
                 .padding(15)
-                .padding(.bottom, 10)
                 .background(
                     LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
                         .cornerRadius(20)
