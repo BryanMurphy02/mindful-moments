@@ -78,6 +78,22 @@ class moodClass{
         let moodManager = moodClass()
         let entries = JournalEntries.entries
         @State private var selectedEntry: JournalEntry? = nil
+        @State private var selectedItemType: selectedItemType = .none
+
+        enum selectedItemType {
+            case filter
+            case entry
+            case none
+        }
+        
+        
+        enum timeFilterType: String, CaseIterable {
+            case pastWeek = "Past Week"
+            case pastMonth = "Past Month"
+        }
+        
+//        @State private var selectedFilter: timeFilterType = .pastWeek
+        @State private var selectedFilter: timeFilterType?
         
         init() {
             // Populate globalWeekData when MoodView is initialized
@@ -85,17 +101,22 @@ class moodClass{
         }
         
         var body: some View {
+            
             VStack {
                 Text("Mood Analysis") // Header
                     .font(.title)
                     .padding()
+
                 Menu {
-                    // Placeholder Section
+                    // Time Filters Section
                     Section(header: Text("Time Filters")) {
-                        Button(action: {
-                            // Action for placeholder menu option
-                        }) {
-                            Text("Past Week")
+                        ForEach(timeFilterType.allCases, id: \.self) { filterType in
+                            Button(action: {
+                                // Action for selecting time filter
+                                selectedFilter = filterType
+                            }) {
+                                Text(filterType.rawValue)
+                            }
                         }
                     }
                     
@@ -110,7 +131,11 @@ class moodClass{
                         }
                     }
                 } label: {
-                    if let selectedEntry = selectedEntry {
+                    if let selectedFilter = selectedFilter {
+                        Text(selectedFilter.rawValue + " Selected")
+                            .font(.title2)
+                    }
+                    else if let selectedEntry = selectedEntry {
                         Text("\(selectedEntry.date, formatter: DateFormatter.date)")
                             .font(.title2)
                     } else {
@@ -119,6 +144,7 @@ class moodClass{
                     }
                 }
                 .padding()
+
 
                 
                 
