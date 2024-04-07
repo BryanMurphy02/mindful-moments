@@ -72,12 +72,26 @@ class moodClass{
     }
 
     
-
+    enum selectedItemType {
+        case filter
+        case entry
+        case none
+    }
 
     struct MoodView: View {
         let moodManager = moodClass()
         let entries = JournalEntries.entries
         @State private var selectedEntry: JournalEntry? = nil
+        @State private var selectedItemType: selectedItemType?
+        
+        
+        enum timeFilterType: String, CaseIterable {
+            case pastWeek = "Past Week"
+            case pastMonth = "Past Month"
+        }
+        
+//        @State private var selectedFilter: timeFilterType = .pastWeek
+        @State private var selectedFilter: timeFilterType?
         
         init() {
             // Populate globalWeekData when MoodView is initialized
@@ -85,17 +99,23 @@ class moodClass{
         }
         
         var body: some View {
+            
             VStack {
                 Text("Mood Analysis") // Header
                     .font(.title)
                     .padding()
+
                 Menu {
-                    // Placeholder Section
+                    // Time Filters Section
                     Section(header: Text("Time Filters")) {
-                        Button(action: {
-                            // Action for placeholder menu option
-                        }) {
-                            Text("Past Week")
+                        ForEach(timeFilterType.allCases, id: \.self) { filterType in
+                            Button(action: {
+                                // Action for selecting time filter
+                                selectedFilter = filterType
+                                selectedItemType = .filter
+                            }) {
+                                Text(filterType.rawValue)
+                            }
                         }
                     }
                     
@@ -104,14 +124,19 @@ class moodClass{
                         ForEach(entries, id: \.id) { entry in
                             Button(action: {
                                 selectedEntry = entry
+                                selectedItemType = .entry
                             }) {
                                 Text("\(entry.date, formatter: DateFormatter.date)")
                             }
                         }
                     }
                 } label: {
-                    if let selectedEntry = selectedEntry {
-                        Text("\(selectedEntry.date, formatter: DateFormatter.date)")
+                    if selectedItemType == .filter {
+                        Text(selectedFilter!.rawValue + " Selected")
+                            .font(.title2)
+                    }
+                    else if selectedItemType == .entry {
+                        Text("\(selectedEntry!.date, formatter: DateFormatter.date)")
                             .font(.title2)
                     } else {
                         Text("Select Entry")
@@ -119,6 +144,9 @@ class moodClass{
                     }
                 }
                 .padding()
+                
+                
+
 
                 
                 
