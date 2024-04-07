@@ -7,6 +7,26 @@
 
 import SwiftUI
 
+let journalEntries = JournalEntries()
+
+//calculates the streak of entries
+func streakCalc(entries: [JournalEntry]) -> Int {
+    var currentStreak = 0
+    var currentDate = Date()
+    var remainingEntries = entries // Make a copy of the entries array
+    
+    // Iterate backward starting from today
+    while let entry = remainingEntries.first(where: { Calendar.current.isDate($0.date, inSameDayAs: currentDate) }) {
+        currentStreak += 1
+        currentDate = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)!
+        remainingEntries.removeAll(where: { Calendar.current.isDate($0.date, inSameDayAs: entry.date) })
+    }
+    
+    return currentStreak
+}
+
+
+
 struct HomeView: View {
     
     // Computed property to get the current time in a formatted string
@@ -18,22 +38,18 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            //Settings
-            HStack {
-                Spacer()
-                NavigationLink(destination: SettingsView()) {
-                    Image(systemName: "gearshape.fill")
-                        .foregroundColor(.blue)
-                        .font(.system(size: 24))
-                        .padding()
-                }
-            }
-            
-            // Time
+            Spacer()
             Text(formattedCurrentTime)
-                .font(.title)
-                .padding()
-            
+                .font(.custom("Avenir Next", size: 30))
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding(15)
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .cornerRadius(20)
+                        .shadow(color: .black, radius: 10, x: 0, y: 0)
+                )
+
             // Widget list (templates, streak, prompt)
             WidgetListView()
             
@@ -42,40 +58,58 @@ struct HomeView: View {
     }
 }
 
+
+
 struct WidgetListView: View {
     var body: some View {
         VStack(spacing: 20) {
             WidgetView(title: "Templates") {
                 TemplatesWidgetView()
+                    .padding()
             }
-            
+            .padding(35)
             WidgetView(title: "Streaks") {
                 StreakWidgetView()
             }
-            
+            .padding(35)
             WidgetView(title: "Prompt") {
                 PromptWidgetView()
             }
+            .padding(15)
         }
         .padding()
     }
 }
+
+
 
 struct WidgetView<Content: View>: View {
     var title: String
     var content: () -> Content
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .foregroundColor(.blue)
-            .frame(width: 350, height: 130)
-            .overlay(
-                VStack {
-                    content()
-                }
-            )
+        ZStack {
+            // Background: Linear gradient with rounded corners and shadow
+            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .cornerRadius(20)
+                .shadow(color: .black, radius: 10, x: 0, y: 0)
+            
+            // Content: Title and custom content
+            VStack {
+                Text(title)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.top, 5)
+                
+                content()
+            }
+//            .padding(20)
+        }
+        .frame(width: 350, height: 100)
     }
 }
+
 
 struct TemplatesWidgetView: View {
     var body: some View {
@@ -127,18 +161,16 @@ struct TemplatesWidgetView: View {
 struct StreakWidgetView: View {
     var body: some View {
         VStack {
-            Text("Current Streak")
-                .font(.system(size: 28))
-                .padding()
-            
+            Spacer()
             HStack{
-                Text("Placeholder Days!")
+                let streak = streakCalc(entries: JournalEntries.entries)
+                Text("\(streak) Days!")
+                    .font(.title)
                 Image(systemName: "flame.fill")
                     .foregroundColor(.orange)
+                    .font(.title)
             }
-            
             Spacer()
-            
         }
     }
 }
@@ -150,9 +182,7 @@ struct PromptWidgetView: View {
             Text("Daily Prompt")
                 .font(.system(size: 28))
                 .padding()
-            
             Text(promptFile.getRandomPrompt(from: promptFile.prompts)!)
-            
             Spacer()
             
         }
