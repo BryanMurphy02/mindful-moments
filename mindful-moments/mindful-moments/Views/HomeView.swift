@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let journalEntries = JournalEntries()
+let journalEntries = JournalEntries() //TODO: convert to coreData
 
 //calculates the streak of entries
 func streakCalc(entries: [JournalEntry]) -> Int {
@@ -118,6 +118,7 @@ struct TemplatesWidgetView: View {
             Spacer()
             
             //Morning
+            //TODO: add window like others
             NavigationLink(destination: NewEntryView()) {
                 VStack{
                     Image(systemName: "sun.max.fill")
@@ -191,11 +192,5 @@ struct PromptWidgetView: View {
             Spacer()
 
         }
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
     }
 }
