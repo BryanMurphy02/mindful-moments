@@ -203,8 +203,12 @@ class moodClass{
               GeometryReader { geometry in
                   let frame = geometry[chartProxy.plotFrame!]
                 VStack {
-                  Text("Mood Analysis")
-                        .font(.title)
+                    Text("Mood Analysis")
+                        .font(.title2)
+                        .padding()
+                    Image(systemName: "chart.pie.fill")
+                        .font(.largeTitle)
+                        .foregroundColor(.blue)
 //                    .foregroundStyle(.secondary)
                 }
                 .position(x: frame.midX, y: frame.midY)
@@ -236,11 +240,15 @@ class moodClass{
             .chartBackground { chartProxy in
               GeometryReader { geometry in
                   let frame = geometry[chartProxy.plotFrame!]
-                VStack {
-                  Text("Mood Analysis")
-                        .font(.title)
-//                    .foregroundStyle(.secondary)
-                }
+                  VStack {
+                      Text("Mood Analysis")
+                          .font(.title2)
+                          .padding()
+                      Image(systemName: "chart.pie.fill")
+                          .font(.largeTitle)
+                          .foregroundColor(.blue)
+  //                    .foregroundStyle(.secondary)
+                  }
                 .position(x: frame.midX, y: frame.midY)
               }
             }
