@@ -89,13 +89,24 @@ class moodClass{
                 Text("Mood Analysis") // Header
                     .font(.title)
                     .padding()
-                
                 Menu {
-                    ForEach(entries, id: \.id) { entry in
+                    // Placeholder Section
+                    Section(header: Text("Time Filters")) {
                         Button(action: {
-                            selectedEntry = entry
+                            // Action for placeholder menu option
                         }) {
-                            Text("\(entry.date, formatter: DateFormatter.date)")
+                            Text("Past Week")
+                        }
+                    }
+                    
+                    // Journal Entries Section
+                    Section(header: Text("Journal Entries")) {
+                        ForEach(entries, id: \.id) { entry in
+                            Button(action: {
+                                selectedEntry = entry
+                            }) {
+                                Text("\(entry.date, formatter: DateFormatter.date)")
+                            }
                         }
                     }
                 } label: {
@@ -108,6 +119,7 @@ class moodClass{
                     }
                 }
                 .padding()
+
                 
                 
                 if let selectedEntry = selectedEntry {
