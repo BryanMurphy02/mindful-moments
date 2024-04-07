@@ -100,14 +100,11 @@ class moodClass{
         var body: some View {
             
             VStack {
-//                Text("Mood Analysis")
-//                    .font(.title)
-//                    .padding()
-//                Text("Mood Analysis")
-//                    .font(.system(size: 28, weight: .bold)) // Adjust font size and weight
-//                    .padding()
-//                    .shadow(color: Color.black.opacity(0.3), radius: 3, x: 0, y: 2) // Add shadow effect
-//                    .scaleEffect(1.2) // Scale the text
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
 
 
                 Menu {
@@ -161,9 +158,15 @@ class moodClass{
                     }
                 } else {
                     // Display the pie chart representing aggregated emotions data for the past week
-                    Text("Emotions from the past Week")
-                        .font(.title3)
+//                    Text("Emotions from the past Week")
+//                        .font(.title3)
+//                        .padding()
+                    Text("Emotions from the Past Week")
+                        .font(.title)
+                        .fontWeight(.bold)
                         .padding()
+                        .multilineTextAlignment(.center) // Center the text if needed
+
                     GeometryReader { geometry in
                         weekPieChartView(emotions: moodManager.globalWeekData)
                             .frame(width: min(geometry.size.width - 40, 550),
