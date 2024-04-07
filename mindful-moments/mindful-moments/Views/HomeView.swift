@@ -178,11 +178,23 @@ struct StreakWidgetView: View {
 
 struct PromptWidgetView: View {
     let promptFile = prompts()
+    
+    @State private var prompt: String // Define a @State variable to hold the prompt text
+        
+    init() {
+        _prompt = State(initialValue: promptFile.getRandomPrompt(from: promptFile.prompts)!)
+    }
     var body: some View {
         VStack {
             Spacer()
-
-            Text(promptFile.getRandomPrompt(from: promptFile.prompts) ?? "")
+            Button(action: {
+                self.prompt = self.promptFile.getRandomPrompt(from: self.promptFile.prompts)!
+                    }) {
+                        Image(systemName: "arrow.counterclockwise.circle")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                    }
+            Text(prompt)
                 .padding(20)
                 .multilineTextAlignment(.center)
                 .lineSpacing(8) // Adjust line spacing as needed
