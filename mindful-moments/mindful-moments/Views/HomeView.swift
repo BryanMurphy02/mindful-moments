@@ -176,12 +176,13 @@ struct StreakWidgetView: View {
 }
 
 struct PromptWidgetView: View {
+    let promptFile = prompts()
     var body: some View {
         VStack {
             Text("Daily Prompt")
                 .font(.system(size: 28))
                 .padding()
-            
+            Text(promptFile.getRandomPrompt(from: promptFile.prompts)!)
             Spacer()
             
         }
