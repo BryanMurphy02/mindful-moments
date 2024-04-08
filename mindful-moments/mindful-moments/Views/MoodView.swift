@@ -37,22 +37,44 @@ class moodClass{
     }
     
     //takes in entries and returns ones within the last week
+//    func entriesWithinLastWeek(entries: [Entry]) -> [Entry] {
+//        // Get the current date
+//        let currentDate = Date()
+//        
+//        // Calculate the date one week ago
+//        let oneWeekAgo = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: currentDate)!
+//        
+//        // Filter the entries to only include those with dates within the last week
+//        let entriesWithinLastWeek = entries.filter { $0.date! > oneWeekAgo }
+//        
+//        return entriesWithinLastWeek
+//    }
     func entriesWithinLastWeek(entries: [Entry]) -> [Entry] {
         // Get the current date
         let currentDate = Date()
         
         // Calculate the date one week ago
-        let oneWeekAgo = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: currentDate)!
+        guard let oneWeekAgo = Calendar.current.date(byAdding: .day, value: -7, to: currentDate) else {
+            return []
+        }
         
-        // Filter the entries to only include those with dates within the last week
-        let entriesWithinLastWeek = entries.filter { $0.date! > oneWeekAgo }
+        // Filter the entries to only include those with dates on or after one week ago
+        let entriesWithinLastWeek = entries.filter { entry in
+            if let entryDate = entry.date {
+                return entryDate >= oneWeekAgo
+            }
+            return false // handle case where entry.date is nil
+        }
         
         return entriesWithinLastWeek
     }
+
+
     
     //makes a solidified list of emotionData from entries in the past week
-    func moodDataLastWeek(entries: [Entry], weekEmotionData: inout [emotionData]){
+    func moodDataLastWeek(entries: [Entry]){
         let lastWeek: [Entry] = entriesWithinLastWeek(entries: entries)
+        print("Last Week: \(lastWeek)")
         
         for entry in lastWeek {
             let emotions = getMoodData(data: entry.content ?? "")
@@ -60,16 +82,21 @@ class moodClass{
             // Append each emotion from the array to weekEmotionData
             for emotion in emotions {
                 // Check if the emotion already exists in weekEmotionData
-                if let index = weekEmotionData.firstIndex(where: { $0.name == emotion.name }) {
+                if let index = globalWeekData.firstIndex(where: { $0.name == emotion.name }) {
                     // If it does, update the count
-                    weekEmotionData[index].count += emotion.count
+                    globalWeekData[index].count += emotion.count
                 } else {
                     // If not, append it to weekEmotionData
-                    weekEmotionData.append(emotion)
+                    globalWeekData.append(emotion)
                 }
             }
         }
     }
+    
+    func extractContent(entries: [Entry]) -> [String] {
+        return entries.map { $0.content! }
+    }
+
 
     
     enum selectedItemType {
@@ -99,7 +126,18 @@ class moodClass{
         
         init() {
             // Populate globalWeekData when MoodView is initialized
-            moodManager.moodDataLastWeek(entries: entries, weekEmotionData: &moodManager.globalWeekData)
+
+//            moodManager.moodDataLastWeek(entries: entries)
+//            
+//            print(moodManager.globalWeekData)
+            
+            moodManager.globalWeekData = [
+                emotionData(name: "fear", count: 7),
+                emotionData(name: "anger", count: 12),
+                emotionData(name: "disgust", count: 4),
+                emotionData(name: "surprise", count: 18),
+                emotionData(name: "happy", count: 10)
+            ]
         }
         
         var body: some View {
