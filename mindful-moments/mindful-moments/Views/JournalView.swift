@@ -29,6 +29,8 @@ struct JournalView: View {
     @Environment(\.managedObjectContext) var managedObjContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var entry: FetchedResults<Entry>
     
+    @Environment(\.editMode) var editMode // Add environment property to track edit mode
+    
     //list of possible layout styles
     enum LayoutType: String, CaseIterable {
         case list = "List"
@@ -50,14 +52,18 @@ struct JournalView: View {
             VStack {
                 // Show either List or Grid based on selection
                 if selectedLayout == .list {
-                    JournalEntryListView(thumbnailType: $thumbnailType, entries: entry)
+                    JournalEntryListView(thumbnailType: $thumbnailType, entries: entry, managedObjContext: managedObjContext)
+                        .environment(\.editMode, editMode)
                     
                 }
                 else if selectedLayout == .calendar{
-                    JournalEntryCalendarView(thumbnailType: $thumbnailType, entries: entry)
+                    JournalEntryCalendarView(thumbnailType: $thumbnailType, entries: entry, managedObjContext: managedObjContext)
+                        .environment(\.editMode, editMode)
                 }
                 else {
                     JournalEntryGridView(thumbnailType: $thumbnailType, entries: entry)
+                        .environment(\.editMode, editMode)
+
                 }
             }
             .padding(.top, 1)
@@ -157,7 +163,9 @@ extension DateFormatter {
 struct JournalEntryCalendarView: View {
     @State private var selectedDate = Date()
     @Binding var thumbnailType: ThumbnailType
+    @Environment(\.editMode) var editMode // Add environment property to track edit mode
     let entries: FetchedResults<Entry>
+    let managedObjContext: NSManagedObjectContext
 
     var body: some View {
         VStack {
@@ -168,7 +176,8 @@ struct JournalEntryCalendarView: View {
                 .padding()
             
             // Journal Entry List View
-            JournalEntryListView(thumbnailType: $thumbnailType, entries: entries)
+            JournalEntryListView(thumbnailType: $thumbnailType, entries: entries, managedObjContext: managedObjContext)
+                .environment(\.editMode, editMode)
             
             Spacer()
         }
@@ -221,7 +230,8 @@ struct DatePickerCellConfiguration {
 struct JournalEntryListView: View {
     @Binding var thumbnailType: ThumbnailType
     let entries: FetchedResults<Entry>
-    //let context: NSManagedObjectContext
+    @Environment(\.editMode) var editMode // Add environment property to track edit mode
+    let managedObjContext: NSManagedObjectContext
     
     var body: some View {
         List {
@@ -243,7 +253,7 @@ struct JournalEntryListView: View {
                 
                 //            .onDelete(perform: deleteFood(entries: entries, context: context))
             }
-            //.onDelete(perform: deleteFood)
+            .onDelete(perform: deleteEntry)
             
 //            .toolbar {
 //                ToolbarItem(placement: .navigationBarLeading) {
@@ -251,49 +261,97 @@ struct JournalEntryListView: View {
 //                }
 //            }
         }
+        .environment(\.editMode, editMode)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                EditButton()
+            }
+        }
+
     }
+    
+    private func deleteEntry(offsets: IndexSet) {
+           withAnimation {
+               offsets.map { entries[$0] }.forEach { entry in
+                   managedObjContext.delete(entry) // Delete from shared context
+               }
+               DataController().save(context: managedObjContext) // Save changes
+           }
+       }
 }
 
-
-
+ 
+// MARK: - GridView
 
 //Struct for displaying entries in a grid/gallery format
 struct JournalEntryGridView: View {
     @Binding var thumbnailType: ThumbnailType
     let entries: FetchedResults<Entry>
+    @Environment(\.editMode) var editMode // Add environment property to track edit mode
+    @State private var isEditMode = false // State variable to track edit mode
     
     var body: some View {
-//        NavigationView {
-            ScrollView {
-                //LazyVGrid makes columns where you can adjust the width
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))], spacing: 10) {
-                    //iterates over the amount of entries
-                    ForEach(entries, id: \.id) { entry in
-                        //calling secondary grid struct
-                        NavigationLink(destination: EntryView(entry: entry)) {
-                            VStack {
-                                JournalEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
-                            }
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))], spacing: 10) {
+                ForEach(entries, id: \.id) { entry in
+                    NavigationLink(destination: EntryView(entry: entry)) {
+                        VStack {
+                            JournalEntryGridCell(entry: entry, thumbnailType: $thumbnailType)
                         }
                     }
                 }
-                .padding()
-                
-                
+                .overlay(
+                    // Overlay red dot when in edit mode
+                    VStack {
+                        HStack {
+                            if editMode?.wrappedValue == .active {
+                                Button(action: {
+                                    // TODO: delete entry
+//                                    deleteEntry()
+                                }) {
+                                    Image(systemName: "minus.circle.fill")
+                                        .foregroundColor(.red)
+                                        .offset(x: -10, y: -10) // Adjust position
+                                }
+                            }
+                            Spacer()
+                        }
+                        
+                        Spacer()
+                    }
+                )
             }
-        //}
+            .padding()
+        }
+        .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            // Toggle edit mode when EditButton is pressed
+                            editMode?.wrappedValue = editMode?.wrappedValue == .inactive ? .active : .inactive
+                        }) {
+                            EditButton()
+                        }
+                    }
+                }
     }
     
+//    private func deleteEntry(offsets: IndexSet) {
+//           withAnimation {
+//               offsets.map { entries[$0] }.forEach { entry in
+//                   managedObjContext.delete(entry) // Delete from shared context
+//               }
+//               DataController().save(context: managedObjContext) // Save changes
+//           }
+//       }
 }
 
 //Struct to display an entry in the DiaryEntryGridView
 struct JournalEntryGridCell: View {
-    let entry: Entry // Change type to Entry
+    let entry: Entry
     @Binding var thumbnailType: ThumbnailType
     
     var body: some View {
         VStack(alignment: .leading) {
-            // Use thumbnailType directly or access its properties/methods
             switch thumbnailType {
             case .date:
                 Text("\(entry.date ?? Date(), formatter: DateFormatter.date)")
@@ -308,20 +366,3 @@ struct JournalEntryGridCell: View {
         .cornerRadius(8)
     }
 }
-
-
-////Struct to display an entry and its contents
-//struct JournalEntryDetailView: View {
-//    let entry: Entry
-//
-//    var body: some View {
-//        VStack {
-//            Text(entry.name ?? <#default value#>)
-//                .font(.title)
-//                .padding()
-//            Text(entry.content)
-//                .padding()
-//            Spacer()
-//        }
-//    }
-//}

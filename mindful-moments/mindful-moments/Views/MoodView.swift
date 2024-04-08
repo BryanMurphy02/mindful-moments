@@ -37,7 +37,7 @@ class moodClass{
     }
     
     //takes in entries and returns ones within the last week
-    func entriesWithinLastWeek(entries: [JournalEntry]) -> [JournalEntry] {
+    func entriesWithinLastWeek(entries: [Entry]) -> [Entry] {
         // Get the current date
         let currentDate = Date()
         
@@ -45,17 +45,17 @@ class moodClass{
         let oneWeekAgo = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: currentDate)!
         
         // Filter the entries to only include those with dates within the last week
-        let entriesWithinLastWeek = entries.filter { $0.date > oneWeekAgo }
+        let entriesWithinLastWeek = entries.filter { $0.date! > oneWeekAgo }
         
         return entriesWithinLastWeek
     }
     
     //makes a solidified list of emotionData from entries in the past week
-    func moodDataLastWeek(entries: [JournalEntry], weekEmotionData: inout [emotionData]){
-        let lastWeek: [JournalEntry] = entriesWithinLastWeek(entries: entries)
+    func moodDataLastWeek(entries: [Entry], weekEmotionData: inout [emotionData]){
+        let lastWeek: [Entry] = entriesWithinLastWeek(entries: entries)
         
         for entry in lastWeek {
-            let emotions = getMoodData(data: entry.content)
+            let emotions = getMoodData(data: entry.content ?? "")
             
             // Append each emotion from the array to weekEmotionData
             for emotion in emotions {
@@ -84,9 +84,14 @@ class moodClass{
     }
 
     struct MoodView: View {
+        @Environment(\.managedObjectContext) var managedObjContext
+        @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var entry: FetchedResults<Entry>
+        
         let moodManager = moodClass()
-        let entries = JournalEntries.entries
-        @State private var selectedEntry: JournalEntry? = nil
+        var entries: [Entry] {
+            entry.map { $0 }
+        }
+        @State private var selectedEntry: Entry? = nil
         @State private var selectedItemType: selectedItemType?
 
 //        @State private var selectedFilter: timeFilterType = .pastWeek
@@ -135,7 +140,7 @@ class moodClass{
                                 selectedEntry = entry
                                 selectedItemType = .entry
                             }) {
-                                Text("\(entry.date, formatter: DateFormatter.date)")
+                                Text("\(entry.date!, formatter: DateFormatter.date)")
                             }
                         }
                     }
@@ -153,7 +158,7 @@ class moodClass{
                     }
                     else if selectedItemType == .entry {
                         HStack{
-                            Text("\(selectedEntry!.date, formatter: DateFormatter.date)")
+                            Text("\(selectedEntry!.date!, formatter: DateFormatter.date)")
 //                                .font(.title2)
                                 .font(.title)
                                 .fontWeight(.bold)
@@ -179,7 +184,7 @@ class moodClass{
                 // Conditionally display the appropriate view based on selection
                 if let selectedEntry = selectedEntry, selectedItemType == .entry {
                     GeometryReader { geometry in
-                        pieChartView(journalEntry: selectedEntry.content)
+                        pieChartView(journalEntry: selectedEntry.content!)
                             .frame(width: min(geometry.size.width - 40, 550), // Adjust size as needed
                                    height: min(geometry.size.width - 40, 550)) // Adjust size as needed
                             .padding(.horizontal, 20) // Adjustable padding
