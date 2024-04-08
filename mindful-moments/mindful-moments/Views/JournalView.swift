@@ -39,7 +39,7 @@ struct JournalView: View {
     //State variable that tracks the selected layout style
     @State private var selectedLayout: LayoutType = .list
     //State variable for setting the thumbnail type
-    @State private var thumbnailType: ThumbnailType = .date
+    @State private var thumbnailType: ThumbnailType = .title
     
 //    static var entries: [Entry] {Array(entry)}
     

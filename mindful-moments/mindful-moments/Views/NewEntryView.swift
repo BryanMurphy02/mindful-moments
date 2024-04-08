@@ -1,21 +1,6 @@
 import SwiftUI
 import AVKit
 
-//func goHome() {
-//    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//       let window = windowScene.windows.first {
-//        window.rootViewController = UIHostingController(rootView: HomeView())
-//        window.makeKeyAndVisible()
-//    }
-//}
-
-//func goHome() {
-//    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//       let window = windowScene.windows.first {
-//        window.rootViewController = UIHostingController(rootView: window.rootViewController?.view)
-//        window.makeKeyAndVisible()
-//    }
-//}
 
 
 
@@ -46,6 +31,7 @@ struct NewEntryView: View {
                                                               mediaFiles: []),
                                               context: managedObjContext)
                     dismiss()
+//                    goHome()
                 }) {
                     Text("Done")
                 }
@@ -79,6 +65,7 @@ struct NewEntryView: View {
                                                       mediaFiles: []),
                                       context: managedObjContext)
             dismiss()
+//            goHome()
         }) {
             Text("Done")
         })
