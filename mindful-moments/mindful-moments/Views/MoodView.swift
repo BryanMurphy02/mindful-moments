@@ -140,7 +140,7 @@ class moodClass{
                                 selectedEntry = entry
                                 selectedItemType = .entry
                             }) {
-                                Text("\(entry.date!, formatter: DateFormatter.date)")
+                                Text("\(entry.name!)")
                             }
                         }
                     }
@@ -158,7 +158,7 @@ class moodClass{
                     }
                     else if selectedItemType == .entry {
                         HStack{
-                            Text("\(selectedEntry!.date!, formatter: DateFormatter.date)")
+                            Text("\(selectedEntry!.name!)")
 //                                .font(.title2)
                                 .font(.title)
                                 .fontWeight(.bold)
