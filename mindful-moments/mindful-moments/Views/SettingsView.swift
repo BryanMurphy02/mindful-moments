@@ -13,7 +13,6 @@ struct SettingsView: View {
     @State var passwordLock = true
     @State var aiGeneration = true
     
-    
     var body: some View {
         VStack{
             //this HStack will be for the back button in the top left
@@ -30,12 +29,14 @@ struct SettingsView: View {
             NavigationView{
                 List {
                     Section(header: Text("General")) {
-                        SettingsToggleRow(icon: "lock.fill", title: "Password Lock", caption: "test caption", isToggled: $passwordLock)
                         SettingsDestinationRow(icon: "bell.fill", title: "Notifications", destination: NotificationsView())
-                        SettingsToggleRow(icon: "brain.filled.head.profile", title: "AI Generation", caption: "test caption", isToggled: $aiGeneration)
+                        SettingsToggleRow(icon: "brain.filled.head.profile", title: "AI Generation", caption: "", isToggled: $aiGeneration)
                     }
                     Section(header: Text("Appearances")) {
-                        
+                        SettingsDestinationRow(icon: "paintbrush.fill", title: "Theme", destination: SettingsThemeView())
+                    }
+                    Section(header: Text("Security and Privacy")) {
+                        SettingsToggleRow(icon: "lock.fill", title: "Password Lock", caption: "", isToggled: $passwordLock)
                     }
                 }
                 .listStyle(GroupedListStyle())
