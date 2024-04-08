@@ -21,6 +21,7 @@
 		8944A45A2B8D329700547EDF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944A4592B8D329700547EDF /* SettingsView.swift */; };
 		8944A45C2B8D32E300547EDF /* NewEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8944A45B2B8D32E300547EDF /* NewEntryView.swift */; };
 		8963DE182BB3AE0200295884 /* CalendarTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8963DE172BB3AE0200295884 /* CalendarTestView.swift */; };
+		899452A12BC38A4E00E5382C /* SceneLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899452A02BC38A4E00E5382C /* SceneLoader.swift */; };
 		89BC069A2B8A70F300F11463 /* mindful_momentsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC06992B8A70F300F11463 /* mindful_momentsApp.swift */; };
 		89BC069C2B8A70F300F11463 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BC069B2B8A70F300F11463 /* ContentView.swift */; };
 		89BC069E2B8A70F600F11463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89BC069D2B8A70F600F11463 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		8944A4592B8D329700547EDF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8944A45B2B8D32E300547EDF /* NewEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEntryView.swift; sourceTree = "<group>"; };
 		8963DE172BB3AE0200295884 /* CalendarTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestView.swift; sourceTree = "<group>"; };
+		899452A02BC38A4E00E5382C /* SceneLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLoader.swift; sourceTree = "<group>"; };
 		89BC06962B8A70F300F11463 /* mindful-moments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mindful-moments.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BC06992B8A70F300F11463 /* mindful_momentsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mindful_momentsApp.swift; sourceTree = "<group>"; };
 		89BC069B2B8A70F300F11463 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				01C3F0932BC32A9000B88E53 /* EntryData.swift */,
 				01C3F0952BC32AA700B88E53 /* TimeFormatting.swift */,
 				01C3F0972BC32AD300B88E53 /* DateFormatting.swift */,
+				899452A02BC38A4E00E5382C /* SceneLoader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				01C3F0982BC32AD300B88E53 /* DateFormatting.swift in Sources */,
 				8944A4562B8D27E500547EDF /* MoodView.swift in Sources */,
 				89234A542B9A41F900382CCD /* NotificationsView.swift in Sources */,
+				899452A12BC38A4E00E5382C /* SceneLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

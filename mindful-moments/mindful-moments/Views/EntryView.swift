@@ -64,33 +64,33 @@ struct EntryView: View {
         
         //.background(Color.primary)
         .padding()
-        .toolbar {
-            ToolbarItem(placement: .keyboard) {
-                HStack {
-                    Button(action: {
-                        //TODO: Add action for adding photo
-                    }) {
-                        Image(systemName: "photo")
-                    }
-                    .padding()
-                    
-                    Button(action: {
-                        //TODO: Add action for adding video
-                    }) {
-                        Image(systemName: "video")
-                    }
-                    .padding()
-                    
-                    Button(action: {
-                        //TODO: Add action for adding audio
-                    }) {
-                        Image(systemName: "mic")
-                    }
-                    .padding()
-                }
-                .foregroundColor(.secondary)
-            }
-        }
+//        .toolbar {
+//            ToolbarItem(placement: .keyboard) {
+//                HStack {
+//                    Button(action: {
+//                        //TODO: Add action for adding photo
+//                    }) {
+//                        Image(systemName: "photo")
+//                    }
+//                    .padding()
+//                    
+//                    Button(action: {
+//                        //TODO: Add action for adding video
+//                    }) {
+//                        Image(systemName: "video")
+//                    }
+//                    .padding()
+//                    
+//                    Button(action: {
+//                        //TODO: Add action for adding audio
+//                    }) {
+//                        Image(systemName: "mic")
+//                    }
+//                    .padding()
+//                }
+//                .foregroundColor(.secondary)
+//            }
+//        }
     }
 }
 
