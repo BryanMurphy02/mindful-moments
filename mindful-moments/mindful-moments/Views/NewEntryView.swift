@@ -1,6 +1,26 @@
 import SwiftUI
 import AVKit
 
+//func goHome() {
+//    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//       let window = windowScene.windows.first {
+//        window.rootViewController = UIHostingController(rootView: HomeView())
+//        window.makeKeyAndVisible()
+//    }
+//}
+
+//func goHome() {
+//    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//       let window = windowScene.windows.first {
+//        window.rootViewController = UIHostingController(rootView: window.rootViewController?.view)
+//        window.makeKeyAndVisible()
+//    }
+//}
+
+
+
+
+
 struct NewEntryView: View {
     @Environment(\.managedObjectContext) var managedObjContext
     @Environment(\.dismiss) var dismiss
@@ -12,7 +32,6 @@ struct NewEntryView: View {
         self._data = State(initialValue: EntryData(name: "", content: "", tags: [], mediaFiles: []))
         
     }
-    
     var body: some View {
         VStack {
             // Tags

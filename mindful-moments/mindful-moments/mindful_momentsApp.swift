@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct mindful_momentsApp: App {
     @StateObject private var dataController = DataController()
+    @State private var selectedTab = 0
 
     var body: some Scene {
         WindowGroup {
