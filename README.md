@@ -54,7 +54,6 @@ Mindful Moments can be downloaded from the Apple App Store
 - **Xcode:** IDE created by Apple for iOS app development. [Link](https://developer.apple.com/xcode/)
 - **Swift:** High-level compiled programming language created by Apple for iOS applications. [Link](http://tinyurl.com/2v4uynzb)
 - **Visual Studio Code:** A code editor with extensions allowing it to be used for a wide variety of development. Used for small corrections and any work not directly using Swift. [Link](https://code.visualstudio.com/)
-- **Interface Builder:** A toolset that is part of Xcode used for Graphical User Interfaces.
 - **Adobe Illustrator:** A vector graphics interface used for developing images. [Link](https://www.adobe.com/products/illustrator.html)
 - **Notion:** A productivity and note-taking application. Used for task and project management. [Link](https://www.notion.so/)
 
